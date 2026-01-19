@@ -57,8 +57,28 @@
       "pregunta": "comida favorita",
       "verificacion": "milanesa",
       "tipo": 2,
-      "alta": true,
+      "alta": false,
       "id": 4610388041556483
+    },
+    {
+      "nombre": "lara",
+      "apellido": "diaz",
+      "telefono": "123456",
+      "email": "lara@gmail.com",
+      "direccion": {
+        "calle": "aaa",
+        "numero": 12222,
+        "ciudad": "Mar del Plata",
+        "codigoPostal": "7600",
+        "pais": "Argentina"
+      },
+      "nombreUsuario": "laradiaz",
+      "contrasenia": "utnmpd2025",
+      "pregunta": "animal favorito",
+      "verificacion": "perro",
+      "tipo": 2,
+      "alta": true,
+      "id": 4610388041556484
     }
   ]
 }

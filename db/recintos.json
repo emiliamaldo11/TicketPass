@@ -3,7 +3,7 @@
     {
       "nombreRecinto": "Estadio River Plate",
       "direccion": {
-        "calle": "Av. Pres. Figueroa Alcorta",
+        "calle": "calle Figueroa Alcorta",
         "numero": 7597,
         "ciudad": "Buenos Aires",
         "codigoPostal": "C1428",
@@ -389,6 +389,52 @@
       "alta": true,
       "urlMapaSectores": "aaa",
       "id": 4
+    },
+    {
+      "nombreRecinto": "Polideportivo",
+      "direccion": {
+        "calle": "sdklsajlksaj",
+        "numero": 112232,
+        "ciudad": "Mar del Plata",
+        "codigoPostal": "7600",
+        "pais": "Argentina"
+      },
+      "urlImg": "https://www.rassegna.com.ar/wp-content/uploads/2017/03/rassegna-asientos-estadios-polideportivo-islas-malvinas.jpg",
+      "capacidadTotal": 9004,
+      "sectores": [
+        {
+          "nombreSector": "campo",
+          "capacidad": 9000,
+          "numerado": false,
+          "asientos": []
+        },
+        {
+          "nombreSector": "platea",
+          "capacidad": 4,
+          "numerado": true,
+          "asientos": [
+            {
+              "butaca": 1,
+              "disponibilidad": true
+            },
+            {
+              "butaca": 2,
+              "disponibilidad": true
+            },
+            {
+              "butaca": 3,
+              "disponibilidad": true
+            },
+            {
+              "butaca": 4,
+              "disponibilidad": true
+            }
+          ]
+        }
+      ],
+      "alta": true,
+      "urlMapaSectores": "ejemplo",
+      "id": 5
     }
   ]
 }

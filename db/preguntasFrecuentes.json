@@ -1,3 +1,19 @@
 {
-  "preguntasFrecuentes": []
+  "preguntasFrecuentes": [
+    {
+      "id": 1739891535448,
+      "pregunta": "Si compre mas de una entrada en una transacción, ¿es posible devolver solo una?",
+      "respuesta": "No, en caso de que tu compra implique mas de una entrada, al realizar el proceso de devolución se devolverán todas las entradas de la transacción."
+    },
+    {
+      "id": 1739891646035,
+      "pregunta": "¿La entrada sera enviada a mi domicilio?",
+      "respuesta": "No, las entradas son virtuales. Al ver el detalle de la entrada, en la esquina inferior derecha podrás descargar la entrada que contiene el QR."
+    },
+    {
+      "id": 1739891751918,
+      "pregunta": "¿El QR de mi compra es valido para todas las entradas compradas en esa misma transacción?",
+      "respuesta": "Si, en caso de ser mas de una entrada, el QR podrá ser procesado esa cantidad de veces. "
+    }
+  ]
 }

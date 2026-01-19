@@ -479,6 +479,54 @@
       ],
       "alta": 1,
       "id": 4
+    },
+    {
+      "nombreEvento": "Lady Gaga Show",
+      "artista_banda": "Lady Gaga",
+      "duracion": "02:00",
+      "UrlBanner": "https://i.redd.it/0i4jzuz4xnu31.png",
+      "recinto_id": 5,
+      "fechas": [
+        {
+          "fecha": "2025-09-22",
+          "hora": "21:00",
+          "entradas": [
+            {
+              "nombreSector": "campo",
+              "disponibles": 9000,
+              "precio": "15000",
+              "asientos": []
+            },
+            {
+              "nombreSector": "platea",
+              "disponibles": 4,
+              "precio": "10000",
+              "asientos": [
+                {
+                  "butaca": 1,
+                  "disponibilidad": true
+                },
+                {
+                  "butaca": 2,
+                  "disponibilidad": true
+                },
+                {
+                  "butaca": 3,
+                  "disponibilidad": true
+                },
+                {
+                  "butaca": 4,
+                  "disponibilidad": true
+                }
+              ]
+            }
+          ],
+          "disponibilidadTotal": 9004,
+          "habilitado": 1
+        }
+      ],
+      "alta": 1,
+      "id": 5
     }
   ]
 }

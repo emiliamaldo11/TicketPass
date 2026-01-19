@@ -273,7 +273,6 @@ export class AddCompraComponent implements OnInit {
 
 
   editarEvento() {
-
     this.evento?.fechas.forEach(fecha => {
       if (fecha.fecha == this.fechaSeleccionada.fecha) {
         fecha = this.fechaSeleccionada;
