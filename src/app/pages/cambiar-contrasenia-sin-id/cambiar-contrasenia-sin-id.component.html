@@ -1,17 +1,15 @@
-<section>
-  <section>
+<section class="mt-[100px]">
     <div class="wrapper">
-      <h4>Ingrese su nombre de usuario</h4>
+      <h4>Enter your username</h4>
       <form #formUsuario="ngForm" (ngSubmit)="buscarUsername(formUsuario)">
+       <label for="usuarioForm">User</label>
        <div class="input-field">
           <input type="text" id="usuarioForm" name="usuarioForm" ngModel required>
-          <label for="usuarioForm">Usuario</label>
               <div class="divAvisos" *ngIf="formUsuario.controls['usuarioForm']?.invalid && formUsuario.controls['usuarioForm']?.touched" >
-                   Debe ingresar su usuario
+                   You must enter your username.
               </div>
       </div>
-      <button  type="submit" [disabled]="formUsuario.invalid">Verificar usuario</button>
+      <button  type="submit" [disabled]="formUsuario.invalid">Submit</button>
       </form>
       </div>
-  </section>
-</section>
+    </section>

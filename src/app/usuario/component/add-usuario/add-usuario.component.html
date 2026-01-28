@@ -1,156 +1,265 @@
-<section>
-    <div class="wrapper">
-        <form [formGroup]="formularioUsuario"(ngSubmit)="addUsuario()">
-            <div *ngIf="!usuarioRecibido">
-                <h2>Registrarse</h2>
-            </div>
+<section class="flex min-h-screen overflow-hidden">
 
-            <h4>Informacion del Usuario</h4>
-            <div class="input-field">
-                <input type="text" id="nombreUsuario" formControlName = "nombre" />
-                     @if (formularioUsuario.controls['nombre'].getError('required') && formularioUsuario.controls['nombre'].touched){
-                         <div class="divAvisos">
-                            Complete el campo
-                         </div>
-                     }
-                <label for="nombreUsuario">Nombre </label>
-            </div>
-
-            <div class="input-field">
-                <input type="text" id="apellidoUsuario" formControlName = "apellido"/>
-                    @if (formularioUsuario.controls['apellido'].getError('required') && formularioUsuario.controls['apellido'].touched){
-                        <div class="divAvisos">
-                            Complete el campo
-                        </div>
-                    }
-                <label for="apellidoUsuario">Apellido</label>
-            </div>
-
-            <div class="input-field">
-                <input type="tel" id="telefonoUsuario" formControlName = "telefono"/>
-                    @if (formularioUsuario.controls['telefono'].getError('required') && formularioUsuario.controls['telefono'].touched){
-                        <div class="divAvisos">
-                            Complete el campo
-                        </div>
-                    }
-                <label for="telefonoUsuario">Telefono</label>
-            </div>
-
-            <div class="input-field">
-                <input type="text" id="emailUsuario" formControlName = "email" placeholder="mail@ejemplo.com"/>
-                    @if ((formularioUsuario.controls['email'].getError('required') || formularioUsuario.controls['email'].getError('email')) && formularioUsuario.controls['email'].touched){
-                        <div class="divAvisos">
-                            Complete el campo o verifique que sea un mail valido
-                        </div>
-                    }
-                <label for="emailUsuario">Email</label>
-            </div>
-
-            <div formGroupName="direccion">
-                <h4>Direccion</h4>
-
-                <div class="input-field">
-                    <input type="text" id="calleUsuario" formControlName = "calle">
-                        @if (formularioUsuario.get('direccion.calle')?.getError('required') && formularioUsuario.get('direccion.calle')?.touched){
-                            <div class="divAvisos">
-                                Complete el campo
-                            </div>
-                        }
-                    <label for="calleUsuario">Calle</label>
-                </div>
-
-                <div class="input-field">
-                    <input type="number" id="numeroUsuario" formControlName = "numero">
-                        @if (formularioUsuario.get('direccion.numero')?.getError('required') && formularioUsuario.get('direccion.numero')?.touched){
-                            <div class="divAvisos">
-                                 Complete el campo
-                            </div>
-                    }
-                    <label for="numeroUsuario">Numero</label>
-                </div>
-
-                <div class="input-field">
-                    <input type="text" id="ciudadUsuario" formControlName = "ciudad">
-                        @if (formularioUsuario.get('direccion.ciudad')?.getError('required') && formularioUsuario.get('direccion.ciudad')?.touched){
-                            <div class="divAvisos">
-                                 Complete el campo
-                             </div>
-                         }
-                    <label for="ciudadUsuario">Ciudad</label>
-                </div>
-
-                <div class="input-field">
-                    <input type="text" id="codigoPostalUsuario" formControlName = "codigoPostal">
-                    @if (formularioUsuario.get('direccion.codigoPostal')?.getError('required') && formularioUsuario.get('direccion.codigoPostal')?.touched){
-                        <div class="divAvisos">
-                            Complete el campo
-                        </div>
-                    }
-                    <label for="codigoPostalUsuario">Codigo postal</label>
-                </div>
-
-                <div class="input-field">
-                    <input type="text" id="paisUsuario" formControlName = "pais">
-                    @if (formularioUsuario.get('direccion.pais')?.getError('required') && formularioUsuario.get('direccion.pais')?.touched){
-                        <div class="divAvisos">
-                            Complete el campo
-                        </div>
-                    }
-                    <label for="paisUsuario">Pais</label>
-                </div>
-            </div>
-
-        <h4>Datos de la cuenta</h4>
-        <div class="input-field">
-            <input type="text" id="usuarioDeUsuario" formControlName = "nombreUsuario">
-            @if ((formularioUsuario.controls['nombreUsuario'].getError('required') || formularioUsuario.controls['nombreUsuario'].getError('minLength')) && formularioUsuario.controls['nombreUsuario'].touched){
-                <div class="divAvisos">
-                  El nombre de usuario debe contener mas de 3 caracteres
-                </div>
-            }
-            <label for="usuarioDeUsuario">Nombre de Usuario</label>
-        </div>
-
-        <div class="input-field">
-            <input  [type]="showPassword ? 'text' : 'password'" id="contraseniaUsuario" formControlName = "contrasenia">
-            @if ((formularioUsuario.controls['contrasenia'].getError('required') || formularioUsuario.controls['contrasenia'].getError('minLength')) && formularioUsuario.controls['contrasenia'].touched){
-                <div class="divAvisos">
-                  La contraseña, debe contener mas de 8 caracteres
-                </div>
-            }
-            <fa-icon [icon]="showPassword ? faEye : faEyeSlash" (click)="showPassword = !showPassword" class="password"></fa-icon>
-            <label for="contraseniaUsuario">Contraseña</label>
-        </div>
-        <div class="input-field">
-          <select id="pregunta" formControlName="pregunta">
-              <option value="" disabled selected>Selecciona una pregunta de seguridad</option>
-              <option value="comida favorita">Comida favorita</option>
-              <option value="animal favorito">Animal favorito</option>
-              <option value="nombre de tu mascota">Nombre de tu mascota</option>
-          </select>
-          @if (formularioUsuario.controls['pregunta'].getError('required') && formularioUsuario.controls['pregunta'].touched) {
-              <div class="divAvisos">
-                  Debes seleccionar una pregunta de verificación.
-              </div>
-          }
-          <label for="verificacion">Pregunta de verificación</label>
+  <!-- info account -->
+  <div class="wrapper w-full md:w-1/2 min-h-screen flex items-center justify-center">
+    <form [formGroup]="formularioUsuario" (ngSubmit)="addUsuario()">
+      <div *ngIf="!usuarioRecibido">
+        <h2 class="font-inter font-bold text-[32px] mb-[44px]">Sign Up</h2>
       </div>
 
-      <div class="input-field">
-        <input type="text" id="verificacion" formControlName="verificacion">
-        @if (formularioUsuario.controls['verificacion'].getError('required') && formularioUsuario.controls['verificacion'].touched) {
+      <!-- USER INFO -->
+      <div *ngIf="step === 1">
+
+        <h4 class="font-bold mb-[20px]">User information</h4>
+        <div class="flex flex-col gap-4">
+
+          <div class="input-field flex flex-col">
+            <label for="nombreUsuario">First name </label>
+
+            <input type="text" id="nombreUsuario" formControlName="nombre" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] " />
+            @if (formularioUsuario.controls['nombre'].getError('required') &&
+            formularioUsuario.controls['nombre'].touched){
             <div class="divAvisos">
-                Debes ingresar una respuesta.
+              Please complete this field
             </div>
-        }
-        <label for="verificacion">Respuesta a la pregunta de verificación</label>
+            }
+          </div>
+
+          <div class="input-field flex flex-col">
+            <label for="apellidoUsuario">Last name</label>
+            <input type="text" id="apellidoUsuario" formControlName="apellido" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] " />
+            @if (formularioUsuario.controls['apellido'].getError('required') &&
+            formularioUsuario.controls['apellido'].touched){
+            <div class="divAvisos">
+              Please complete this field
+            </div>
+            }
+          </div>
+
+          <div class="input-field flex flex-col">
+            <label for="telefonoUsuario">Phone</label>
+
+            <input type="tel" id="telefonoUsuario" formControlName="telefono" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] " />
+            @if (formularioUsuario.controls['telefono'].getError('required') &&
+            formularioUsuario.controls['telefono'].touched){
+            <div class="divAvisos">
+              Please complete this field
+            </div>
+            }
+          </div>
+
+          <div class="input-field flex flex-col">
+            <label for="emailUsuario">Email</label>
+
+            <input type="text" id="emailUsuario" formControlName="email" placeholder="mail@ejemplo.com" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] " />
+            @if ((formularioUsuario.controls['email'].getError('required') ||
+            formularioUsuario.controls['email'].getError('email')) && formularioUsuario.controls['email'].touched){
+            <div class="divAvisos">
+              Please complete this field or enter a valid email </div>
+            }
+          </div>
+
+        </div>
+
+        <button type="button" (click)="nextStep()" class="mt-[44px] w-full h-[40px] font-inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
+        transition-colors duration-200
+        disabled:cursor-not-allowed">Next</button>
+
+        <div class="sign_in font-inter flex gap-[4px] text-[12px] mt-[16px]">
+          <div class="text-[#8E8E8E]">Already have an account?</div>
+          <a routerLink="/iniciar-sesion" class="underline text-[#7C2BA8]">Sign in</a>
+        </div>
+
+
+      </div>
+
+
+      <!-- ADDRESS -->
+      <div *ngIf="step===2" formGroupName="direccion" class="flex flex-col gap-4">
+
+        <div class="flex justify-between items-center mb-[20px]">
+          <div>
+            <h3 class="font-bold text-[20px]">Address</h3>
+          </div>
+          <div><a (click)="prevStep()"
+              class="font-inter text-[12px] text-[#8E8E8E] hover:text-[#7C3AED] transition-colors underline flex justify-end">←
+              Back</a></div>
+
+        </div>
+
+
+        <div class="input-field flex flex-col ">
+          <label for="calleUsuario">Street</label>
+
+          <input type="text" id="calleUsuario" formControlName="calle" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] ">
+          @if (formularioUsuario.get('direccion.calle')?.getError('required') &&
+          formularioUsuario.get('direccion.calle')?.touched){
+          <div class="divAvisos">
+            Please complete this field
+          </div>
+          }
+        </div>
+
+        <div class="input-field flex flex-col">
+          <label for="numeroUsuario">Street number</label>
+
+          <input type="number" id="numeroUsuario" formControlName="numero" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] ">
+          @if (formularioUsuario.get('direccion.numero')?.getError('required') &&
+          formularioUsuario.get('direccion.numero')?.touched){
+          <div class="divAvisos">
+            Please complete this field
+          </div>
+          }
+        </div>
+
+        <div class="input-field flex flex-col">
+          <label for="ciudadUsuario">City</label>
+
+          <input type="text" id="ciudadUsuario" formControlName="ciudad" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] ">
+          @if (formularioUsuario.get('direccion.ciudad')?.getError('required') &&
+          formularioUsuario.get('direccion.ciudad')?.touched){
+          <div class="divAvisos">
+            Please complete this field
+          </div>
+          }
+        </div>
+
+        <div class="input-field flex flex-col">
+          <label for="codigoPostalUsuario">Postal code</label>
+
+          <input type="text" id="codigoPostalUsuario" formControlName="codigoPostal" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] ">
+          @if (formularioUsuario.get('direccion.codigoPostal')?.getError('required') &&
+          formularioUsuario.get('direccion.codigoPostal')?.touched){
+          <div class="divAvisos">
+            Please complete this field
+          </div>
+          }
+        </div>
+
+        <div class="input-field flex flex-col">
+          <label for="paisUsuario">Country</label>
+
+          <input type="text" id="paisUsuario" formControlName="pais" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] ">
+          @if (formularioUsuario.get('direccion.pais')?.getError('required') &&
+          formularioUsuario.get('direccion.pais')?.touched){
+          <div class="divAvisos">
+            Please complete this field
+          </div>
+          }
+        </div>
+        <button type="button" (click)="nextStep()" class="mt-[44px] w-full h-[40px] font-inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
+        transition-colors duration-200
+        disabled:cursor-not-allowed">Next</button>
+
+      </div>
+
+      <!-- ACCOUNT INFO  -->
+      <div *ngIf="step===3" class="flex flex-col gap-4">
+
+        <div class="flex justify-between items-center mb-[20px]">
+          <div>
+            <h3 class="font-bold text-[20px]">Account information</h3>
+          </div>
+          <div><a (click)="prevStep()"
+              class="font-inter text-[12px] text-[#8E8E8E] hover:text-[#7C3AED] transition-colors underline flex justify-end">←
+              Back</a></div>
+
+        </div>
+        <div class="input-field flex flex-col">
+          <label for="usuarioDeUsuario">Username</label>
+
+          <input type="text" id="usuarioDeUsuario" formControlName="nombreUsuario" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] ">
+          @if ((formularioUsuario.controls['nombreUsuario'].getError('required') ||
+          formularioUsuario.controls['nombreUsuario'].getError('minLength')) &&
+          formularioUsuario.controls['nombreUsuario'].touched){
+          <div class="divAvisos">
+            Username must be at least 3 characters long </div>
+          }
+        </div>
+
+        <div class="input-field flex flex-col">
+          <label for="contraseniaUsuario">Password</label>
+
+          <div class="flex gap-4 items-center">
+            <input [type]="showPassword ? 'text' : 'password'" id="contraseniaUsuario" formControlName="contrasenia"
+              class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] ">
+            <fa-icon [icon]="showPassword ? faEye : faEyeSlash" (click)="showPassword = !showPassword"
+              class="password"></fa-icon>
+          </div>
+
+          @if ((formularioUsuario.controls['contrasenia'].getError('required') ||
+          formularioUsuario.controls['contrasenia'].getError('minLength')) &&
+          formularioUsuario.controls['contrasenia'].touched){
+          <div class="divAvisos">
+            Password must be at least 8 characters long </div>
+          }
+
+        </div>
+
+
+        <div class="input-field flex flex-col gap-4">
+          <label for="verificacion">Security question</label>
+
+          <select id="pregunta" formControlName="pregunta" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] ">
+            <option value="" disabled selected>Select a security question</option>
+            <option value="comida favorita">Favorite food</option>
+            <option value="animal favorito">Favorite animal</option>
+            <option value="nombre de tu mascota">Your pet's name</option>
+          </select>
+          @if (formularioUsuario.controls['pregunta'].getError('required') &&
+          formularioUsuario.controls['pregunta'].touched) {
+          <div class="divAvisos">
+            You must select a security question. </div>
+          }
+        </div>
+
+
+        <div class="input-field flex flex-col ">
+          <label for="verificacion">Security answer</label>
+          <input type="text" id="verificacion" formControlName="verificacion" class=" w-[300px] h-[35px] border border-[#6B7280]
+          rounded-[8px] ">
+          @if (formularioUsuario.controls['verificacion'].getError('required') &&
+          formularioUsuario.controls['verificacion'].touched) {
+          <div class="divAvisos">
+            You must enter an answer.
+          </div>
+          }
+        </div>
+
+        <button type="submit" class="mt-[44px] w-full h-[40px] font-inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
+        transition-colors duration-200
+        disabled:cursor-not-allowed">Sign up</button>
+
+      </div>
+
+
+    </form>
+  </div>
+
+
+  <!-- img -->
+  <div class="foto w-1/2 bg-cover bg-center hidden md:block rounded-l-[32px] overflow-hidden relative"
+    style="background-image: url(/img/imagen-bg.jpg);">
+
+    <div class="absolute top-12 left-6 z-10">
+      <h2 class="font-inter text-white text-[64px] leading-none font-bold tracking-wide">
+        Create <br> your account
+      </h2>
     </div>
 
-        <button type="submit">Registrarse</button>
-<div class="sesion">
-<a routerLink="/iniciar-sesion">Ya tenes una cuenta? Inicia sesion haciendo click aca</a>
-</div>
-</form>
-    </div>
+  </div>
+
+
 </section>
-

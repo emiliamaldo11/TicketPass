@@ -62,56 +62,54 @@ export class InicioSesionComponent implements OnInit{
   }
 
 
-  iniciarSesion(form: NgForm){
+  iniciarSesion(form: NgForm) {
 
-    if (form.valid) {
+  if (form.valid) {
 
-      let user = this.existeUsuario(form.value.usuarioForm, form.value.contraseniaForm)
-      let nameUser = this.usernameExiste(form.value.usuarioForm);
+    let user = this.existeUsuario(form.value.usuarioForm, form.value.contraseniaForm);
+    let nameUser = this.usernameExiste(form.value.usuarioForm);
 
-      if (user) {
+    if (user) {
 
-        if (user.alta == false){
-          Swal.fire({
-            title: 'Tu usuario ha sido dado de baja.',
-            text: 'Si cree que ha sido un error, contactese con nosotros via TicketPassSupport@gmail.com, lo ayudaremos en breve.',
-            confirmButtonColor: "#36173d",
-            icon: "warning",
-          });
-        }
-        else
-        {
-          if (user.tipo == 1){
-            this.router.navigate(["usuarios", user.id]);
-            if(user.id)
-            this.auth.login(1, user.id)
-          }
-          else if (user.tipo == 2){
-            this.router.navigate(["usuarios", user.id])
-            if(user.id)
-            this.auth.login(2, user.id)
-          }
-        }
-      }
-
-      else if (nameUser){
+      if (user.alta == false) {
         Swal.fire({
-          title: 'Contraseña incorrecta',
-          html: `¿Olvidaste tu contraseña? <a href="/cambiar-contrasenia/${nameUser.id}" style="color: #36173d;">Haz clic aquí</a>`,
-          confirmButtonColor: "#36173d",
+          title: 'Your account has been deactivated',
+          text: 'If you believe this is a mistake, please contact us at TicketPassSupport@gmail.com. We will assist you shortly.',
+          confirmButtonColor: "#7C3AED",
           icon: "warning",
         });
-      }
-
-      else {
-        Swal.fire({
-          title: 'Usuario o contraseña incorrecta',
-          confirmButtonColor: "#36173d",
-          icon: "error",
-        });
-
+      } else {
+        if (user.tipo == 1) {
+          this.router.navigate(["usuarios", user.id]);
+          if (user.id)
+            this.auth.login(1, user.id);
+        }
+        else if (user.tipo == 2) {
+          this.router.navigate(["usuarios", user.id]);
+          if (user.id)
+            this.auth.login(2, user.id);
+        }
       }
     }
+
+    else if (nameUser) {
+      Swal.fire({
+        title: 'Incorrect password',
+        html: `Forgot your password? <a href="/cambiar-contrasenia/${nameUser.id}" style="color: #36173d;">Click here</a>`,
+        confirmButtonColor: "#7C3AED",
+        icon: "warning",
+      });
+    }
+
+    else {
+      Swal.fire({
+        title: 'Invalid username or password',
+        confirmButtonColor: "#7C3AED",
+        icon: "error",
+      });
+    }
   }
+}
+
 
 }

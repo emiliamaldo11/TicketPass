@@ -4,7 +4,7 @@ import {Router, RouterModule} from '@angular/router';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Usuario } from '../../interfaces/usuario.interface';
 import { CommonModule } from '@angular/common';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; 
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import Swal from 'sweetalert2';
 
@@ -22,6 +22,7 @@ export class AddUsuarioComponent implements OnInit{
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   showPassword: boolean = false;
+  step = 1;
 
   constructor(private router: Router){}
 
@@ -95,87 +96,88 @@ export class AddUsuarioComponent implements OnInit{
     tipo:[2, [Validators.required]],
     alta:[true, [Validators.required]],
   })
+guardarUsuarioJSON(usuario: Usuario) {
+  this.usuariosService.postUsuario(usuario).subscribe({
+    next: () => {
+      console.log('User successfully created');
+    },
+    error: (err) => {
+      Swal.fire({
+        title: "Registration error",
+        text: "Please try again",
+        confirmButtonColor: "#7C3AED",
+        icon: "error"
+      })
+      console.error('Error:', err);
+    }
+  });
+}
 
-
-  guardarUsuarioJSON(usuario: Usuario) {
-    this.usuariosService.postUsuario(usuario).subscribe({
-      next: () => {
-        console.log('Usuario agregado exitosamente');
-      },
-      error: (err) => {
-        Swal.fire({
-          title: "Error al registrarse",
-          text: "Por favor, intente nuevamente",
-          confirmButtonColor: "#36173d",
-          icon: "error"
-        })
-        console.error('Error:', err);
-      }
-    });
-  }
-
-  editarUsuario (usuario: Usuario){
-    if (usuario.id)
+editarUsuario(usuario: Usuario) {
+  if (usuario.id)
     this.usuariosService.putUsuario(usuario.id, usuario).subscribe({
-      next : ()=> {
+      next: () => {
         Swal.fire({
-          title: "Usuario editado con exito",
-          confirmButtonColor: "#36173d",
+          title: "User updated successfully",
+          confirmButtonColor: "#7C3AED",
           icon: "success"
         })
       },
-      error: (e:Error)=> {
+      error: (e: Error) => {
         console.log(e.message);
       }
     })
+}
+
+// function to add user
+addUsuario() {
+  if (this.formularioUsuario.invalid) {
+    console.log('Invalid form');
+    Swal.fire({
+      title: "Empty or invalid fields",
+      text: "Please try again",
+      confirmButtonColor: "#7C3AED",
+      icon: "warning"
+    })
+    return;
   }
 
-  // función para agregar el usuario
-  addUsuario() {
-    if (this.formularioUsuario.invalid) {
-      console.log('Formulario inválido');
+  const usuario: Usuario = this.formularioUsuario.getRawValue();
+  const usuarioEncontrado = this.nombresUsuario.find(
+    nombre => nombre === usuario.nombreUsuario
+  );
+  console.log(usuarioEncontrado);
+
+  if (usuarioEncontrado) {
+    Swal.fire({
+      title: `The username "${usuarioEncontrado}" is already in use`,
+      confirmButtonColor: "#7C3AED",
+      icon: "warning"
+    });
+  } else {
+    if (this.usuarioRecibido) {
+      this.editarUsuario(usuario);
+    } else {
       Swal.fire({
-        title: "Campos vacios o inválidos",
-        text: "Por favor, intente nuevamente",
-        confirmButtonColor: "#36173d",
-        icon: "warning"
-      })
-      return;
-    }
-
-    const usuario: Usuario = this.formularioUsuario.getRawValue();
-    const usuarioEncontrado = this.nombresUsuario.find(nombre => nombre == usuario.nombreUsuario);
-    console.log(usuarioEncontrado);
-
-    if (usuarioEncontrado)
-    {
-      Swal.fire({
-        title: `¡El nombre de usuario "${usuarioEncontrado}" ya esta en uso!`,
-        confirmButtonColor: "#36173d",
-        icon: "warning"
-      });
-
-    }
-    else
-    {
-      if (this.usuarioRecibido)
-      {
-        this.editarUsuario(usuario)
-      }
-      else
-      {
-        Swal.fire({
-        title: "Usuario registrado con exito",
-        confirmButtonColor: "#36173d",
+        title: "User successfully registered",
+        confirmButtonColor: "#7C3AED",
         icon: "success"
       }).then(() => {
         this.guardarUsuarioJSON(usuario);
         this.router.navigate(['/'])
       })
-      }
-    
     }
+  }
+}
 
+  nextStep () {
+    if (this.step < 3) {
+      this.step ++;
+    }
+  }
+
+  prevStep (){
+      this.step --;
   }
 
 
