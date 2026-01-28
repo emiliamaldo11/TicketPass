@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../usuario/interfaces/usuario.interface';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -9,7 +9,7 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-cambiar-contrasenia-sin-id',
   standalone: true,
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf, RouterModule],
   templateUrl: './cambiar-contrasenia-sin-id.component.html',
   styleUrl: './cambiar-contrasenia-sin-id.component.css'
 })
@@ -45,23 +45,24 @@ export class CambiarContraseniaSinIdComponent implements OnInit {
     return this.usuariosDB.find(user => user.nombreUsuario === nombreUsuarioForm);
   }
 
-  buscarUsername(form: NgForm) {
-    if (form.valid) {
+buscarUsername(form: NgForm) {
+  if (form.valid) {
 
-      let user = this.usernameExiste(form.value.usuarioForm);
+    const user = this.usernameExiste(form.value.usuarioForm);
 
-      if (user) {
-        this.router.navigate([`/cambiar-contrasenia/${user.id}`]);
-      } else {
-        Swal.fire({
-          title: 'El usuario ingresado no existe',
-          text: 'Intente nuevamente',
-          confirmButtonColor: '#36173d',
-          icon: 'error'
-        })
-      }
+    if (user) {
+      this.router.navigate([`/cambiar-contrasenia/${user.id}`]);
+    } else {
+      Swal.fire({
+        title: 'User not found',
+        text: 'Please try again',
+        confirmButtonColor: '#7C3AED',
+        icon: 'error'
+      });
     }
- }
+  }
+}
+
 
 }
 

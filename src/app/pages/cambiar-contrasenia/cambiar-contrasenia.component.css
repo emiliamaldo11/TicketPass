@@ -1,4 +1,4 @@
-
+/*
 *{
   margin:0;
   padding:0;
@@ -9,13 +9,13 @@
 section {
   width: 100%;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start; 
-  min-height: 100vh; 
+  justify-content: flex-start;
+  min-height: 100vh;
   padding: 0 10px;
   color: white;
-  position: relative; 
+  position: relative;
 }
 
 section::before {
@@ -25,13 +25,13 @@ section::before {
   height: 100%;
   background: url('/img/audiencia-background.jpg') #000;
   background-position: center;
-  background-size: cover; 
+  background-size: cover;
   z-index: -1;
 }
 
 .wrapper {
   margin-top: 5%;
-  margin-bottom: auto; 
+  margin-bottom: auto;
   width: 470px;
   border-radius: 8px;
   padding: 30px;
@@ -130,9 +130,9 @@ input::placeholder{
 
 .password{
   position: absolute;
-  right: 10px; 
+  right: 10px;
   top: 50%;
-  transform: translateY(-50%); 
-  cursor: pointer; 
+  transform: translateY(-50%);
+  cursor: pointer;
 }
-
+ */

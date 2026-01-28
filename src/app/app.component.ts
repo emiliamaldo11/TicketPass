@@ -25,9 +25,9 @@ export class AppComponent implements OnInit {
   constructor(
     private authService: Autenticacion,
     private router: Router,
-  ) {}
+  ) { }
 
-  mostrarHeader : boolean = true ;
+  mostrarHeader: boolean = true;
 
 
   ngOnInit(): void {
@@ -45,10 +45,15 @@ export class AppComponent implements OnInit {
     });
 
 
-    //si estoy en iniciar sesion o registrarse no muestra el header 
+    //si estoy en iniciar sesion o registrarse no muestra el header
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.mostrarHeader = !['/iniciar-sesion', '/registrarse'].includes(event.url);
+        this.mostrarHeader = !(
+          event.url === '/iniciar-sesion' ||
+          event.url === '/registrarse' ||
+          event.url === '/cambiar-contrasenia' ||
+          event.url.startsWith('/cambiar-contrasenia/')
+        );
       }
     });
 
