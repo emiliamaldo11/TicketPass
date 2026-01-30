@@ -1,5 +1,5 @@
 <header
-  class="w-full h-[72px] bg-white flex justify-between border border-[#AAAAAA] justify-center items-center pl-[70px]">
+  class="w-full h-[72px] bg-white flex justify-between border border-[#AAAAAA] justify-center items-center pl-[70px] relative">
 
   <div class="logo flex justify-center items-center gap-[5px] cursor-pointer">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -8,39 +8,64 @@
         d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
     </svg>
 
-    <span *ngIf="idUsuario !== null" [routerLink]="['usuarios', idUsuario]" class="font-inter font-bold text-[32px] " >TicketPass</span>
+    <span *ngIf="idUsuario !== null" [routerLink]="['usuarios', idUsuario]"
+      class="font-inter font-bold text-[32px] ">TicketPass</span>
     <span *ngIf="idUsuario === null" class="font-inter font-bold text-[32px] ">TicketPass</span>
   </div>
 
-  <div *ngIf="tipoUsuario === 1">
+  <div *ngIf="tipoUsuario === 1" class="">
     <!-- menú para el Administrador -->
-    <nav>
-      <button (click)="menuDesplegable()" class="menu-button">&#9776;</button>
+    <nav class="flex items-center gap-4 pr-[100px]">
 
-      <div class="menu" [class.open]="verMenu">
-        <ul>
-          <li><a [routerLink]="['/administrador' , idUsuario]" (click)="cerrarMenu()">Menu</a></li>
-          <li><a routerLink="add-eventos" (click)="cerrarMenu()">Cargar evento</a></li>
-          <li><a [routerLink]="['/eventos-administrador', idUsuario]" (click)="cerrarMenu()">Ver eventos registrados</a>
+      <button (click)="menuDesplegable()" class="p-2 rounded-md
+          text-gray-600 hover:text-gray-900
+          hover:bg-[#F1EFEF]
+          transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+
+      </button>
+
+  <div
+  *ngIf="verMenu"
+  class="absolute top-[72px] bg-white p-4 z-50">
+
+        <ul class="flex flex-col gap-4 justify-center items-center w-full">
+          <li class="border-b-2 border-transparent hover:border-gray-500"><a [routerLink]="['/administrador' , idUsuario]" (click)="cerrarMenu()" >Menu</a></li>
+          <li class="border-b-2 border-transparent hover:border-gray-500" ><a routerLink="add-eventos" (click)="cerrarMenu()">Add event</a></li>
+          <li class="border-b-2 border-transparent hover:border-gray-500" ><a [routerLink]="['/eventos-administrador', idUsuario]" (click)="cerrarMenu()">View registered events</a>
           </li>
-          <li><a routerLink="recintos" (click)="cerrarMenu()">Ver recintos</a></li>
-          <li><a href="compras" (click)="cerrarMenu()">Ver compras</a></li>
-          <li><a [routerLink]="['/ver-usuarios', idUsuario]" (click)="cerrarMenu()">Ver usuarios registrados</a></li>
-          <li><a [routerLink]="['/preguntas-frecuentes-administrador']" (click)="cerrarMenu()">Preguntas frecuentes</a>
+          <li class="border-b-2 border-transparent hover:border-gray-500" ><a routerLink="recintos" (click)="cerrarMenu()">View venues</a></li>
+          <li class="border-b-2 border-transparent hover:border-gray-500" ><a href="compras" (click)="cerrarMenu()">View purchases</a></li>
+          <li class="border-b-2 border-transparent hover:border-gray-500" ><a [routerLink]="['/ver-usuarios', idUsuario]" (click)="cerrarMenu()">View registered users </a></li>
+          <li class="border-b-2 border-transparent hover:border-gray-500 justify-center" ><a [routerLink]="['/preguntas-frecuentes-administrador']" (click)="cerrarMenu()">FAQs</a>
           </li>
         </ul>
       </div>
 
-      <a href="#" (click)="cerrarSesion()">Cerrar sesión</a>
+      <a href="#" (click)="cerrarSesion()" class="border-b-2 border-transparent hover:border-gray-500 ">Log out</a>
+
     </nav>
   </div>
 
   <div *ngIf="tipoUsuario === 2">
     <!-- menú para el Cliente -->
-    <nav>
-      <a [routerLink]="['/perfil' , idUsuario]">Mi perfil</a>
-      <a [routerLink]="['/ver-mis-entradas']">Mis Entradas</a>
-      <a href="#" (click)="cerrarSesion()">Cerrar sesión</a>
+    <nav class="flex pr-[100px] gap-[16px]">
+      <a [routerLink]="['/ver-mis-entradas']" class=" border-b-2 border-transparent hover:border-gray-500 ">My
+        tickets</a>
+      <a href="#" (click)="cerrarSesion()" class=" border-b-2 border-transparent hover:border-gray-500 ">Log out</a>
+      <a [routerLink]="['/perfil' , idUsuario]">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="size-6 text-gray-600
+       hover:text-gray-900
+       hover:scale-110
+       transition-transform duration-200 cursor-pointer">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>
+      </a>
     </nav>
   </div>
 
@@ -48,7 +73,8 @@
 
     <!-- menú para los usuarios no logueados -->
     <nav class="pr-[100px] flex gap-[16px]">
-      <button routerLink="/iniciar-sesion" class="border border-[#AAAAAA] w-[84px] h-[41px] rounded-[100px] hover:bg-[#F1EFEF] transition-colors duration-200 ">Login</button>
+      <button routerLink="/iniciar-sesion"
+        class="border border-[#AAAAAA] w-[84px] h-[41px] rounded-[100px] hover:bg-[#F1EFEF] transition-colors duration-200 ">Login</button>
       <button routerLink="/registrarse" class="border border-[#AAAAAA] bg-[#7C3AED] w-[84px] h-[41px] rounded-[100px] text-white hover:bg-[#5B21B6]
     transition-colors duration-200">Sign up</button>
     </nav>
