@@ -1,28 +1,41 @@
- <section>
+<section class="flex justify-center">
 
-  <div class="wrapper">
-    <input
-      type="text"
-      name="input-busqueda"
-      [(ngModel)]="busqueda"
-      (input)="filtrarEventos()"
-      placeholder="  Buscar eventos..."
-    />
+  <div class="wrapper flex flex-col justify-center">
 
-    <div *ngIf="mostrarResultados && resultados.length > 0" class="busqueda">
-      <ul>
-        <li *ngFor="let evento of resultados" (click)="redirigir(evento.id)" >
-          <div class="divInfo">
+    <div
+      class="flex gap-[10px] bg-white w-[630px] h-[39px] items-center rounded-[8px] border border-[#6B7280] pl-[18px]">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="size-6 text-[#7C3AED]">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <input type="text" name="input-busqueda" [(ngModel)]="busqueda" (input)="filtrarEventos()"
+        placeholder="Search events" class="w-full outline-none focus:outline-none focus:ring-0 text-black" />
+    </div>
+
+
+    <div *ngIf="mostrarResultados && resultados.length > 0"
+      class="busqueda bg-white border border-[#6B7280] rounded-[8px] p-[18px]">
+      <ul class="flex flex-col">
+        <li *ngFor="let evento of resultados" (click)="redirigir(evento.id)" class="flex justify-between items-center pb-[10px] border-b-2 border-transparent hover:border-b-gray-500">
+          <div class="divInfo text-black cursor-pointer">
             {{ evento.nombreEvento }} - {{ evento.artista_banda }}
           </div>
+
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="size-4 text-black cursor-pointer">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
 
         </li>
       </ul>
     </div>
 
     <div *ngIf="mostrarResultados && resultados.length === 0" class="busqueda">
-      <div>No se encontraron eventos.</div>
+      <div class="text-black">Event not found.</div>
     </div>
+
+
   </div>
 
- </section>
+</section>
