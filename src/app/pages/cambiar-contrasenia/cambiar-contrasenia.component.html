@@ -4,7 +4,7 @@
     style="background-image: url(/img/imagen-bg.jpg);">
     <div class="absolute inset-0 backdrop-blur-[2px] bg-black/10">
       <div class="absolute top-12 left-6 z-10">
-        <h2 class="font-inter text-white text-[64px] leading-none font-bold tracking-wide">
+        <h2 class="inter text-white text-[64px] leading-none font-bold tracking-wide">
           Password <br> recovery
         </h2>
       </div>
@@ -17,13 +17,13 @@
       <div *ngIf="!closeForm">
 
         <div class="mb-[44px]">
-          <h2 class="font-inter font-bold text-[32px]">Security question</h2>
+          <h2 class="inter font-bold text-[32px]">Security question</h2>
         </div>
 
         <br>
 
         <div class="input-field flex flex-col mb-[44px] gap-2">
-          <h3 class="font-inter text-[20px]">{{usuario?.pregunta}}</h3>
+          <h3 class="inter text-[20px]">{{usuario?.pregunta}}</h3>
 
           <input type="text" id="respuesta" formControlName="respuesta"
             class="w-[300px] h-[35px] border border-[#6B7280] rounded-[8px] pl-[4px]" placeholder="Enter your answer" />
@@ -35,13 +35,13 @@
         </div>
 
         <button type="submit" (click)="verificarRta()"
-          class="w-full h-[40px] font-inter rounded-[8px]  bg-[#7C3AED] text-white hover:bg-[#5B21B6] transition-colors duration-200">Verify
+          class="w-full h-[40px] inter rounded-[8px]  bg-[#7C3AED] text-white hover:bg-[#5B21B6] transition-colors duration-200">Verify
           answer</button>
       </div>
 
       <div *ngIf="closeForm">
 
-        <h2 class="font-inter font-bold text-[32px] mb-[44px]">Change password</h2>
+        <h2 class="inter font-bold text-[32px] mb-[44px]">Change password</h2>
 
         <div class="input-field flex flex-col mb-[44px]">
 
@@ -66,7 +66,7 @@
         </div>
 
         <button type="submit" (click)="cambiarContrasenia()"
-          class="w-full h-[40px] font-inter rounded-[8px]  bg-[#7C3AED] text-white hover:bg-[#5B21B6] transition-colors duration-200">Change
+          class="w-full h-[40px] inter rounded-[8px]  bg-[#7C3AED] text-white hover:bg-[#5B21B6] transition-colors duration-200">Change
           password</button>
       </div>
     </form>

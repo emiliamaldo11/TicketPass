@@ -1,6 +1,6 @@
 <section class="flex justify-center">
 
-  <div class="wrapper flex flex-col justify-center">
+  <div class="wrapper flex flex-col justify-center relative">
 
     <div
       class="flex gap-[10px] bg-white w-[630px] h-[39px] items-center rounded-[8px] border border-[#6B7280] pl-[18px]">
@@ -14,10 +14,11 @@
     </div>
 
 
-    <div *ngIf="mostrarResultados && resultados.length > 0"
-      class="busqueda bg-white border border-[#6B7280] rounded-[8px] p-[18px]">
+    <div *ngIf="mostrarResultados && resultados.length > 0" class="absolute top-[45px] w-full bg-white border border-[#6B7280]
+             rounded-[8px] shadow-lg z-50 overflow-y-auto px-[18px] pb-2">
       <ul class="flex flex-col">
-        <li *ngFor="let evento of resultados" (click)="redirigir(evento.id)" class="flex justify-between items-center pb-[10px] border-b-2 border-transparent hover:border-b-gray-500">
+        <li *ngFor="let evento of resultados" (click)="redirigir(evento.id)"
+          class="flex justify-between items-center pb-[10px] pt-[10px] border-b-2 border-transparent hover:border-b-gray-500">
           <div class="divInfo text-black cursor-pointer">
             {{ evento.nombreEvento }} - {{ evento.artista_banda }}
           </div>

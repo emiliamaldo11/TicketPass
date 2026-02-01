@@ -1,5 +1,5 @@
 /*
-*{
+
     margin: 0;
     padding:0;
     box-sizing: border-box;
@@ -14,3 +14,15 @@ body{
 }
 
  */
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.archivo-black {
+  font-family: 'Archivo Black', sans-serif;
+}

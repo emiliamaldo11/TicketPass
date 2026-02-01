@@ -1,16 +1,54 @@
-<div class="carousel-container">
-  <div class="carousel-box" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+<div class="carousel-container flex flex-col gap-10 justify-center items-center">
+
+  <!-- <div class="carousel-box" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
     <ng-container *ngFor="let evento of listaEventos; let i = index">
       <div class="carousel-slide" *ngIf="evento.alta === 1">
-        <img *ngIf="evento.UrlBanner"
-             [src]="evento.UrlBanner"
-             alt="banner del evento"
-             [routerLink]="userId ? ['/detalle-evento', evento.id] : ['/iniciar-sesion']">
+        <img *ngIf="evento.UrlBanner" [src]="evento.UrlBanner" alt="banner del evento"
+          [routerLink]="userId ? ['/detalle-evento', evento.id] : ['/iniciar-sesion']">
       </div>
     </ng-container>
+    <div class="carousel-controls">
+      <button class="prev-slide" (click)="prevSlide()">❮</button>
+      <button class="next-slide" (click)="nextSlide()">❯</button>
+    </div>
+
+  </div> -->
+
+
+  <div class=" w-[1060px] h-[340px] bg-[#ECE6E4] flex justify-between">
+    <!-- foto show -->
+    <div class="w-[355px] h-[341px] bg-black justify-start">
+       
+    </div>
+
+    <!-- info -->
+    <div class="flex flex-col gap-[37px] ml-[40px] mr-[20px] justify-center">
+
+      <div class="flex justify-between text-black font-bold montserrat">
+        <div class="uppercase text-[16px] ">Live music</div>
+        <div class="text-[16px] w-[90px] text-end">Lugar del show</div>
+      </div>
+
+      <div class="archivo-black text-[72px] leading-none">
+        Show de harry
+      </div>
+
+      <!-- horarios precio -->
+      <div class="flex gap-[16px] text-black font-bold montserrat uppercase text-[20px]">
+        <div class="flex border border-black rounded-[100px] h-[40px] px-[10px] items-center justify-center">May 20</div>
+        <div class="flex border border-black rounded-[100px] h-[40px] px-[10px] items-center justify-center">10:00</div>
+        <div class="flex border border-black rounded-[100px] h-[40px] px-[10px] items-center justify-center">$1000</div>
+      </div>
+
+    </div>
+
+
+
+    <!-- foto qr etc -->
+    <div class="w-[220px] h-full bg-cover pr-[32px]" style="background-image: url(/img/ticket.png);">
+    </div>
+
   </div>
-  <div class="carousel-controls">
-    <button class="prev-slide" (click)="prevSlide()">❮</button>
-    <button class="next-slide" (click)="nextSlide()">❯</button>
-  </div>
+
+
 </div>

@@ -3,7 +3,7 @@
   <div class="foto w-1/2 bg-cover bg-center hidden md:block rounded-r-[32px] overflow-hidden relative" style="background-image: url(/img/imagen-bg.jpg);">
 
     <div class="absolute top-12 left-6 z-10">
-      <h2 class="font-inter text-white text-[64px] leading-none font-bold tracking-wide">
+      <h2 class="inter text-white text-[64px] leading-none font-bold tracking-wide">
         Welcome <br> Back!
       </h2>
     </div>
@@ -16,14 +16,14 @@
 
       <!-- login text -->
       <div class="mb-[44px]">
-        <h2 class="font-inter font-bold text-[32px]">Login</h2>
-        <h3 class="font-inter text-[16px]">Welcome back! Please login your account</h3>
+        <h2 class="inter font-bold text-[32px]">Login</h2>
+        <h3 class="inter text-[16px]">Welcome back! Please login your account</h3>
       </div>
 
       <!-- inputs -->
       <div class="inputs mb-[44px] flex flex-col gap-4">
         <div class="input-field flex flex-col ">
-          <label for="usuarioForm" class="font-inter text-[16px]">User</label>
+          <label for="usuarioForm" class="inter text-[16px]">User</label>
           <input type="text" id="usuarioForm" name="usuarioForm" ngModel required class=" w-[300px] h-[35px] border border-[#6B7280]
           rounded-[8px] ">
 
@@ -34,7 +34,7 @@
         </div>
 
         <div class="input-field flex flex-col">
-          <label for="contraseniaForm" class="font-inter text-[16px]">Password</label>
+          <label for="contraseniaForm" class="inter text-[16px]">Password</label>
 
           <div class="flex gap-2 items-center">
             <input [type]="showPassword ? 'text' : 'password'" id="contraseniaForm" name="contraseniaForm" ngModel
@@ -52,7 +52,7 @@
 
       </div>
 
-         <div class="forgot_password mb-2 flex justify-between font-inter text-[12px]">
+         <div class="forgot_password mb-2 flex justify-between inter text-[12px]">
           <!-- no funcional todavia -->
         <div class="flex gap-[4px]" >
           <input type="checkbox" class="accent-[#7C3AED] cursor-pointer">
@@ -63,11 +63,11 @@
         </div>
 
       <!-- button login -->
-      <button type="submit" [disabled]="formInicioSesion.invalid" class="w-full h-[40px] font-inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
+      <button type="submit" [disabled]="formInicioSesion.invalid" class="w-full h-[40px] inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
     transition-colors duration-200
     disabled:cursor-not-allowed">Login</button>
 
-      <div class="registro flex gap-[4px] font-inter text-[12px] mt-[16px]" >
+      <div class="registro flex gap-[4px] inter text-[12px] mt-[16px]" >
         <div class="text-[#8E8E8E]">New user?</div>
         <a routerLink="/registrarse" class="text-[#7C2BA8] underline ">Sign up</a>
       </div>

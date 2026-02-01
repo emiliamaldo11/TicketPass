@@ -4,7 +4,7 @@
   <div class="wrapper w-full md:w-1/2 min-h-screen flex items-center justify-center">
     <form [formGroup]="formularioUsuario" (ngSubmit)="addUsuario()">
       <div *ngIf="!usuarioRecibido">
-        <h2 class="font-inter font-bold text-[32px] mb-[44px]">Sign Up</h2>
+        <h2 class="inter font-bold text-[32px] mb-[44px]">Sign Up</h2>
       </div>
 
       <!-- USER INFO -->
@@ -65,11 +65,11 @@
 
         </div>
 
-        <button type="button" (click)="nextStep()" class="mt-[44px] w-full h-[40px] font-inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
+        <button type="button" (click)="nextStep()" class="mt-[44px] w-full h-[40px] inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
         transition-colors duration-200
         disabled:cursor-not-allowed">Next</button>
 
-        <div class="sign_in font-inter flex gap-[4px] text-[12px] mt-[16px]">
+        <div class="sign_in inter flex gap-[4px] text-[12px] mt-[16px]">
           <div class="text-[#8E8E8E]">Already have an account?</div>
           <a routerLink="/iniciar-sesion" class="underline text-[#7C2BA8]">Sign in</a>
         </div>
@@ -86,7 +86,7 @@
             <h3 class="font-bold text-[20px]">Address</h3>
           </div>
           <div><a (click)="prevStep()"
-              class="font-inter text-[12px] text-[#8E8E8E] hover:text-[#7C3AED] transition-colors underline flex justify-end">←
+              class="inter text-[12px] text-[#8E8E8E] hover:text-[#7C3AED] transition-colors underline flex justify-end">←
               Back</a></div>
 
         </div>
@@ -156,7 +156,7 @@
           </div>
           }
         </div>
-        <button type="button" (click)="nextStep()" class="mt-[44px] w-full h-[40px] font-inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
+        <button type="button" (click)="nextStep()" class="mt-[44px] w-full h-[40px] inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
         transition-colors duration-200
         disabled:cursor-not-allowed">Next</button>
 
@@ -170,7 +170,7 @@
             <h3 class="font-bold text-[20px]">Account information</h3>
           </div>
           <div><a (click)="prevStep()"
-              class="font-inter text-[12px] text-[#8E8E8E] hover:text-[#7C3AED] transition-colors underline flex justify-end">←
+              class="inter text-[12px] text-[#8E8E8E] hover:text-[#7C3AED] transition-colors underline flex justify-end">←
               Back</a></div>
 
         </div>
@@ -238,7 +238,7 @@
           }
         </div>
 
-        <button type="submit" class="mt-[44px] w-full h-[40px] font-inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
+        <button type="submit" class="mt-[44px] w-full h-[40px] inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
         transition-colors duration-200
         disabled:cursor-not-allowed">Sign up</button>
 
@@ -254,7 +254,7 @@
     style="background-image: url(/img/imagen-bg.jpg);">
 
     <div class="absolute top-12 left-6 z-10">
-      <h2 class="font-inter text-white text-[64px] leading-none font-bold tracking-wide">
+      <h2 class="inter text-white text-[64px] leading-none font-bold tracking-wide">
         Create <br> your account
       </h2>
     </div>

@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,7 +10,7 @@ html, body {
 }
 
 h1 {
-  
+
   font-size: 40px;
   color: white;
   font-weight: 100;
@@ -46,4 +46,4 @@ section::before {
 app-list-evento,
 app-filtrar-eventos {
   margin-top: 20px;
-}
+} */
