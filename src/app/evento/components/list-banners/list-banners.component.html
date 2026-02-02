@@ -1,0 +1,14 @@
+<div class="grid justify-center gap-x-[73px] gap-y-[36px] grid-cols-[repeat(3,305px)]">
+  <ng-container *ngFor="let event of listEventos">
+    <div
+      *ngIf="event.alta === 1"
+      class="w-[305px] h-[114px] overflow-hidden"
+    >
+      <img
+        *ngIf="event.UrlBanner"
+        [src]="event.UrlBanner"
+        class="w-full h-full object-cover"
+      >
+    </div>
+  </ng-container>
+</div>

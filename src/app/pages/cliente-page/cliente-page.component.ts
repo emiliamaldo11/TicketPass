@@ -4,11 +4,12 @@ import { ListEventoComponent } from '../../evento/components/list-evento/list-ev
 import { Usuario } from '../../usuario/interfaces/usuario.interface';
 import { FiltrarEventoComponent } from '../../evento/components/filtrar-eventos/filtrar-eventos.component';
 import { Autenticacion } from '../../services/autenticacion.service';
+import { ListBannersComponent } from "../../evento/components/list-banners/list-banners.component";
 
 @Component({
   selector: 'app-cliente-page',
   standalone: true,
-  imports: [ListEventoComponent, FiltrarEventoComponent],
+  imports: [ListEventoComponent, FiltrarEventoComponent, ListBannersComponent],
   templateUrl: './cliente-page.component.html',
   styleUrl: './cliente-page.component.css'
 })
