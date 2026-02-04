@@ -1,14 +1,18 @@
-<section class="flex min-h-screen overflow-hidden">
+<section class="flex min-h-screen">
 
-  <div class="foto w-1/2 bg-cover bg-center hidden md:block rounded-r-[32px] overflow-hidden relative" style="background-image: url(/img/imagen-bg.jpg);">
-
-    <div class="absolute top-12 left-6 z-10">
+  <div class="w-1/2 hidden md:block min-h-screen bg-cover bg-center h-full relative bg-[#E1F44B] rounded-r-[80px]" style="background-image: url(/img/banner-tp.png);">
+    <div class="absolute top-44 left-6 z-10">
       <h2 class="inter text-white text-[64px] leading-none font-bold tracking-wide">
-        Welcome <br> Back!
+        Welcome to
       </h2>
+      <h3 class="inter text-white text-[64px] leading-none">Ticketpass</h3>
+      <div class="inter text-white text-[16px] ml-[16px] mt-[16px]">Login to access your account</div>
     </div>
 
   </div>
+
+
+
 
   <div class="wrapper w-full md:w-1/2 min-h-screen flex items-center justify-center">
 
@@ -52,24 +56,25 @@
 
       </div>
 
-         <div class="forgot_password mb-2 flex justify-between inter text-[12px]">
-          <!-- no funcional todavia -->
-        <div class="flex gap-[4px]" >
-          <input type="checkbox" class="accent-[#7C3AED] cursor-pointer">
+      <div class="forgot_password mb-2 flex justify-between inter text-[12px]">
+        <!-- no funcional todavia -->
+        <div class="flex gap-[4px]">
+          <input type="checkbox" class="accent-[#FCACFD] cursor-pointer">
           <div>Remember me</div>
 
         </div>
-        <a routerLink="/cambiar-contrasenia" class=" text-[#8E8E8E]  hover:text-[#7C3AED] transition-colors underline">Forgot password?</a>
-        </div>
+        <a routerLink="/cambiar-contrasenia"
+          class=" text-[#8E8E8E]  hover:text-[#7C3AED] transition-colors underline">Forgot password?</a>
+      </div>
 
       <!-- button login -->
-      <button type="submit" [disabled]="formInicioSesion.invalid" class="w-full h-[40px] inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
+      <button type="submit" [disabled]="formInicioSesion.invalid" class="w-full h-[40px] inter rounded-[100px] bg-[#5353EB] text-white hover:bg-[#3F3FD6]
     transition-colors duration-200
     disabled:cursor-not-allowed">Login</button>
 
-      <div class="registro flex gap-[4px] inter text-[12px] mt-[16px]" >
+      <div class="registro flex gap-[4px] inter text-[12px] mt-[16px]">
         <div class="text-[#8E8E8E]">New user?</div>
-        <a routerLink="/registrarse" class="text-[#7C2BA8] underline ">Sign up</a>
+        <a routerLink="/registrarse" class="text-[#5353EB] underline ">Sign up</a>
       </div>
 
 

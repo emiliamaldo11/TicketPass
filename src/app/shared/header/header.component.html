@@ -1,16 +1,26 @@
-<header
-  class="w-full h-[72px] bg-white flex justify-between border border-[#AAAAAA] justify-center items-center pl-[70px] relative">
+<header class="w-full h-[64px] bg-[#5353EB]
+  flex justify-between items-center
+  pl-[70px] relative
+  shadow-[0_1px_6px_rgba(0,0,0,0.05)]">
+
 
   <div class="logo flex justify-center items-center gap-[5px] cursor-pointer">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-      class="size-[32px] text-[#7C3AED]">
-      <path stroke-linecap="round" stroke-linejoin="round"
-        d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
-    </svg>
 
-    <span *ngIf="idUsuario !== null" [routerLink]="['usuarios', idUsuario]"
-      class="inter font-bold text-[32px] ">TicketPass</span>
-    <span *ngIf="idUsuario === null" class="inter font-bold text-[32px] ">TicketPass</span>
+
+    <span *ngIf="idUsuario !== null" [routerLink]="['usuarios', idUsuario]" class="inter font-bold text-[32px] ">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="size-[32px] text-white">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
+      </svg>
+
+    </span>
+    <span *ngIf="idUsuario === null" class="inter font-bold text-[32px] "> <svg xmlns="http://www.w3.org/2000/svg"
+        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-[32px] text-white">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
+      </svg>
+    </span>
   </div>
 
   <div *ngIf="tipoUsuario === 1" class="">
@@ -18,8 +28,8 @@
     <nav class="flex items-center gap-4 pr-[100px]">
 
       <button (click)="menuDesplegable()" class="p-2 rounded-md
-          text-gray-600 hover:text-gray-900
-          hover:bg-[#F1EFEF]
+          text-white hover:text-[#5353EB]
+          hover:bg-[#E1F44B]
           transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="size-6">
@@ -28,38 +38,43 @@
 
       </button>
 
-  <div
-  *ngIf="verMenu"
-  class="absolute top-[72px] bg-white p-4 z-50">
+      <div *ngIf="verMenu" class="absolute top-[72px] bg-[#FAFAFA] p-4 z-50">
 
         <ul class="flex flex-col gap-4 justify-center items-center w-full">
-          <li class="border-b-2 border-transparent hover:border-gray-500"><a [routerLink]="['/administrador' , idUsuario]" (click)="cerrarMenu()" >Menu</a></li>
-          <li class="border-b-2 border-transparent hover:border-gray-500" ><a routerLink="add-eventos" (click)="cerrarMenu()">Add event</a></li>
-          <li class="border-b-2 border-transparent hover:border-gray-500" ><a [routerLink]="['/eventos-administrador', idUsuario]" (click)="cerrarMenu()">View registered events</a>
+          <li class="border-b-2 border-transparent hover:border-gray-500"><a
+              [routerLink]="['/administrador' , idUsuario]" (click)="cerrarMenu()">Menu</a></li>
+          <li class="border-b-2 border-transparent hover:border-gray-500"><a routerLink="add-eventos"
+              (click)="cerrarMenu()">Add event</a></li>
+          <li class="border-b-2 border-transparent hover:border-gray-500"><a
+              [routerLink]="['/eventos-administrador', idUsuario]" (click)="cerrarMenu()">View registered events</a>
           </li>
-          <li class="border-b-2 border-transparent hover:border-gray-500" ><a routerLink="recintos" (click)="cerrarMenu()">View venues</a></li>
-          <li class="border-b-2 border-transparent hover:border-gray-500" ><a href="compras" (click)="cerrarMenu()">View purchases</a></li>
-          <li class="border-b-2 border-transparent hover:border-gray-500" ><a [routerLink]="['/ver-usuarios', idUsuario]" (click)="cerrarMenu()">View registered users </a></li>
-          <li class="border-b-2 border-transparent hover:border-gray-500 justify-center" ><a [routerLink]="['/preguntas-frecuentes-administrador']" (click)="cerrarMenu()">FAQs</a>
+          <li class="border-b-2 border-transparent hover:border-gray-500"><a routerLink="recintos"
+              (click)="cerrarMenu()">View venues</a></li>
+          <li class="border-b-2 border-transparent hover:border-gray-500"><a href="compras" (click)="cerrarMenu()">View
+              purchases</a></li>
+          <li class="border-b-2 border-transparent hover:border-gray-500"><a [routerLink]="['/ver-usuarios', idUsuario]"
+              (click)="cerrarMenu()">View registered users </a></li>
+          <li class="border-b-2 border-transparent hover:border-gray-500 justify-center"><a
+              [routerLink]="['/preguntas-frecuentes-administrador']" (click)="cerrarMenu()">FAQs</a>
           </li>
         </ul>
       </div>
 
-      <a href="#" (click)="cerrarSesion()" class="border-b-2 border-transparent hover:border-gray-500 ">Log out</a>
+      <a href="#" (click)="cerrarSesion()" class="text-white border-b-2 border-transparent hover:border-[#E1F44B] ">Log out</a>
 
     </nav>
   </div>
 
   <div *ngIf="tipoUsuario === 2">
     <!-- menú para el Cliente -->
-    <nav class="flex pr-[100px] gap-[16px]">
-      <a [routerLink]="['/ver-mis-entradas']" class=" border-b-2 border-transparent hover:border-gray-500 ">My
+    <nav class="flex pr-[100px] gap-[16px] text-white">
+      <a [routerLink]="['/ver-mis-entradas']" class=" border-b-2 border-transparent hover:border-[#E1F44B] ">My
         tickets</a>
-      <a href="#" (click)="cerrarSesion()" class=" border-b-2 border-transparent hover:border-gray-500 ">Log out</a>
+      <a href="#" (click)="cerrarSesion()" class=" border-b-2 border-transparent hover:border-[#E1F44B] ">Log out</a>
       <a [routerLink]="['/perfil' , idUsuario]">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-          class="size-6 text-gray-600
-       hover:text-gray-900
+          class="size-6 text-white
+       hover:text-gray
        hover:scale-110
        transition-transform duration-200 cursor-pointer">
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -74,8 +89,8 @@
     <!-- menú para los usuarios no logueados -->
     <nav class="pr-[100px] flex gap-[16px]">
       <button routerLink="/iniciar-sesion"
-        class="border border-[#AAAAAA] w-[84px] h-[41px] rounded-[100px] hover:bg-[#F1EFEF] transition-colors duration-200 ">Login</button>
-      <button routerLink="/registrarse" class="border border-[#AAAAAA] bg-[#7C3AED] w-[84px] h-[41px] rounded-[100px] text-white hover:bg-[#5B21B6]
+        class=" bg-[#FAFAFA] w-[84px] h-[41px] rounded-[100px] hover:bg-[#F1EFEF] transition-colors duration-200 ">Login</button>
+      <button routerLink="/registrarse" class=" bg-[#FCACFD] w-[84px] h-[41px] rounded-[100px] text-[#5353EB] hover:bg-[#F79AFB]
     transition-colors duration-200">Sign up</button>
     </nav>
   </div>
