@@ -1,12 +1,13 @@
 <section class="min-h-screen flex overflow-hidden">
 
-  <div class="foto w-1/2 bg-cover bg-center hidden md:block rounded-r-[32px] overflow-hidden relative"
-    style="background-image: url(/img/imagen-bg.jpg);">
+  <div class="foto w-1/2 bg-cover bg-center hidden md:block rounded-r-[100px] overflow-hidden relative"
+    style="background-image: url(/img/banner-tp.png);">
     <div class="absolute inset-0 backdrop-blur-[2px] bg-black/10">
-      <div class="absolute top-12 left-6 z-10">
+      <div class="absolute top-1/2 -translate-y-1/2 left-12 z-10">
         <h2 class="inter text-white text-[64px] leading-none font-bold tracking-wide">
-          Password <br> recovery
+          Password
         </h2>
+      <h3 class="inter text-white text-[64px] leading-none">recovery</h3>
       </div>
     </div>
 
@@ -16,7 +17,7 @@
 
     <form #formUsuario="ngForm" (ngSubmit)="buscarUsername(formUsuario)">
 
-      <i class="fa-solid fa-key text-[#7C3AED] text-[48px] mb-[48px] flex justify-center items-center"></i>
+      <i class="fa-solid fa-key text-[#5353EB] text-[48px] mb-[48px] flex justify-center items-center"></i>
 
       <div class="mb-[44px]">
         <h2 class="inter font-bold text-[32px]">Forget your password?</h2>
@@ -26,7 +27,7 @@
       <div class="mb-[44px]">
         <label for="usuarioForm">User</label>
         <div class="input-field">
-          <input type="text" id="usuarioForm" name="usuarioForm" ngModel required class="w-[300px] h-[35px] border border-[#6B7280]
+          <input type="text" id="usuarioForm" name="usuarioForm" ngModel required class="w-full h-[35px] border border-[#6B7280]
           rounded-[8px] ">
           <div class="divAvisos"
             *ngIf="formUsuario.controls['usuarioForm']?.invalid && formUsuario.controls['usuarioForm']?.touched">
@@ -35,13 +36,13 @@
         </div>
 
       </div>
-      <button type="submit" [disabled]="formUsuario.invalid" class="w-full h-[40px] inter rounded-[8px] bg-[#7C3AED] text-white hover:bg-[#5B21B6]
+      <button type="submit" [disabled]="formUsuario.invalid" class="w-full h-[40px] inter rounded-[100px] bg-[#5353EB] text-white hover:bg-[#3F3FD6]
     transition-colors duration-200
     disabled:cursor-not-allowed">Next</button>
 
       <div class="registro flex gap-[4px] inter text-[12px] mt-[16px]">
         <div class="text-[#8E8E8E]">New user?</div>
-        <a routerLink="/registrarse" class="text-[#7C2BA8] underline ">Sign up</a>
+        <a routerLink="/registrarse" class="text-[#5353EB] underline ">Sign up</a>
       </div>
 
     </form>

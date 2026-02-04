@@ -1,29 +1,19 @@
-
 <div class="w-full h-[340px] overflow-hidden relative mx-auto">
 
-<!-- CONTENEDOR QUE SE MUEVE -->
-  <div
-    class="flex w-full transition-transform duration-500"
-    [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
-  >
+  <!-- CONTENEDOR QUE SE MUEVE -->
+  <div class="flex w-full transition-transform duration-500"
+    [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
 
-    <div
-      *ngFor="let evento of listaEventos"
-      class="min-w-full flex justify-center"
-    >
-      <div *ngIf="evento.alta === 1"
-        class="w-[1060px] h-[340px] bg-[#ECE6E4] flex justify-between cursor-pointer"
-        [routerLink]="userId ? ['/detalle-evento', evento.id] : ['/iniciar-sesion']"
-        >
+    <div *ngFor="let evento of listaEventos" class="min-w-full flex justify-center">
+      <div *ngIf="evento.alta === 1" class="w-[1060px] h-[340px] bg-[#ECE6E4] flex justify-between cursor-pointer
+         transition-all duration-300 ease-out
+         hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.25)]"
+        [routerLink]="userId ? ['/detalle-evento', evento.id] : ['/iniciar-sesion']">
 
         <!-- foto -->
         <div class="w-[355px] h-[341px] bg-black ">
 
-          <img
-            *ngIf="evento.UrlBanner"
-            [src]="evento.UrlBanner"
-            class="w-full h-full object-cover"
-            >
+          <img *ngIf="evento.UrlBanner" [src]="evento.UrlBanner" class="w-full h-full object-cover">
         </div>
 
         <!-- info -->
@@ -52,9 +42,7 @@
         </div>
 
         <!-- imagen derecha -->
-        <div
-          class=" flex-shrink-0 w-[220px] h-full bg-cover pr-[32px]"
-          style="background-image: url(/img/ticket.png);">
+        <div class=" flex-shrink-0 w-[220px] h-full bg-cover pr-[32px]" style="background-image: url(/img/ticket.png);">
         </div>
 
       </div>
@@ -62,16 +50,10 @@
 
   </div>
 
-   <!-- CONTROLES -->
-  <button
-    class="absolute left-40 top-1/2 -translate-y-1/2 text-3xl z-10"
-    (click)="prevSlide()">❮</button>
+  <!-- CONTROLES -->
+  <button class="absolute left-40 top-1/2 -translate-y-1/2 text-3xl z-10" (click)="prevSlide()">❮</button>
 
-  <button
-    class="absolute  right-40 top-1/2 -translate-y-1/2 text-3xl z-10 "
-    (click)="nextSlide()">❯</button>
+  <button class="absolute  right-40 top-1/2 -translate-y-1/2 text-3xl z-10 " (click)="nextSlide()">❯</button>
 
 
 </div>
-
-
