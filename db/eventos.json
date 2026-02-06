@@ -1,10 +1,10 @@
 {
   "eventos": [
     {
-      "nombreEvento": "Love on Tour",
+      "nombreEvento": "Together Together",
       "artista_banda": "Harry Styles",
       "duracion": "02:00",
-      "UrlBanner": "https://i.pinimg.com/736x/79/ee/e0/79eee02d5c07be2a193212b5d5c7fccf.jpg",
+      "UrlBanner": "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/Harry-Styles-Together-Together-Tour-Tickets-MAIN.jpg?w=1296",
       "recinto_id": 1,
       "fechas": [
         {
@@ -19,7 +19,7 @@
             },
             {
               "nombreSector": "Campo delantero derecho",
-              "disponibles": 9997,
+              "disponibles": 9985,
               "precio": "120000",
               "asientos": []
             },
@@ -118,7 +118,7 @@
               ]
             }
           ],
-          "disponibilidadTotal": 20016,
+          "disponibilidadTotal": 20004,
           "habilitado": 1
         }
       ],

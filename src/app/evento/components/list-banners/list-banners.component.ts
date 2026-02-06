@@ -3,11 +3,12 @@ import { Autenticacion } from '../../../services/autenticacion.service';
 import { Evento } from '../../interfaces/evento.interface';
 import { EventoService } from '../../../services/evento.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule, } from '@angular/router';
 
 @Component({
   selector: 'app-list-banners',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './list-banners.component.html',
   styleUrl: './list-banners.component.css'
 })

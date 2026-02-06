@@ -1,16 +1,28 @@
-<section class="bg-[#FCEBD4] pt-[20px] pl-[100px]">
+<section class="items-center justify-center bg-[#FCEBD4] pt-[20px] pl-[100px] rounded-t-[100px]">
 
-  <div class="flex items-center justify-center bg-[#E1F44B] w-[200px] h-[40px] mb-[20px] border border-[#5353EB]">
-    <h2 class="font-bold text-[26px] inter text-[#5353EB] ">Next shows</h2>
-  </div>
 
   <div class="py-[20px]  grid justify-center gap-x-[73px] gap-y-[36px] grid-cols-[repeat(3,305px)]">
     <ng-container *ngFor="let event of listEventos">
-      <div *ngIf="event.alta === 1" class="w-[305px] h-[114px] overflow-hidden cursor-pointer transition-all duration-300 ease-out
-         hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.25)]">
+      <div *ngIf="event.alta === 1" class="group relative w-[305px] h-[114px] overflow-hidden cursor-pointer transition-all duration-300 ease-out
+         hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.25)]"
+        [routerLink]="userId ? ['/detalle-evento', event.id] : ['/iniciar-sesion']">
+
         <img *ngIf="event.UrlBanner" [src]="event.UrlBanner" class="w-full h-full object-cover">
+
+        <div class="absolute inset-0 bg-[#5353EB]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300
+           flex flex-col justify-center items-center px-4 text-white">
+          <h3>{{event.nombreEvento}}</h3>
+          <h2>{{event.artista_banda}}</h2>
+        </div>
+
       </div>
+
+      <!-- hover -->
+
+
+
     </ng-container>
   </div>
+
 
 </section>

@@ -1,34 +1,61 @@
-<section class="fondo"> 
+<section class="fondo">
   <section class="detalle-evento">
-    <div class="detalle-evento-header">
-      <h2 class="detalle-evento-titulo">Detalle del Evento</h2>
-      <p class="subtitulo-evento">Información del evento seleccionado</p>
+
+    <!-- img y datos -->
+    <div class="relative w-full h-[586px] ">
+      <img [src]="eventoSeleccionado?.UrlBanner" alt="banner" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-[#5353EB]/45 flex flex-col justify-end pb-[20px] pl-[30px]">
+
+        <h2 class="inter text-[64px] leading-none font-bold tracking-wide text-[#E1F44B]">
+          {{eventoSeleccionado?.artista_banda}}</h2>
+        <h3 class="inter text-[44px] font-bold leading-none text-[#E1F44B]">
+          {{eventoSeleccionado?.nombreEvento}}</h3>
+
+      </div>
     </div>
 
-    <div class="informacion-evento">
-      <p class="detalle-item"><strong>Nombre del Evento:</strong> {{eventoSeleccionado?.nombreEvento}}</p>
-      <p class="detalle-item"><strong>Artista/Banda:</strong> {{eventoSeleccionado?.artista_banda}}</p>
-      <p class="detalle-item"><strong>Duración del Evento en Horas:</strong> {{eventoSeleccionado?.duracion}}</p>
-    </div>
+
+
+    <!-- fechas -->
 
     <div class="lista-evento">
-      <p class="detalle-item"><strong>Fechas y Hora de Comienzo del Evento:</strong></p>
-
       <!-- Cada fecha tiene sus propios detalles -->
-      <div *ngFor="let fecha of eventoSeleccionado?.fechas" class="detalle-item">
+      <div *ngFor="let fecha of eventoSeleccionado?.fechas"
+        class="detalle-item w-full h-[83px] border border-#D9D9D9 flex ">
 
-        <p class="fecha-evento">Fecha: {{fecha.fecha}}</p>
-        <p class="hora-evento">Hora: {{fecha.hora}}</p>
-
-        <!-- Botones según tipo de usuario -->
-        <div *ngIf="tipo == 2" class="acciones-evento">
-          <button type="button" class="boton-accion" [disabled]="fecha.disponibilidadTotal==0 || fecha.habilitado == 0"
-            [routerLink]="['/fila', eventoSeleccionado?.id, fecha.fecha]">
-            Entrar a la Fila
-          </button>
-          <div *ngIf="fecha.disponibilidadTotal==0" class="sold-out">Evento SOLD OUT</div>
+        <!-- fecha -->
+        <div class="w-[115px] h-full shrink-0 bg-[#5353EB] border border-[#5353EB] flex justify-center items-center">
+          <p class="w-[43px] fecha-evento text-white leading-none tracking-wide text-[26px] text-center">
+            {{ fecha.fecha | date:'dd MMM' }}
+          </p>
         </div>
 
+
+        <!-- recinto y horario -->
+        <div class="pl-[20px] flex flex-col justify-center h-full w-full">
+          <p class="text-[20px]">{{ recintoNombre }}</p>
+          <p class="hora-evento text-[20px]">{{ fecha.hora }}</p>
+        </div>
+
+
+
+        <!-- Botones según tipo de usuario -->
+        <div *ngIf="tipo == 2" class="acciones-evento flex w-full h-full flex justify-end items-center pr-[30px]">
+
+          <!-- user -->
+          <button type="button" class="w-[180px] h-[40px] rounded-[100px] text-white transition-colors duration-200
+         disabled:cursor-not-allowed
+         disabled:bg-gray-400
+         disabled:text-gray-700
+         bg-[#5353EB] hover:bg-[#3F3FD6]" [disabled]="fecha.disponibilidadTotal == 0 || fecha.habilitado == 0"
+            [routerLink]="fecha.disponibilidadTotal > 0 ? ['/fila', eventoSeleccionado?.id, fecha.fecha] : null">
+            {{ fecha.disponibilidadTotal == 0 ? 'Sold out' : 'Buy tickets' }}
+          </button>
+
+          <!-- <div *ngIf="fecha.disponibilidadTotal==0" class="sold-out">Sold out</div> -->
+        </div>
+
+        <!-- admin -->
         <div *ngIf="tipo == 1 && eventoSeleccionado?.alta === 1" class="acciones-evento">
           <button class="boton-accion" (click)="confirmarFila(fecha)">
             {{ fecha.habilitado === 1 ? 'Deshabilitar Fila' : 'Habilitar Fila' }}
@@ -55,6 +82,7 @@
       <button class="boton-accion" (click)="verDisponibilidad()">Ver disponibilidades</button>
 
     </div>
+
   </section>
 
 </section>

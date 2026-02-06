@@ -1,4 +1,4 @@
-*{
+/* *{
   margin:0;
   padding:0;
   box-sizing:border-box;
@@ -56,7 +56,7 @@
 }
 
 .fecha-evento {
-  
+
   font-size: 16px;
   color: #36173d;
   margin-left:0;
@@ -129,4 +129,4 @@ button:disabled:hover{
   background-position: center;
   background-size:auto;
 
-}
+} */

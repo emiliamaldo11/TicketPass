@@ -10,6 +10,7 @@ import { Fecha } from '../../interfaces/fecha.interface';
 import Swal from 'sweetalert2';
 import { Autenticacion } from '../../../services/autenticacion.service';
 import { DisponibilidadComponent } from "../disponibilidad/disponibilidad.component";
+import { RecintoService } from '../../../services/recintos.service';
 
 @Component({
   selector: 'app-detalle-evento',
@@ -21,11 +22,13 @@ import { DisponibilidadComponent } from "../disponibilidad/disponibilidad.compon
 export class DetalleEventoComponent implements OnInit{
 
   private eventosService= inject(EventoService);
-  private authService = inject(Autenticacion)
+  private authService = inject(Autenticacion);
+    private recintosService = inject(RecintoService);
   isEditing = false;
   ventana= false;
 
   eventoSeleccionado: Evento | undefined;
+  recintoNombre: string = ''
 
   id: string | null = ''  //evento
   userId: string | null = ''
@@ -52,6 +55,9 @@ export class DetalleEventoComponent implements OnInit{
         this.eventosService.getEventosById(id).subscribe({
           next: (eventoSeleccionado: Evento) => {
             this.eventoSeleccionado = eventoSeleccionado;
+            this.recintosService.getRecintoById(eventoSeleccionado.recinto_id).subscribe(recinto => {
+                this.recintoNombre = recinto.nombreRecinto;
+              })
           },
           error: (e: Error) => {
             console.log("Error obteniendo el evento:", e.message);
