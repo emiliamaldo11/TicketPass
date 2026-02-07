@@ -1,4 +1,4 @@
-.fila-section {
+/* .fila-section {
   background-color: #efefef90;
   border-radius: 8px;
   padding: 5%;
@@ -10,16 +10,16 @@
   text-align: center;
   margin-top: 20%;
   padding-bottom: 1rem;
-}
+} */
 
-.titulo-fila {
+/* .titulo-fila {
   font-size: 24px;
   font-weight: bold;
   color: #36173d;
   margin-bottom: 20px;
-}
+} */
 
-.boton-ingresar {
+/* .boton-ingresar {
   padding: 12px 25px;
   font-size: 16px;
   font-weight: bold;
@@ -46,10 +46,10 @@ button:disabled{
 button:disabled:hover{
   color: #fff;
   background-color: #36173d72;
-}
+} */
 
 
-.lista-fila {
+/* .lista-fila {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -68,33 +68,20 @@ button:disabled:hover{
   color: #333;
 
   transition: all 0.3s ease;
-}
+} */
 
-.item-fila:hover {
+/* .item-fila:hover {
   background-color: #e7e7f5;
   transform: translateY(-5px);
-}
+} */
 
-.turno {
-  font-weight: bold;
-  color: #36173d;
-}
-
-.nombre {
-  color: #36173d;
-}
-
-.estado {
-  color: #36173d;
-  font-style: italic;
-}
 
 .song-preview {
   margin-top: 30px;
   background-color: #efefef90;
   padding:5%;
   border-radius: 8px;
-  width:300%;
+  width:1079px;
 
   justify-self: center;
   margin-bottom:5%;
@@ -144,23 +131,27 @@ audio {
   display: row;
 }
 
-.barra-progreso-container {
+/* .barra-progreso-container {
   justify-self: center;
   width: 400%;
   height: 10px;
   background-color: #efefef;
   border-radius: 5px;
   margin-top: 5%;
-}
+} */
 
 .barra-progreso {
   height: 100%;
-  background-color: #36173d;
-  border-radius: 5px;
+  width: 0%;
+  background-image: url(/img/banner-tp.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   transition: width 0.1s ease-in-out;
 }
 
-.fondo{
+
+/* .fondo{
   position: relative;
   width: 100%;
   box-sizing:border-box;
@@ -170,7 +161,7 @@ audio {
   background:url('/img/audiencia-background.jpg') ;
   background-position: center;
   background-size: auto;
-}
+} */
 
 .song-preview {
   display: flex;

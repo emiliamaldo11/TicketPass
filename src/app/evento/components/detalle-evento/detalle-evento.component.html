@@ -4,14 +4,41 @@
     <!-- img y datos -->
     <div class="relative w-full h-[586px] ">
       <img [src]="eventoSeleccionado?.UrlBanner" alt="banner" class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-[#5353EB]/45 flex flex-col justify-end pb-[20px] pl-[30px]">
+      <div class="absolute inset-0
+      bg-gradient-to-t from-black/70 via-black/30 to-transparent
+      flex flex-col justify-end pb-[20px] pl-[30px]">
 
-        <h2 class="inter text-[64px] leading-none font-bold tracking-wide text-[#E1F44B]">
-          {{eventoSeleccionado?.artista_banda}}</h2>
+        <h2 class="inter text-[64px] leading-none font-bold text-[#E1F44B]">
+          {{eventoSeleccionado?.artista_banda}}
+        </h2>
+
         <h3 class="inter text-[44px] font-bold leading-none text-[#E1F44B]">
-          {{eventoSeleccionado?.nombreEvento}}</h3>
+          {{eventoSeleccionado?.nombreEvento}}
+        </h3>
 
       </div>
+    </div>
+
+    <!-- Botones para el administrador -->
+    <div *ngIf="tipo == 1"
+      class="flex gap-[20px] text-[18px] justify-end items-center pr-[30px] acciones-evento h-[62px] ">
+
+      <div *ngIf="ventana">
+        <app-disponibilidad [evento]="eventoSeleccionado" [ventana]="ventana"
+          (cerrar)="cerrarVentana()"></app-disponibilidad>
+      </div>
+
+
+      <button class="boton-accion border-b-2 border-transparent hover:border-[#FCACFD]" (click)="changeEdit()">Edit
+        Event</button>
+
+      <button class="boton-accion border-b-2 border-transparent hover:border-[#FCACFD]" (click)="confirmarDH()">
+        {{ eventoSeleccionado?.alta === 1 ? 'Disable Event' : 'Enable Event' }}
+      </button>
+
+      <button class="boton-accion border-b-2 border-transparent hover:border-[#FCACFD]"
+        (click)="verDisponibilidad()">Check Availability </button>
+
     </div>
 
 
@@ -38,7 +65,6 @@
         </div>
 
 
-
         <!-- Botones según tipo de usuario -->
         <div *ngIf="tipo == 2" class="acciones-evento flex w-full h-full flex justify-end items-center pr-[30px]">
 
@@ -56,31 +82,14 @@
         </div>
 
         <!-- admin -->
-        <div *ngIf="tipo == 1 && eventoSeleccionado?.alta === 1" class="acciones-evento">
-          <button class="boton-accion" (click)="confirmarFila(fecha)">
-            {{ fecha.habilitado === 1 ? 'Deshabilitar Fila' : 'Habilitar Fila' }}
+        <div *ngIf="tipo == 1 && eventoSeleccionado?.alta === 1"
+          class="acciones-evento flex w-full h-full flex justify-end items-center pr-[30px] ">
+          <button class="boton-accion w-[180px] h-[40px] rounded-[100px] text-white transition-colors duration-200
+         bg-[#5353EB] hover:bg-[#3F3FD6]" (click)="confirmarFila(fecha)">
+            {{ fecha.habilitado === 1 ? 'Disable Queue' : 'Enable Queue' }}
           </button>
         </div>
       </div>
-    </div>
-
-    <!-- Botones para el administrador -->
-    <div *ngIf="tipo == 1" class="acciones-evento">
-
-      <div *ngIf="ventana">
-        <app-disponibilidad [evento]="eventoSeleccionado" [ventana]="ventana"
-          (cerrar)="cerrarVentana()"></app-disponibilidad>
-      </div>
-
-
-      <button class="boton-accion" (click)="changeEdit()">Editar Evento</button>
-
-      <button class="boton-accion" (click)="confirmarDH()">
-        {{ eventoSeleccionado?.alta === 1 ? 'Deshabilitar Evento' : 'Habilitar Evento' }}
-      </button>
-
-      <button class="boton-accion" (click)="verDisponibilidad()">Ver disponibilidades</button>
-
     </div>
 
   </section>

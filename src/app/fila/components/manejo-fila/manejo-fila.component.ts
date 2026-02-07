@@ -23,14 +23,14 @@ export class ManejoFilaComponent implements OnInit {
   artistPlaylistUrl: string = ''
   canciones: any[] = [];
   cancionSeleccionada: any = null;
-  @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>; //reproduccion automatica
+  @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
 
   estaEnFila = false
   usuario: Usuario | undefined;
   evento: Evento | undefined;
   fecha: string | null = '';
   idUser :string | null = null;
-  progreso: any //barra de progreso en la fila
+  progreso: any
 
   private active = inject(ActivatedRoute);
   private userService = inject(UsuarioService);
@@ -44,7 +44,7 @@ export class ManejoFilaComponent implements OnInit {
 
     this.authService.userId.subscribe((id) => {
       this.idUser = id;
-      console.log('ID Usuario obtenido en fila:', this.idUser);
+      console.log('User ID obtained in queue:', this.idUser);
     });
 
     this.active.paramMap.subscribe(param => {
@@ -72,30 +72,26 @@ export class ManejoFilaComponent implements OnInit {
     });
   }
 
-  //simula una fila con turnos
   fila: Cliente[] = [];
   turnoActual: number = 1;
 
   agregarCliente(nombre: string) {
-    this.estaEnFila= true
+    this.estaEnFila = true
     const nuevoCliente: Cliente = {
       id: this.fila.length + 1,
       nombre,
       turno: this.turnoActual++,
       haComprado: false,
-      estado: 'Esperando en la fila'
+      estado: 'Waiting for your turn'
     };
     this.fila.push(nuevoCliente);
     this.iniciarCompra(nuevoCliente);
   }
 
-
-  //esta seria la pantalla de la fila
   iniciarCompra(cliente: Cliente) {
-    const tiempoEspera = Math.floor(Math.random() * (45000 - 2000 + 1)) + 2000; //num random para la fila
-    this.progreso = 0; //arranca en 0
+    const tiempoEspera = Math.floor(Math.random() * (45000 - 2000 + 1)) + 2000;
+    this.progreso = 0;
 
-    //progreso de la barra segun lo que falta para que termine
     this.progreso = setInterval(() => {
       if (this.progreso < 100) {
         this.progreso += 1;
@@ -104,26 +100,22 @@ export class ManejoFilaComponent implements OnInit {
 
     setTimeout(() => {
       cliente.haComprado = true;
-      cliente.estado = 'Entro a comprar entrada';
+      cliente.estado = 'Entered ticket purchase';
       console.log(cliente.estado);
-      //cuando termina el tiempo va a la page de elegir la entrada
-      this.router.navigate(["elegir-entrada", this.evento?.id, this.fecha]);
 
+      this.router.navigate(["elegir-entrada", this.evento?.id, this.fecha]);
       clearInterval(this.progreso);
 
     }, tiempoEspera);
 
-    //mientras espera el time out
     this.levantarCanciones()
-
   }
 
   levantarCanciones (){
     if (this.evento?.artista_banda) {
-      //busca en spotify las canciones que coincidan con el artista
       this.spotifyService.getCanciones(this.evento.artista_banda).subscribe({
         next: (canciones) => {
-          console.log('Canciones obtenidas:', canciones);
+          console.log('Songs retrieved:', canciones);
           this.canciones = canciones.tracks.items;
 
           if (this.canciones.length > 0) {
@@ -132,43 +124,40 @@ export class ManejoFilaComponent implements OnInit {
         },
 
         error: (e: Error) => {
-          console.error('Error al obtener canciones de Spotify:', e);
+          console.error('Error retrieving songs from Spotify:', e);
         }
       });
 
-      console.log('Artista/Banda:', this.evento.artista_banda);
+      console.log('Artist/Band:', this.evento.artista_banda);
       this.artistPlaylistUrl = 'https://open.spotify.com/search/' + encodeURIComponent(this.evento.artista_banda) + '?type=playlist';
-      console.log('URL generada:', this.artistPlaylistUrl);
+      console.log('Generated URL:', this.artistPlaylistUrl);
 
     } else {
-      console.log('El evento no tiene un artista asociado.');
+      console.log('The event does not have an associated artist.');
     }
   }
 
-  //reproduccion automatica apenas se abre la fila
   reproducir() {
     if (this.cancionSeleccionada && this.cancionSeleccionada.preview_url && this.audioPlayer) {
         const audio: HTMLAudioElement = this.audioPlayer.nativeElement;
-        audio.onended = null; // CANCION TERMINADA
+        audio.onended = null;
 
         audio.src = this.cancionSeleccionada.preview_url;
 
         audio.pause();
         audio.currentTime = 0;
 
-        audio.play().then(() => { // reproduce
-            console.log('Reproduciendo:', this.cancionSeleccionada.name);
-        }).catch(e => console.error('Error al intentar reproducir:', e));
+        audio.play().then(() => {
+            console.log('Playing:', this.cancionSeleccionada.name);
+        }).catch(e => console.error('Error trying to play:', e));
 
         audio.onended = () => {
-            console.log('La canción ha terminado, seleccionando otra...');
+            console.log('Song ended, selecting another...');
             this.seleccionarCancionAleatoria();
         };
     } else {
-      //hay varias canciones que tienen copyright y aparece esto
-        console.error('No hay URL de previsualización disponible para esta canción.');
-        console.log('URL de previsualización:', this.cancionSeleccionada?.preview_url);
-
+        console.error('No preview URL available for this song.');
+        console.log('Preview URL:', this.cancionSeleccionada?.preview_url);
     }
 }
 
@@ -180,11 +169,8 @@ seleccionarCancionAleatoria() {
             this.reproducir();
         }, 100);
     } else {
-        console.log('No hay canciones disponibles para reproducir.');
+        console.log('No songs available to play.');
     }
 }
-
-
-
 
 }

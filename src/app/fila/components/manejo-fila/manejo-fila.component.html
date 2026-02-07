@@ -1,48 +1,56 @@
-<section class="fondo">
-  <div *ngIf="usuario">
-    <div class="contenedor-flex-vertical">
-      <section class="fila-section">
-        <h2 class="titulo-fila">¡Bienvenido a la fila, {{ usuario.nombre }}!</h2>
-        <button type="button" class="boton-ingresar" (click)="agregarCliente(usuario.nombre)"
-        [disabled]="estaEnFila"
-        >Ingresar</button>
+<div *ngIf="usuario" class="flex flex-col justify-center items-center">
 
-        <ul class="lista-fila">
-          <li *ngFor="let cliente of fila" class="item-fila">
-            <span class="turno">{{ cliente.turno }}</span>
-            <span class="nombre">{{ cliente.nombre }}</span>
-            <span class="estado">{{ cliente.estado }}</span>
-          </li>
-        </ul>
-      </section>
-    </div>
+  <div class="contenedor-flex-vertical flex flex-col justify-center items-center mt-[115px]">
 
-    <div class="barra-progreso-container">
-      <div class="barra-progreso" [style.width.%]="progreso"></div>
-    </div>
+    <h2 class="titulo-fila inter regular text-[44px] mb-[40px]">Welcome to the Queue, {{ usuario.nombre }}!</h2>
 
-    <div *ngIf="cancionSeleccionada" class="song-preview">
-      <div class="song-info">
-        <img [src]="cancionSeleccionada.album.images[0].url" alt="Portada del álbum" class="album-cover" />
-        <div class="text-info">
-          <h3>{{ cancionSeleccionada.name }}</h3>
-          <p class="artist">{{ cancionSeleccionada.artists[0].name }}</p>
-        </div>
-      </div>
-      <audio #audioPlayer controls autoplay>
-        <source [src]="cancionSeleccionada?.preview_url" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
-      </audio>
+    <button type="button" class="boton-ingresar mb-[80px] w-[422px] h-[40px] rounded-[100px] text-white transition-colors duration-200
+         disabled:cursor-not-allowed
+         disabled:bg-gray-400
+         disabled:text-gray-700
+         bg-[#5353EB] hover:bg-[#3F3FD6]" (click)="agregarCliente(usuario.nombre)" [disabled]="estaEnFila">Join the
+      Queue</button>
 
-      <div *ngIf="estaEnFila" class="spotify-message">
-        <p>Reproduce la playlist de {{ evento?.artista_banda }} mientras esperas.</p>
-      </div>
 
-      <!-- Icono de Spotify -->
-      <a *ngIf="estaEnFila" [href]="artistPlaylistUrl" target="_blank" rel="noopener noreferrer">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/1982px-Spotify_icon.svg.png" alt="Escucha en Spotify" class="spotify-icon" />
-      </a>
-    </div>
+    <ul class="lista-fila flex justify-center items-center mb-[20px]">
+      <li *ngFor="let cliente of fila" class="item-fila flex gap-[20px] flex-col">
+        <p class="text-[24px]">People ahead of you:</p>
+        <span class="turno bg-[#E1F44B] p-2 border border-[#5353EB]  text-[#5353EB] font-bold text-center">{{
+          cliente.turno }}</span>
+      </li>
+    </ul>
+
   </div>
-</section>
 
+
+  <div class="barra-progreso-container bg-[#D9D9D9] w-[1079px] h-[25px]">
+    <div class="barra-progreso" [style.width.%]="progreso"></div>
+  </div>
+
+
+  <div *ngIf="cancionSeleccionada" class="song-preview">
+
+    <div class="song-info">
+      <img [src]="cancionSeleccionada.album.images[0].url" alt="Portada del álbum" class="album-cover" />
+      <div class="text-info">
+        <h3>{{ cancionSeleccionada.name }}</h3>
+        <p class="artist">{{ cancionSeleccionada.artists[0].name }}</p>
+      </div>
+    </div>
+    <audio #audioPlayer controls autoplay>
+      <source [src]="cancionSeleccionada?.preview_url" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <div *ngIf="estaEnFila" class="spotify-message">
+      <p>Play the {{ evento?.artista_banda }} playlist while you wait.</p>
+    </div>
+
+    <!-- Icono de Spotify -->
+    <a *ngIf="estaEnFila" [href]="artistPlaylistUrl" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/1982px-Spotify_icon.svg.png"
+        alt="Escucha en Spotify" class="spotify-icon" />
+    </a>
+  </div>
+
+</div>
