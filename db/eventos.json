@@ -72,12 +72,12 @@
             },
             {
               "nombreSector": "Platea sivori Alta",
-              "disponibles": 10,
+              "disponibles": 9,
               "precio": "58000",
               "asientos": [
                 {
                   "butaca": 1,
-                  "disponibilidad": true
+                  "disponibilidad": false
                 },
                 {
                   "butaca": 2,
@@ -118,7 +118,7 @@
               ]
             }
           ],
-          "disponibilidadTotal": 20004,
+          "disponibilidadTotal": 20003,
           "habilitado": 1
         }
       ],

@@ -1,4 +1,4 @@
-.compra-section {
+/* .compra-section {
   background-color: #efefef90;
   border-radius: 8px;
   padding: 3%;
@@ -9,7 +9,7 @@
   color: #333;
   text-align: center;
 }
- 
+
 .divreg {
   position:relative;
   display: flex;
@@ -156,7 +156,7 @@
   background:url('/img/audiencia-background.jpg') ;
   background-position: center;
   background-size: cover;
- 
+
 }
 
 button:disabled{
@@ -167,4 +167,4 @@ button:disabled{
 button:disabled:hover{
   color: #fff;
   background-color: #36173d72;
-}
+} */

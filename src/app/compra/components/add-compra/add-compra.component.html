@@ -1,58 +1,56 @@
+<div class=" flex justify-between mt-[74px] px-[108px]">
+
+  <!-- compra -->
+  <div class="flex flex-col">
+
+    <h2 class="inter font-bold text-[40px] mb-[40px]">Select your section</h2>
+
+    <ul class="lista-sectores inter text-[16px]">
+      <li *ngFor="let entrada of fechaSeleccionada.entradas"
+        class="flex justify-between sector-item border border-[#C8C5C5] px-[10px] py-[12px]">
+        <!--deshabilita el sector si no tiene stock-->
+        <div class="flex gap-4">
+          <input type="radio" id="sectorSeleccionado" name="sectorSeleccionado" [(ngModel)]="sectorSeleccionado"
+            [value]="entrada.nombreSector" (change)="asignarSectorYPrecio(entrada)"
+            [disabled]="entrada.disponibles === 0" class="radio-sector accent-[#E1F44B] cursor-pointer" />
+          <label for="sectorSeleccionado" class="label-sector">{{entrada.nombreSector}}</label>
+        </div>
+
+        <p class="precio-sector">${{entrada.precio}}</p>
+      </li>
+    </ul>
+
+    <h3 class="titulo-cantidad mt-[60px]">Number of tickets</h3>
+    <!--la cantidad max para comprar es 4, pero valida si hay menos-->
+    <select [(ngModel)]="compra.cantidad" (change)="actualizarTotalPrecio()" class="select-cantidad w-[62px] h-[30px] bg-[#FCACFD] border border-[#5353EB]">
+      <option value="" disabled selected>Seleccionar cantidad</option>
+      <option value="1" *ngIf="asientosDisponibles >= 1">1</option>
+      <option value="2" *ngIf="asientosDisponibles >= 2">2</option>
+      <option value="3" *ngIf="asientosDisponibles >= 3">3</option>
+      <option value="4" *ngIf="asientosDisponibles >= 4">4</option>
+    </select>
 
 
-<section class="fondo">
-  <div class="divreg"><h1 class="titulo-compra">Comprar Entrada</h1> </div>
-  
-    <section class="compra-section">
-      <div class="wrapper">
-        <h3 class="subtitulo-compra">Selecciona tu sector y cantidad</h3>
-        <fieldset class="compra-fieldset">
-          <div *ngIf="fechaSeleccionada.entradas">
-            <ul class="lista-sectores">
-              <li *ngFor="let entrada of fechaSeleccionada.entradas" class="sector-item">
-                <!--deshabilita el sector si no tiene stock-->
-                <input
-                  type="radio"
-                  id="sectorSeleccionado"
-                  name="sectorSeleccionado"
-                  [(ngModel)]="sectorSeleccionado"
-                  [value]="entrada.nombreSector"
-                  (change)="asignarSectorYPrecio(entrada)"
-                  [disabled]="entrada.disponibles === 0"
-                  class="radio-sector"
-                />
-                <label for="sectorSeleccionado" class="label-sector">{{entrada.nombreSector}}</label>
-                <p class="precio-sector">${{entrada.precio}}</p>
-              </li>
-            </ul>
-          </div>
-    
-          <h4 class="titulo-cantidad">Cantidad de entradas</h4>
-          <!--la cantidad max para comprar es 4, pero valida si hay menos-->
-          <select [(ngModel)]="compra.cantidad" (change)="actualizarTotalPrecio()" class="select-cantidad">
-            <option value="" disabled selected>Seleccionar cantidad</option>
-            <option value="1" *ngIf="asientosDisponibles >= 1">1</option>
-            <option value="2" *ngIf="asientosDisponibles >= 2">2</option>
-            <option value="3" *ngIf="asientosDisponibles >= 3">3</option>
-            <option value="4" *ngIf="asientosDisponibles >= 4">4</option>
-          </select>
-    
-          <div *ngIf="sectorSeleccionado" class="detalle-compra">
-            <p class="detalle-texto">{{sectorSeleccionado}} X{{compra.cantidad}} = ${{compra.precioTotal}}</p>
-          </div>
-    
-          <button
-          (click)="iniciarPago()"
-          class="boton-comprar"
-          [disabled]="sectorSeleccionado == '' || yaCompro">
-          Pagar entrada
-        </button>
-    
-      </fieldset>
+    <div class="flex flex-col items-end mt-[60px]">
+
+      <div *ngIf="sectorSeleccionado" class="detalle-compra" >
+        <p class="detalle-texto text-[#AAAAAA] text-[16px] mb-[8px]">{{sectorSeleccionado}} x{{compra.cantidad}} ${{compra.precioTotal}}</p>
       </div>
-  
-    
-    </section>
-    
-  </section>
-  
+
+      <button (click)="iniciarPago()" class="boton-comprar w-[190px] h-[40px] inter rounded-[100px] bg-[#5353EB] text-white hover:bg-[#3F3FD6]
+        transition-colors duration-200
+        disabled:cursor-not-allowed
+        " [disabled]="sectorSeleccionado == '' || yaCompro">
+        Buy ticket
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- mapa -->
+  <div class="w-[600px]">
+    <img [src]='mapaImg' alt="venue map" class="object-cover">
+  </div>
+
+</div>

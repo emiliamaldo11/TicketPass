@@ -1,40 +1,156 @@
-<section class="fondo">
+<div class="flex w-full h-screen">
+  <!-- img fondo con nombre -->
+  <div class="relative">
+    <img src="/img/banner-tp.png" alt="imagen fondo" class=" w-[374px] h-full object-cover">
+    <div class="absolute z-20 top-8 ml-[44px]">
+      <h2 class="inter text-[30px]">Hi, </h2>
+      <h3 class="inter text-[30px]">Welcome, <b> {{usuario?.nombre}} </b> </h3>
+    </div>
+  </div>
 
-@if (usuario) {
-  <section class="seccion-perfil">
-    <div class="perfil-header">
-      <h2 class="titulo-perfil">{{usuario.nombre}} {{usuario.apellido}}</h2>
-      @if(adminId === null){
-        <p class="subtitulo-perfil">Bienvenido a tu perfil</p>
-      }
+
+  <!-- info perfil -->
+  <div>
+
+    <!-- info -->
+    <div class="ml-[100px] mt-[60px]">
+
+      <div class="flex justify-between items-center mb-[44px] text-black">
+        <h2 class="inter font-bold text-[44px]">{{ isEditing ? 'Edit Profile' : 'Profile' }}</h2>
+
+        <button type="button" (click)="editUser()" [disabled]="isEditing && formularioUsuario.invalid" class="w-[190px] h-[40px] inter rounded-[100px]
+         text-white transition-colors duration-200 border border-[#5353EB]" [ngClass]="
+    isEditing
+      ? 'bg-[#FCACFD] hover:bg-[#F79AFB] text-[#5353EB]'
+      : 'bg-[#5353EB] hover:bg-[#3F3FD6]'
+  ">
+          {{ isEditing ? 'Save changes' : 'Edit Profile' }}
+        </button>
+      </div>
+
+
+      <form [formGroup]="formularioUsuario">
+
+        <div class="flex justify-between gap-[150px]">
+          <div>
+            <div class="flex flex-col">
+              <h3 class="font-bold text-[20px]">Account information</h3>
+
+              <label>Username</label>
+              <input type="text" formControlName="nombreUsuario" class="input-profile" [readonly]="!isEditing" />
+
+              <div *ngIf="isEditing && formularioUsuario.get('nombreUsuario')?.touched">
+                <div *ngIf="formularioUsuario.get('nombreUsuario')?.errors?.['required']"
+                  class="text-red-500 text-sm mt-1">
+                  Username is required.
+                </div>
+
+                <div *ngIf="formularioUsuario.get('nombreUsuario')?.errors?.['minlength']"
+                  class="text-red-500 text-sm mt-1">
+                  Username must be at least 3 characters.
+                </div>
+              </div>
+            </div>
+
+            <div class="flex justify-between gap-[100px] mt-[40px] items-center">
+
+              <div class="flex flex-col">
+                <h3 class="font-bold text-[20px] mb-[20px]">User information</h3>
+
+                <label for="nombreUsuario">First name </label>
+                <input type="text" id="nombreUsuario" formControlName="nombre" class="input-profile"
+                  [readonly]="!isEditing" />
+                <div
+                  *ngIf="isEditing && formularioUsuario.get('nombre')?.invalid && formularioUsuario.get('nombre')?.touched"
+                  class="text-red-500 text-sm mt-1">
+                  First name is required.
+                </div>
+
+                <label for="apellidoUsuario">Last name</label>
+                <input type="text" id="apellidoUsuario" formControlName="apellido" class="input-profile"
+                  [readonly]="!isEditing" />
+                <div
+                  *ngIf="isEditing && formularioUsuario.get('nombre')?.invalid && formularioUsuario.get('nombre')?.touched"
+                  class="text-red-500 text-sm mt-1">
+                  Last name is required.
+                </div>
+
+                <label for="telefonoUsuario">Phone</label>
+                <input type="tel" id="telefonoUsuario" formControlName="telefono" class="input-profile"
+                  [readonly]="!isEditing" />
+                <div
+                  *ngIf="isEditing && formularioUsuario.get('nombre')?.invalid && formularioUsuario.get('nombre')?.touched"
+                  class="text-red-500 text-sm mt-1">
+                  Phone is required.
+                </div>
+
+                <label>Email</label>
+                <input type="email" formControlName="email" class="input-profile" [readonly]="!isEditing" />
+
+                <div *ngIf="isEditing && formularioUsuario.get('email')?.touched">
+                  <div *ngIf="formularioUsuario.get('email')?.errors?.['required']" class="text-red-500 text-sm mt-1">
+                    Email is required.
+                  </div>
+
+                  <div *ngIf="formularioUsuario.get('email')?.errors?.['email']" class="text-red-500 text-sm mt-1">
+                    Please enter a valid email address.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div formGroupName="direccion" class="flex flex-col relative">
+            <h3 class="font-bold text-[20px] mb-[20px]">Address</h3>
+
+            <div class="flex flex-col">
+              <label for="calleUsuario">Street</label>
+              <input type="text" id="calleUsuario" formControlName="calle" class="input-profile"
+                [readonly]="!isEditing">
+            </div>
+
+            <div class="flex flex-col">
+              <label for="numeroUsuario">Street number</label>
+              <input type="number" id="numeroUsuario" formControlName="numero" class="input-profile"
+                [readonly]="!isEditing">
+            </div>
+
+
+
+            <label for="ciudadUsuario">City</label>
+            <input type="text" id="ciudadUsuario" formControlName="ciudad" class="input-profile"
+              [readonly]="!isEditing">
+
+            <label for="codigoPostalUsuario">Postal code</label>
+            <input type="text" id="codigoPostalUsuario" formControlName="codigoPostal" class="input-profile"
+              [readonly]="!isEditing">
+
+            <label for="paisUsuario">Country</label>
+            <input type="text" id="paisUsuario" formControlName="pais" class="input-profile" [readonly]="!isEditing">
+
+
+            <!-- cambiar contraseña -->
+
+            <div *ngIf="isEditing" class="absolute bottom-0 right-0">
+              <a class="text-[16px] text-[#5353EB] underline"
+                [routerLink]="['/cambiar-contrasenia' , usuario?.id]">Change password</a>
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+      </form>
+
+
     </div>
 
-    <fieldset class="informacion-perfil">
-      <ul class="lista-perfil">
-        <li class="detalle"><strong>Nombre de usuario:</strong> {{usuario.nombreUsuario}}</li>
-        <li class="detalle"><strong>Teléfono:</strong> {{usuario.telefono}}</li>
-        <li class="detalle"><strong>Email:</strong> {{usuario.email}}</li>
-        <li class="detalle"><strong>Dirección:</strong>
-          <ul class="direccion">
-            <li>{{usuario.direccion.calle}} {{usuario.direccion.numero}}</li>
-            <li>{{usuario.direccion.ciudad}}, {{usuario.direccion.pais}}</li>
-          </ul>
-        </li>
-      </ul>
-    </fieldset>
 
-    @if(adminId === null){
-      <div class="acciones">
-        <button class="boton-editar" type="button" (click)="mostrarEditar()">Editar Perfil</button>
-      </div>
+  </div>
 
-      <div *ngIf="abrirForm" class="formulario-editar">
-        <h3 class="titulo-editar">Editar Perfil</h3>
-        <app-editar-usuario [usuarioRecibido]="usuario"></app-editar-usuario>
-      </div>
-    }
-
-  </section>
-}
-
-</section>
+</div>

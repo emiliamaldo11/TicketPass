@@ -14,6 +14,7 @@ import QRCode from 'qrcode';
 import { Autenticacion } from '../../../services/autenticacion.service';
 import Swal from 'sweetalert2';
 import { PagoService } from '../../../services/pago.service';
+import { RecintoService } from '../../../services/recintos.service';
 
 declare var MercadoPago: any;
 
@@ -32,6 +33,7 @@ export class AddCompraComponent implements OnInit {
   compraCompletaJson ?: Compra
 
   userId : string | null = null
+  mapaImg : string | undefined = ''
 
   compra: Compra = {
     fechaDeCompra: new Date(),
@@ -55,6 +57,7 @@ export class AddCompraComponent implements OnInit {
   }
 
   evento?: Evento //levantamos el evento COMPLETO
+
   fechaSeleccionada: Fecha = {
     fecha : new Date(),
     hora : '',
@@ -75,6 +78,7 @@ export class AddCompraComponent implements OnInit {
   private compraService = inject(CompraService);
   private pagoService = inject(PagoService);
   private authService = inject(Autenticacion);
+  private recintoService = inject(RecintoService);
 
   preferencia: any = {};
   cantidad : number = 1
@@ -114,6 +118,11 @@ export class AddCompraComponent implements OnInit {
           this.compra.evento.nombreEvento = eventoEncontrado.nombreEvento
 
           this.evento = eventoEncontrado;
+
+          // mapa del recinto
+          this.recintoService.getRecintoById(eventoEncontrado.recinto_id).subscribe(recinto => {
+            this.mapaImg = recinto.urlMapaSectores;
+          })
 
           const fechaFiltrada = eventoEncontrado.fechas.find((fecha: Fecha) => {
             const formattedFechaParam = new Date(fechaParam! + "T00:00:00Z").toISOString().slice(0, 10);
