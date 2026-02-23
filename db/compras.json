@@ -9,6 +9,7 @@
       },
       "evento": {
         "nombreEvento": "Love on Tour",
+        "artista": "Harry Styles",
         "fechaEvento": "2024-12-03",
         "idEvento": 1
       },
@@ -33,6 +34,7 @@
       },
       "evento": {
         "nombreEvento": "Love on Tour",
+         "artista": "Harry Styles",
         "fechaEvento": "2024-12-03",
         "idEvento": 1
       },
@@ -59,6 +61,7 @@
       },
       "evento": {
         "nombreEvento": "The Clancy World Tour",
+         "artista": "Twenty One Pilots",
         "fechaEvento": "2024-01-30",
         "idEvento": 3
       },
@@ -86,6 +89,7 @@
       },
       "evento": {
         "nombreEvento": "Duki",
+         "artista": "Duki",
         "fechaEvento": "2024-12-22",
         "idEvento": 4
       },
@@ -112,6 +116,7 @@
       },
       "evento": {
         "nombreEvento": "Lady Gaga Show",
+         "artista": "Lady Gaga",
         "fechaEvento": "2025-09-22",
         "idEvento": 5
       },
@@ -139,6 +144,7 @@
       },
       "evento": {
         "nombreEvento": "Together Together",
+         "artista": "Harry Styles",
         "fechaEvento": "2024-12-03",
         "idEvento": 1
       },

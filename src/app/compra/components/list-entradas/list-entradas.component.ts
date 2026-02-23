@@ -47,40 +47,42 @@ export class ListEntradasComponent implements OnInit{
   bajaEntrada(compra: Compra){
     compra.alta = false;
 
-    if (compra.id)
+     if (compra.id)
     this.compraService.putCompra(compra.id, compra).subscribe({
       next: () => {
         Swal.fire({
-          title: "Entrada dada de baja",
+          title: "Ticket successfully refunded",
           confirmButtonColor: "#36173d",
           icon: 'success'
         });
       },
       error: (e: Error) => {
         Swal.fire({
-          title: "Error al dar de baja la entrada",
+          title: "Error refunding the ticket",
           confirmButtonColor: "#36173d",
           icon: 'error'
         });
       }
-  })
+    });
+
   }
 
   confirmarBajaEntrada(compra: Compra){
-    Swal.fire({
-      title: `¿Esta seguro que desea devolver su entrada para el evento "${compra.evento.nombreEvento}"?`,
-      text: 'Esta accion no se puede deshacer.',
-      showCancelButton: true,
-      confirmButtonText: "Dar de baja",
-      cancelButtonText: "Cancelar",
-      confirmButtonColor: "#36173d",
-      cancelButtonColor: "#ff4845b2",
-      icon: "warning"
-    }).then((result) => {
-      if (result.isConfirmed){
-        this.bajaEntrada(compra)
-      }
-    })
+   Swal.fire({
+    title: `Are you sure you want to refund your ticket for "${compra.evento.nombreEvento}"?`,
+    text: "This action cannot be undone.",
+    showCancelButton: true,
+    confirmButtonText: "Refund ticket",
+    cancelButtonText: "Cancel",
+    confirmButtonColor: "#36173d",
+    cancelButtonColor: "#ff4845b2",
+    icon: "warning"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.bajaEntrada(compra);
+    }
+  });
+
   }
 
 

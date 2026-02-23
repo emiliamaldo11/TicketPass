@@ -10,6 +10,7 @@ export interface Compra {
   evento: {
     idEvento?: string,
     nombreEvento: string,
+    artista: string,
     fechaEvento: Date | null
   },
   entrada: {

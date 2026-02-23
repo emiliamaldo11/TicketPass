@@ -14,7 +14,6 @@
   min-height:110vh;
   padding: 0 10px;
   color:white;
-  background:url('/img/audiencia-background.jpg');
   background-position:center;
   background-size: auto;
 }
@@ -99,7 +98,7 @@
 
 
 
-button {
+/* button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,9 +112,9 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-}
+} */
 
-button:hover {
+/* button:hover {
   background-color: #ff48459f;
   color: #36173d;
   transform: translateY(-5px);
@@ -125,7 +124,7 @@ button:hover {
   display: flex;
   justify-content: end;
   align-items: center;
-}
+} */
 
 .mensaje {
   margin: 1rem;

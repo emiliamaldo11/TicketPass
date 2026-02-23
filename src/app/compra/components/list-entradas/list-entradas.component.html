@@ -1,26 +1,46 @@
-<section class="fondo">
-  <section class="compras-section">
+<section class="flex flex-col items-center">
+  <h2 class="inter text-[44px] mt-[70px] mb-[40px]">My tickets</h2>
+
+  <div class="bg-[#F2F2F2] px-[15px] py-[30px] rounded-[6px]">
     @if(listaCompras.length ==0){
-      <div class="vacio"><strong>Todavia no tenes entradas...</strong></div>
+    <div class="vacio"><strong>You don't have tickets.</strong></div>
     }
-    <ul class="compras-list">
+    <ul class="compras-list flex flex-col gap-6">
+
       @for (compra of listaCompras; track $index) {
-        @if(compra.cliente.idCliente == idUsuario && compra.alta) {
-          <li class="compra-item">
-            <div class="compra-content">
-              <h3 class="evento-nombre">Entrada para: {{compra.evento.nombreEvento}}</h3>
-              <p class="evento-fecha">Fecha del evento: {{compra.evento.fechaEvento}}</p>
-              <button class="detalle-boton" type="button" [routerLink]="['/ver-detalle-entradas', compra.id]">
-                Ver Detalle
-              </button>
-              <button class="detalle-boton" type="button" (click)="confirmarBajaEntrada(compra)">
-                Devolver entrada
-              </button>
+      @if(compra.cliente.idCliente == idUsuario && compra.alta) {
+      <li class="compra-item">
+        <div
+          class="compra-content pr-[10px] flex items-center justify-between w-[600px] h-[100px] bg-[#FAFAFA] gap-[21px]">
+
+          <div class="flex items-center">
+            <!-- banner depsues -->
+            <img [src]='compra.qrEntrada' class="w-[100px] h-[100px] object-cover " alt="">
+
+            <div class="flex flex-col pl-[10px]">
+              <h3 class="evento-nombre">{{compra.evento.artista}}</h3>
+              <h3 class="evento-nombre">{{compra.evento.nombreEvento}}</h3>
             </div>
-          </li>
-        }
+
+          </div>
+
+          <div class="flex flex-col items-end">
+            <button
+              class="detalle-boton w-[180px] h-[40px] text-white bg-[#5353EB] hover:bg-[#3F3FD6] transition-colors duration-200 rounded-[100px]"
+              type="button" [routerLink]="['/ver-detalle-entradas', compra.id]">
+              Ticket info
+            </button>
+            <a class="detalle-boton underline cursor-pointer text-[#AAAAAA] text-[12px] hover:text-[#505050] mt-2 mr-[10px]"
+              type="button" (click)="confirmarBajaEntrada(compra)">
+              Refound ticket
+            </a>
+          </div>
+
+        </div>
+      </li>
+      }
       }
     </ul>
-  </section>
-</section>
 
+  </div>
+</section>
