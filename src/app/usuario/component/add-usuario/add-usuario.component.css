@@ -166,3 +166,8 @@ input::placeholder{
   transform: translateY(-50%);
   cursor: pointer;
 } */
+
+input {
+  color: black;
+  padding-left: 8px;
+}

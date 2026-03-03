@@ -1,7 +1,7 @@
-<section class="flex min-h-screen overflow-hidden">
+<section class="flex min-h-screen overflow-hidden bg-[#1E1D1B]">
 
   <!-- info account -->
-  <div class="wrapper w-full md:w-1/2 min-h-screen flex items-center justify-center">
+  <div class="wrapper w-full md:w-1/2 min-h-screen flex items-center justify-center text-white">
     <form [formGroup]="formularioUsuario" (ngSubmit)="addUsuario()">
       <div *ngIf="!usuarioRecibido">
         <h2 class="inter font-bold text-[32px] mb-[44px]">Sign Up</h2>
@@ -65,13 +65,13 @@
 
         </div>
 
-        <button type="button" (click)="nextStep()" class="mt-[44px] w-full h-[40px] inter rounded-[100px] bg-[#5353EB] text-white hover:bg-[#3F3FD6]
+        <button type="button" (click)="nextStep()" class="mt-[44px] w-full h-[40px] inter rounded-[100px] bg-[#631BE9] text-white hover:bg-[#551BC1]
         transition-colors duration-200
         disabled:cursor-not-allowed">Next</button>
 
         <div class="sign_in inter flex gap-[4px] text-[12px] mt-[16px]">
           <div class="text-[#8E8E8E]">Already have an account?</div>
-          <a routerLink="/iniciar-sesion" class="underline text-[#5353EB]">Sign in</a>
+          <a routerLink="/iniciar-sesion" class="underline text-[#631BE9]">Sign in</a>
         </div>
 
 
@@ -156,7 +156,7 @@
           </div>
           }
         </div>
-        <button type="button" (click)="nextStep()" class="mt-[44px] w-full h-[40px] inter rounded-[100px] bg-[#5353EB] text-white hover:bg-[#3F3FD6]
+        <button type="button" (click)="nextStep()" class="mt-[44px] w-full h-[40px] inter rounded-[100px] bg-[#631BE9] text-white hover:bg-[#551BC1]
         transition-colors duration-200
         disabled:cursor-not-allowed">Next</button>
 
@@ -238,7 +238,7 @@
           }
         </div>
 
-        <button type="submit" class="mt-[44px] w-full h-[40px] inter rounded-[100px] bg-[#5353EB] text-white hover:bg-[#3F3FD6]
+        <button type="submit" class="mt-[44px] w-full h-[40px] inter rounded-[100px] bg-[#631BE9] text-white hover:bg-[#551BC1]
         transition-colors duration-200
         disabled:cursor-not-allowed">Sign up</button>
 
@@ -251,14 +251,14 @@
 
   <!-- img -->
   <div class="foto w-1/2 bg-cover bg-center hidden md:block rounded-l-[80px] overflow-hidden relative"
-    style="background-image: url(/img/banner-tp.png);">
+    style="background-image: url(/img/banner-tp-2.jpg);">
 
-    <div class="absolute top-1/2 -translate-y-1/2 right-12 z-10">
-      <h2 class="inter text-end text-white text-[64px] leading-none font-bold tracking-wide">
+    <div class="absolute top-1/2 -translate-y-1/2 right-12 z-10 text-[#1E1D1B]">
+      <h2 class="inter text-end  text-[64px] leading-none font-bold tracking-wide">
         Create
       </h2>
-      <h3 class="inter text-white text-[64px] leading-none">an account</h3>
-      <div class="inter text-white text-end text-[16px] ml-[16px] mt-[16px]">Don’t miss the next big show</div>
+      <h3 class="inter  text-[64px] leading-none">an account</h3>
+      <div class="inter  text-end text-[16px] ml-[16px] mt-[16px]">Don’t miss the next big show</div>
     </div>
 
   </div>

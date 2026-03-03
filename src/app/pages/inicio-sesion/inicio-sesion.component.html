@@ -1,12 +1,12 @@
-<section class="flex min-h-screen">
+<section class="flex min-h-screen text-white bg-[#1E1D1B]">
 
-  <div class="w-1/2 hidden md:block min-h-screen bg-cover bg-center h-full relative bg-[#E1F44B] rounded-r-[80px]" style="background-image: url(/img/banner-tp.png);">
+  <div class="w-1/2 hidden md:block min-h-screen bg-cover bg-center h-full relative rounded-r-[80px]" style="background-image: url(/img/banner-tp-2.jpg);">
     <div class="absolute top-1/2 -translate-y-1/2 left-12 z-10">
-      <h2 class="inter text-white text-[64px] leading-none font-bold tracking-wide">
+      <h2 class="inter text-[#1E1D1B] text-[64px] leading-none font-bold tracking-wide">
         Welcome to
       </h2>
-      <h3 class="inter text-white text-[64px] leading-none">Ticketpass</h3>
-      <div class="inter text-white text-[16px] ml-[16px] mt-[16px]">Login to access your account</div>
+      <h3 class="inter text-[#1E1D1B] text-[64px] leading-none">Ticketpass</h3>
+      <div class="inter text-[#1E1D1B] text-[16px] ml-[16px] mt-[16px]">Login to access your account</div>
     </div>
 
   </div>
@@ -29,7 +29,7 @@
         <div class="input-field flex flex-col ">
           <label for="usuarioForm" class="inter text-[16px]">User</label>
           <input type="text" id="usuarioForm" name="usuarioForm" ngModel required class=" w-[300px] h-[35px] border border-[#6B7280]
-          rounded-[8px] ">
+          rounded-[8px] text-black pl-2 ">
 
           <div class="divAvisos"
             *ngIf="formInicioSesion.controls['usuarioForm']?.invalid && formInicioSesion.controls['usuarioForm']?.touched">
@@ -43,7 +43,7 @@
           <div class="flex gap-2 items-center">
             <input [type]="showPassword ? 'text' : 'password'" id="contraseniaForm" name="contraseniaForm" ngModel
               required class=" w-[300px] h-[35px] border border-[#6B7280]
-          rounded-[8px] ">
+          rounded-[8px] text-black pl-2 ">
             <fa-icon [icon]="showPassword ? faEyeSlash : faEye" (click)="showPassword = !showPassword"
               class="password"></fa-icon>
           </div>
@@ -68,13 +68,13 @@
       </div>
 
       <!-- button login -->
-      <button type="submit" [disabled]="formInicioSesion.invalid" class="w-full h-[40px] inter rounded-[100px] bg-[#5353EB] text-white hover:bg-[#3F3FD6]
+      <button type="submit" [disabled]="formInicioSesion.invalid" class="w-full h-[40px] inter rounded-[100px] bg-[#631BE9] text-white hover:bg-[#551BC1]
     transition-colors duration-200
     disabled:cursor-not-allowed">Login</button>
 
       <div class="registro flex gap-[4px] inter text-[12px] mt-[16px]">
         <div class="text-[#8E8E8E]">New user?</div>
-        <a routerLink="/registrarse" class="text-[#5353EB] underline ">Sign up</a>
+        <a routerLink="/registrarse" class="text-[#631BE9] underline ">Sign up</a>
       </div>
 
 

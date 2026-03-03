@@ -51,7 +51,7 @@
         class="detalle-item w-full h-[83px] border border-#D9D9D9 flex ">
 
         <!-- fecha -->
-        <div class="w-[115px] h-full shrink-0 bg-[#5353EB] border border-[#5353EB] flex justify-center items-center">
+        <div class="w-[115px] h-full shrink-0 bg-[#631BE9] border border-[#631BE9] flex justify-center items-center">
           <p class="w-[43px] fecha-evento text-white leading-none tracking-wide text-[26px] text-center">
             {{ fecha.fecha | date:'dd MMM' }}
           </p>
@@ -73,7 +73,7 @@
          disabled:cursor-not-allowed
          disabled:bg-gray-400
          disabled:text-gray-700
-         bg-[#5353EB] hover:bg-[#3F3FD6]" [disabled]="fecha.disponibilidadTotal == 0 || fecha.habilitado == 0"
+         bg-[#631BE9] hover:bg-[#551BC1]" [disabled]="fecha.disponibilidadTotal == 0 || fecha.habilitado == 0"
             [routerLink]="fecha.disponibilidadTotal > 0 ? ['/fila', eventoSeleccionado?.id, fecha.fecha] : null">
             {{ fecha.disponibilidadTotal == 0 ? 'Sold out' : 'Buy tickets' }}
           </button>
@@ -85,7 +85,7 @@
         <div *ngIf="tipo == 1 && eventoSeleccionado?.alta === 1"
           class="acciones-evento flex w-full h-full flex justify-end items-center pr-[30px] ">
           <button class="boton-accion w-[180px] h-[40px] rounded-[100px] text-white transition-colors duration-200
-         bg-[#5353EB] hover:bg-[#3F3FD6]" (click)="confirmarFila(fecha)">
+         bg-[#631BE9] hover:bg-[#551BC1]" (click)="confirmarFila(fecha)">
             {{ fecha.habilitado === 1 ? 'Disable Queue' : 'Enable Queue' }}
           </button>
         </div>
