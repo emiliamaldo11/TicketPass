@@ -3,23 +3,18 @@
   <div class="wrapper flex flex-col justify-center relative">
 
   <div
-  class="flex gap-[10px] bg-[#FCACFD]
+  class="flex gap-[10px] bg-[#FAFAFA]
          w-[630px] h-[40px] items-center
          rounded-[100px] pl-[18px]
-         border border-[#6B7280]/40
-         shadow-[0_4px_16px_rgba(0,0,0,0.15)]
-         hover:shadow-[0_6px_22px_rgba(0,0,0,0.22)]
-         focus-within:border-[#631BE9]
-         focus-within:shadow-[0_0_0_3px_rgba(83,83,235,0.25)]
-         transition-all duration-200">
+         ">
 
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-        class="size-6 text-[#631BE9]">
+        class="size-6 text-[#1E1D1B]">
         <path stroke-linecap="round" stroke-linejoin="round"
           d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
       </svg>
       <input type="text" name="input-busqueda" [(ngModel)]="busqueda" (input)="filtrarEventos()"
-        placeholder="Search events" class="w-[500px] bg-[#FCACFD] outline-none focus:outline-none focus:ring-0 text-[#631BE9] placeholder:text-[#631BE9] " />
+        placeholder="Search events" class="w-[500px] bg-[#FAFAFA] outline-none focus:outline-none focus:ring-0 text-[#1E1D1B] placeholder:text-[#1E1D1B] " />
     </div>
 
 
@@ -27,7 +22,7 @@
              rounded-[10px] shadow-lg z-50 overflow-y-auto ">
       <ul class="flex flex-col">
         <li *ngFor="let evento of resultados" (click)="redirigir(evento.id)"
-          class="flex justify-between items-center px-[18px] py-[10px] hover:bg-[#E1F44B] hover:text-[#631BE9] transition-colors duration-200">
+          class="flex justify-between items-center px-[18px] py-[10px] hover:bg-[#EDFF4A] hover:text-[#1E1D1B] transition-colors duration-200">
           <div class="divInfo text-black cursor-pointer">
             {{ evento.nombreEvento }} - {{ evento.artista_banda }}
           </div>
@@ -42,7 +37,7 @@
     </div>
 
     <div *ngIf="mostrarResultados && resultados.length === 0" class="busqueda">
-      <div class="text-black">Event not found.</div>
+      <div class="text-[#FAFAFA] pl-2">Event not found.</div>
     </div>
 
 
