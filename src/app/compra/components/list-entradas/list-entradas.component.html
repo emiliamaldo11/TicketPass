@@ -1,46 +1,65 @@
-<section class="flex flex-col items-center">
-  <h2 class="inter text-[44px] mt-[70px] mb-[40px]">My tickets</h2>
+<section class="flex flex-col bg-[#1E1D1B] min-h-screen">
 
-  <div class="bg-[#F2F2F2] px-[15px] py-[30px] rounded-[6px]">
+  <h2 class="inter text-[32px] mt-[40px] mb-[40px] ml-[70px] text-white">My tickets</h2>
+
+  <div class="bg-[#E5D2FF] px-[15px] py-[30px] rounded-[8px] mx-[30px] flex flex-col items-center">
     @if(listaCompras.length ==0){
     <div class="vacio"><strong>You don't have tickets.</strong></div>
     }
-    <ul class="compras-list flex flex-col gap-6">
 
-      @for (compra of listaCompras; track $index) {
-      @if(compra.cliente.idCliente == idUsuario && compra.alta) {
-      <li class="compra-item">
-        <div
-          class="compra-content pr-[10px] flex items-center justify-between w-[600px] h-[100px] bg-[#FAFAFA] gap-[21px]">
+    <div class="relative w-full max-w-[840px] overflow-hidden mx-auto">
 
-          <div class="flex items-center">
-            <!-- banner depsues -->
-            <img [src]='compra.qrEntrada' class="w-[100px] h-[100px] object-cover " alt="">
+  <ul
+    class="flex transition-transform duration-500 ease-in-out"
+    [style.transform]="'translateX(-' + (paginaActual * 100) + '%)'">
 
-            <div class="flex flex-col pl-[10px]">
-              <h3 class="evento-nombre">{{compra.evento.artista}}</h3>
-              <h3 class="evento-nombre">{{compra.evento.nombreEvento}}</h3>
-            </div>
+    @for (compra of listaCompras; track compra.id) {
+      <li class="w-1/2 flex-shrink-0 flex justify-center p-2">
 
+        <div class="compra-content flex flex-col w-full max-w-[400px] bg-[#FAFAFA] rounded-[32px] border border-[#1E1D1B] p-4">
+          <img [src]='compra.evento.banner' class="w-full h-[150px] object-cover rounded-lg" alt="Banner">
+
+          <div class="flex flex-col items-center mt-4">
+            <h3 class="font-bold text-[24px] text-center">{{compra.evento.artista}}</h3>
+            <p class="font-light text-[18px] text-center">{{compra.evento.nombreEvento}}</p>
           </div>
 
-          <div class="flex flex-col items-end">
-            <button
-              class="detalle-boton w-[180px] h-[40px] text-white bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 rounded-[100px]"
-              type="button" [routerLink]="['/ver-detalle-entradas', compra.id]">
+          <div class="flex flex-col mt-6 items-center">
+            <button class="w-[180px] h-[40px] text-white bg-[#631BE9] rounded-[100px] hover:bg-[#551BC1] transition-colors duration-200" [routerLink]="['/ver-detalle-entradas', compra.id]">
               Ticket info
             </button>
-            <a class="detalle-boton underline cursor-pointer text-[#AAAAAA] text-[12px] hover:text-[#505050] mt-2 mr-[10px]"
-              type="button" (click)="confirmarBajaEntrada(compra)">
-              Refound ticket
+            <a class="underline cursor-pointer text-[#AAAAAA] text-[12px] mt-4 self-end" (click)="confirmarBajaEntrada(compra)">
+              Refund ticket
             </a>
           </div>
 
+          <hr class="border-t border-dashed border-gray-400 my-4 w-full">
+
+          <div class="flex justify-center">
+            <img [src]="compra.qrEntrada" alt="Qr" class="w-32 h-32">
+          </div>
         </div>
+
       </li>
-      }
-      }
-    </ul>
+    }
+  </ul>
+
+  <button (click)="anterior()" [disabled]="paginaActual === 0"
+    class="absolute left-0 top-1/2 -translate-y-1/2 bg-[#631BE9] text-white p-3 rounded-full shadow-lg hover:bg-[#551BC1] disabled:opacity-20 transition-all">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+    </svg>
+  </button>
+
+  <button (click)="siguiente()" [disabled]="paginaActual >= maxPagina"
+    class="absolute right-0 top-1/2 -translate-y-1/2 bg-[#631BE9] text-white p-3 rounded-full shadow-lg hover:bg-[#551BC1] disabled:opacity-20 transition-all">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+    </svg>
+  </button>
+</div>
+
+
 
   </div>
 </section>

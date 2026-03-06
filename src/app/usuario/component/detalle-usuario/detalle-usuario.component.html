@@ -1,10 +1,10 @@
 <div class="flex w-full h-screen">
   <!-- img fondo con nombre -->
   <div class="relative">
-    <img src="/img/banner-tp.png" alt="imagen fondo" class=" w-[374px] h-full object-cover">
+    <img src="/img/banner-tp-2.jpg" alt="imagen fondo" class=" w-[374px] h-full object-cover">
     <div class="absolute z-20 top-8 ml-[44px]">
       <h2 class="inter text-[30px]">Hi, </h2>
-      <h3 class="inter text-[30px]">Welcome, <b> {{usuario?.nombre}} </b> </h3>
+      <h3 class="inter text-[30px]">Welcome <b> {{usuario?.nombre}} </b> </h3>
     </div>
   </div>
 
@@ -19,9 +19,9 @@
         <h2 class="inter font-bold text-[44px]">{{ isEditing ? 'Edit Profile' : 'Profile' }}</h2>
 
         <button type="button" (click)="editUser()" [disabled]="isEditing && formularioUsuario.invalid" class="w-[190px] h-[40px] inter rounded-[100px]
-         text-white transition-colors duration-200 border border-[#631BE9]" [ngClass]="
+         text-white transition-colors duration-200" [ngClass]="
     isEditing
-      ? 'bg-[#FCACFD] hover:bg-[#F79AFB] text-[#631BE9]'
+      ? 'bg-[#21C183] hover:bg-[#19A46E] text-[#1E1D1B]'
       : 'bg-[#631BE9] hover:bg-[#551BC1]'
   ">
           {{ isEditing ? 'Save changes' : 'Edit Profile' }}

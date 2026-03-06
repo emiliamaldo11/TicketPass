@@ -44,7 +44,8 @@ export class AddCompraComponent implements OnInit {
     evento: {
       nombreEvento: '',
       artista: '',
-      fechaEvento: new Date()
+      fechaEvento: new Date(),
+      banner: ''
     },
     entrada: {
       sector: '',
@@ -118,6 +119,7 @@ export class AddCompraComponent implements OnInit {
           this.compra.evento.idEvento = eventoEncontrado.id
           this.compra.evento.nombreEvento = eventoEncontrado.nombreEvento
           this.compra.evento.artista = eventoEncontrado.nombreEvento
+          this.compra.evento.banner = eventoEncontrado.UrlBanner
 
           this.evento = eventoEncontrado;
 

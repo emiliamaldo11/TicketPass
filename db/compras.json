@@ -11,6 +11,7 @@
         "nombreEvento": "Love on Tour",
         "artista": "Harry Styles",
         "fechaEvento": "2024-12-03",
+        "banner": "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/Harry-Styles-Together-Together-Tour-Tickets-MAIN.jpg?w=1296" ,
         "idEvento": 1
       },
       "entrada": {
@@ -36,6 +37,7 @@
         "nombreEvento": "Love on Tour",
          "artista": "Harry Styles",
         "fechaEvento": "2024-12-03",
+        "banner": "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/Harry-Styles-Together-Together-Tour-Tickets-MAIN.jpg?w=1296",
         "idEvento": 1
       },
       "entrada": {
@@ -63,6 +65,7 @@
         "nombreEvento": "The Clancy World Tour",
          "artista": "Twenty One Pilots",
         "fechaEvento": "2024-01-30",
+        "banner" : "https://arepavolatil.com/wp-content/uploads/2024/03/Twenty-One-Pilots-tour-mundial.jpg",
         "idEvento": 3
       },
       "entrada": {
@@ -91,6 +94,7 @@
         "nombreEvento": "Duki",
          "artista": "Duki",
         "fechaEvento": "2024-12-22",
+        "banner" : "https://cdn.getcrowder.com/images/0a1ca76f-429f-4187-b934-7fae8263db27-1920x720-1.jpg",
         "idEvento": 4
       },
       "entrada": {
@@ -118,6 +122,7 @@
         "nombreEvento": "Lady Gaga Show",
          "artista": "Lady Gaga",
         "fechaEvento": "2025-09-22",
+        "banner": "https://i.redd.it/0i4jzuz4xnu31.png",
         "idEvento": 5
       },
       "entrada": {
@@ -146,6 +151,7 @@
         "nombreEvento": "Together Together",
          "artista": "Harry Styles",
         "fechaEvento": "2024-12-03",
+        "banner" : "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/Harry-Styles-Together-Together-Tour-Tickets-MAIN.jpg?w=1296",
         "idEvento": 1
       },
       "entrada": {

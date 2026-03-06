@@ -11,7 +11,8 @@ export interface Compra {
     idEvento?: string,
     nombreEvento: string,
     artista: string,
-    fechaEvento: Date | null
+    fechaEvento: Date | null,
+    banner: string 
   },
   entrada: {
     sector: string,
