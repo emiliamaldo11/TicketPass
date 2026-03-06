@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 10px;
-  background-color: #36173d77;
+  background-color: #631BE977;
   border-radius:8px;
   width:100%;
   border-top: none;
@@ -33,7 +33,7 @@
 
 .subtitulo-compra {
   font-size: 25px;
-  color: #36173d;
+  color: #631BE9;
   margin-bottom: 20px;
 }
 
@@ -57,7 +57,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
-  color: #36173d;
+  color: #631BE9;
   transition: all 0.3s ease;
 
 }
@@ -74,18 +74,18 @@
 
 .label-sector {
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
 }
 
 .precio-sector {
   font-size: 16px;
-  color: #36173d;
+  color: #631BE9;
   font-weight: 500;
 }
 
 .titulo-cantidad {
   font-size: 18px;
-  color: #36173d;
+  color: #631BE9;
   margin-top: 20px;
   margin-bottom: 10px;
 }
@@ -104,22 +104,22 @@
 
 .select-cantidad:focus {
   outline: none;
-  border-color: #36173d;
+  border-color: #631BE9;
 }
 .select-cantidad:hover {
   outline: none;
-  border-color: #36173d;
+  border-color: #631BE9;
 }
 
 .detalle-compra {
   font-size: 18px;
-  color: #36173d;
+  color: #631BE9;
   margin-top: 20px;
   font-weight: bold;
 }
 
 .detalle-texto {
-  color: #36173d;
+  color: #631BE9;
 }
 
 .boton-comprar {
@@ -127,7 +127,7 @@
   font-size: 18px;
   font-weight: bold;
   color: #fff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -137,7 +137,7 @@
 
 .boton-comprar:hover {
   background-color: #ff48459f;
-  color: #36173d;
+  color: #631BE9;
   transform: translateY(-5px);
 }
 
@@ -161,10 +161,10 @@
 
 button:disabled{
   color: #fff;
-  background-color: #36173d72;
+  background-color: #631BE972;
 }
 
 button:disabled:hover{
   color: #fff;
-  background-color: #36173d72;
+  background-color: #631BE972;
 } */

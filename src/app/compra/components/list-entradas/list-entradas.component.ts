@@ -24,10 +24,10 @@ export class ListEntradasComponent implements OnInit {
   ngOnInit(): void {
     this.authService.userId.subscribe((id) => {
       this.idUsuario = id;
-      console.log('ID Usuario obtenido en compra:', this.idUsuario);
+      if (this.idUsuario) {
+        this.listarCompras();
+      }
     });
-
-    this.listarCompras();
   }
 
   listarCompras() {
@@ -52,14 +52,14 @@ export class ListEntradasComponent implements OnInit {
         next: () => {
           Swal.fire({
             title: "Ticket successfully refunded",
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: 'success'
           });
         },
         error: (e: Error) => {
           Swal.fire({
             title: "Error refunding the ticket",
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: 'error'
           });
         }
@@ -74,7 +74,7 @@ export class ListEntradasComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: "Refund ticket",
       cancelButtonText: "Cancel",
-      confirmButtonColor: "#36173d",
+      confirmButtonColor: "#631BE9",
       cancelButtonColor: "#ff4845b2",
       icon: "warning"
     }).then((result) => {
@@ -87,25 +87,27 @@ export class ListEntradasComponent implements OnInit {
 
   paginaActual = 0;
 
-get totalTickets() {
-  return this.listaCompras.filter(c => c.cliente.idCliente == this.idUsuario && c.alta).length;
-}
-
-get maxPagina() {
-  return Math.ceil(this.totalTickets / 2) - 1;
-}
-
-siguiente() {
-  if (this.paginaActual < this.maxPagina) {
-    this.paginaActual++;
+  get entradasVisibles() {
+    // Muestra de a 2 entradas según la página actual
+    const inicio = this.paginaActual * 2;
+    return this.listaCompras.slice(inicio, inicio + 2);
   }
-}
 
-anterior() {
-  if (this.paginaActual > 0) {
-    this.paginaActual--;
+  get maxPagina() {
+    return Math.ceil(this.listaCompras.length / 2) - 1;
   }
-}
+
+  siguiente() {
+    if (this.paginaActual < this.maxPagina) {
+      this.paginaActual++;
+    }
+  }
+
+  anterior() {
+    if (this.paginaActual > 0) {
+      this.paginaActual--;
+    }
+  }
 
 
 }

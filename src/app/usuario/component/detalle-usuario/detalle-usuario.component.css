@@ -24,14 +24,14 @@
 .titulo-perfil {
   font-size: 30px;
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
   margin-bottom: 5px;
   text-transform: capitalize;
 }
 
 .subtitulo-perfil {
   font-size: 16px;
-  color: #36173d;
+  color: #631BE9;
 }
 
 
@@ -76,7 +76,7 @@
   font-size: 14px;
   font-weight: lighter;
   color: #fff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -85,7 +85,7 @@
 
 .boton-editar:hover {
   background-color:  #ff48459f ;
-  color: #36173d;
+  color: #631BE9;
   transform: translateY(-5px);
 }
 
@@ -102,12 +102,12 @@
 .titulo-editar {
   font-size: 20px;
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
   margin-bottom: 15px;
 }
 
 strong {
-  color: #36173d;
+  color: #631BE9;
 }
 
 .fondo{

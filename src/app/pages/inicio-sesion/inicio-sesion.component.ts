@@ -95,7 +95,7 @@ export class InicioSesionComponent implements OnInit{
     else if (nameUser) {
       Swal.fire({
         title: 'Incorrect password',
-        html: `Forgot your password? <a href="/cambiar-contrasenia/${nameUser.id}" style="color: #36173d;">Click here</a>`,
+        html: `Forgot your password? <a href="/cambiar-contrasenia/${nameUser.id}" style="color: #631BE9;">Click here</a>`,
         confirmButtonColor: "#7C3AED",
         icon: "warning",
       });

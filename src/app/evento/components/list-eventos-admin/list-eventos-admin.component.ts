@@ -59,7 +59,7 @@ export class ListEventosAdminComponent {
         Swal.fire({
           title: `Evento ${accion} correctamente`,
           text: `El evento esta ${accion === 'deshabilitado' ? 'oculto' : 'visible'} para los clientes`,
-          confirmButtonColor: "#36173d",
+          confirmButtonColor: "#631BE9",
           icon: "success"
         });
       },
@@ -67,7 +67,7 @@ export class ListEventosAdminComponent {
         console.log(e.message);
         Swal.fire({
           title: `Error al ${accion === 'habilitado' ? 'habilitar' : 'deshabilitar'} el evento`,
-          confirmButtonColor: "#36173d",
+          confirmButtonColor: "#631BE9",
           icon: "error"
         })
       }
@@ -84,7 +84,7 @@ export class ListEventosAdminComponent {
       text: `Esta acción hará que el evento esté ${accion === 'deshabilitar' ? 'oculto' : 'visible'} para los clientes.`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#36173d',
+      confirmButtonColor: '#631BE9',
       cancelButtonColor: "#ff4845",
       confirmButtonText: `Si, ${accion}`,
       cancelButtonText: 'Cancelar'

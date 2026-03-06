@@ -24,7 +24,7 @@
 .detalle-evento-titulo {
   font-size: 30px;
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
   margin-bottom: 5px;
   text-transform: capitalize;
 }
@@ -32,7 +32,7 @@
 
 .subtitulo-evento {
   font-size: 16px;
-  color: #36173d;
+  color: #631BE9;
 }
 
 
@@ -58,13 +58,13 @@
 .fecha-evento {
 
   font-size: 16px;
-  color: #36173d;
+  color: #631BE9;
   margin-left:0;
 }
 
 .hora-evento {
   font-size: 16px;
-  color: #36173d;
+  color: #631BE9;
   margin-top: 1%;
   margin-left:0;
 }
@@ -82,7 +82,7 @@
   font-size: 14px;
   font-weight: lighter;
   color: #fff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -92,7 +92,7 @@
 .boton-accion:hover {
   background-color: #ff48459f;
   transform: translateY(-5px);
-  color: #36173d;
+  color: #631BE9;
 }
 
 .boton-accion:active {
@@ -101,12 +101,12 @@
 
 button:disabled{
   color: #fff;
-  background-color: #36173d72;
+  background-color: #631BE972;
 }
 
 button:disabled:hover{
   color: #fff;
-  background-color: #36173d72;
+  background-color: #631BE972;
 }
 
 .sold-out {

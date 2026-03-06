@@ -12,7 +12,7 @@
         <div class="flex gap-4">
           <input type="radio" id="sectorSeleccionado" name="sectorSeleccionado" [(ngModel)]="sectorSeleccionado"
             [value]="entrada.nombreSector" (change)="asignarSectorYPrecio(entrada)"
-            [disabled]="entrada.disponibles === 0" class="radio-sector accent-[#E1F44B] cursor-pointer" />
+            [disabled]="entrada.disponibles === 0" class="radio-sector accent-[#21C183] cursor-pointer" />
           <label for="sectorSeleccionado" class="label-sector">{{entrada.nombreSector}}</label>
         </div>
 
@@ -22,7 +22,7 @@
 
     <h3 class="titulo-cantidad mt-[60px]">Number of tickets</h3>
     <!--la cantidad max para comprar es 4, pero valida si hay menos-->
-    <select [(ngModel)]="compra.cantidad" (change)="actualizarTotalPrecio()" class="select-cantidad w-[62px] h-[30px] bg-[#FCACFD] border border-[#631BE9]">
+    <select [(ngModel)]="compra.cantidad" (change)="actualizarTotalPrecio()" class="select-cantidad w-[62px] h-[30px] bg-[#E5D2FF] ">
       <option value="" disabled selected>Seleccionar cantidad</option>
       <option value="1" *ngIf="asientosDisponibles >= 1">1</option>
       <option value="2" *ngIf="asientosDisponibles >= 2">2</option>

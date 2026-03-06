@@ -80,7 +80,7 @@ export class DetalleEventoComponent implements OnInit{
       next:()=>{
         Swal.fire({
           title: "Evento editado correctamente",
-          confirmButtonColor: "#36173d",
+          confirmButtonColor: "#631BE9",
           icon: "success"
         });
       },
@@ -88,7 +88,7 @@ export class DetalleEventoComponent implements OnInit{
         console.log(e.message);
         Swal.fire({
           title: "Error al editar el evento",
-          confirmButtonColor: "#36173d",
+          confirmButtonColor: "#631BE9",
           icon: "error"
         });
       }
@@ -105,7 +105,7 @@ export class DetalleEventoComponent implements OnInit{
               Swal.fire({
                 title: "Evento deshabilitado correctamente",
                 text: "El evento estara oculto para los clientes",
-                confirmButtonColor: "#36173d",
+                confirmButtonColor: "#631BE9",
                 icon: "success"
               }).then(() => {
                 window.location.reload();
@@ -115,7 +115,7 @@ export class DetalleEventoComponent implements OnInit{
               console.log(e.message);
               Swal.fire({
                 title: "Error al deshabilitar el evento",
-                confirmButtonColor: "#36173d",
+                confirmButtonColor: "#631BE9",
                 icon: "error"
               })
             }
@@ -128,7 +128,7 @@ export class DetalleEventoComponent implements OnInit{
                 Swal.fire({
                   title: "Evento habilitado correctamente",
                   text: "El evento esta visible para los clientes.",
-                  confirmButtonColor: "#36173d",
+                  confirmButtonColor: "#631BE9",
                   icon: "success"
                 }).then(() => {
                   window.location.reload();
@@ -138,7 +138,7 @@ export class DetalleEventoComponent implements OnInit{
                 console.log(e.message);
                 Swal.fire({
                   title: "Error al deshabilitar el evento",
-                  confirmButtonColor: "#36173d",
+                  confirmButtonColor: "#631BE9",
                   icon: "error"
                 })
               }
@@ -163,7 +163,7 @@ export class DetalleEventoComponent implements OnInit{
           Swal.fire({
             title: `Fila ${accion} correctamente`,
             text: `La fila ahora está ${accion === 'habilitada' ? 'visible' : 'oculta'} para los clientes.`,
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "success"
           }).then(() => {
             window.location.reload();
@@ -173,7 +173,7 @@ export class DetalleEventoComponent implements OnInit{
           console.log(e.message);
           Swal.fire({
             title: `Error al ${accion === 'habilitada' ? 'habilitar' : 'deshabilitar'} la fila`,
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "error"
           })
         }
@@ -191,7 +191,7 @@ export class DetalleEventoComponent implements OnInit{
       text: `Esta acción hará que el evento esté ${accion === 'deshabilitar' ? 'oculto' : 'visible'} para los clientes.`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#36173d',
+      confirmButtonColor: '#631BE9',
       cancelButtonColor: "#ff4845",
       confirmButtonText: `Si, ${accion}`,
       cancelButtonText: 'Cancelar'
@@ -212,7 +212,7 @@ export class DetalleEventoComponent implements OnInit{
         text: `Esta acción hará que la fila esté ${accion === 'deshabilitar' ? 'oculto' : 'visible'} para los clientes.`,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#36173d',
+        confirmButtonColor: '#631BE9',
         cancelButtonColor: "#ff4845",
         confirmButtonText: `Si, ${accion}`,
         cancelButtonText: 'Cancelar'

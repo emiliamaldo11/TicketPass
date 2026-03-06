@@ -29,7 +29,7 @@ export class AddPreguntaComponent {
       this.preguntasFrecuentesService.postPregunta(this.nuevaPregunta).subscribe(() => {
         Swal.fire({
                   title: 'Pregunta agregada correctamente',
-                  confirmButtonColor: "#36173d",
+                  confirmButtonColor: "#631BE9",
                   icon: "success",
                 }).then(() => {
                   this.router.navigate(['preguntas-frecuentes-administrador']);

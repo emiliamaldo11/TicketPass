@@ -44,7 +44,7 @@ export class ListRecintoComponent implements OnInit{
       next: () => {
         Swal.fire({
           title: `Recinto ${accion} correctamente`,
-          confirmButtonColor: "#36173d",
+          confirmButtonColor: "#631BE9",
           icon: "success"
         });
       },
@@ -52,7 +52,7 @@ export class ListRecintoComponent implements OnInit{
         console.log(e.message);
         Swal.fire({
           title: `Error al ${accion === 'habilitado' ? 'habilitar' : 'deshabilitar'} el recinto`,
-          confirmButtonColor: "#36173d",
+          confirmButtonColor: "#631BE9",
           icon: "error"
         });
       }
@@ -68,7 +68,7 @@ export class ListRecintoComponent implements OnInit{
       text: `Esta acción hará que el recinto ${accion === 'deshabilitar' ? 'no este disponible' : 'este disponible'} para la carga de eventos.`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#36173d',
+      confirmButtonColor: '#631BE9',
       cancelButtonColor: '#ff4845',
       confirmButtonText: `Sí, ${accion}`,
       cancelButtonText: 'Cancelar'

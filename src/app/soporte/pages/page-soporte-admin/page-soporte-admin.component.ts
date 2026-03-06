@@ -30,7 +30,7 @@ export class AdminPreguntasComponent implements OnInit {
       title: `¿Desea eliminar la pregunta?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#36173d',
+      confirmButtonColor: '#631BE9',
       cancelButtonColor: "#ff4845",
       confirmButtonText: `Si, eliminar`,
       cancelButtonText: 'Cancelar'

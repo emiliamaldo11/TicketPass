@@ -2,7 +2,8 @@
 
   <div class="contenedor-flex-vertical flex flex-col items-center mt-12">
 
-    <h2 class="titulo-fila inter regular text-[44px] mb-[40px] text-[#FAFAFA]">Welcome to the Queue, {{ usuario.nombre }}!</h2>
+    <h2 class="titulo-fila inter regular text-[44px] mb-[40px] text-[#FAFAFA]">Welcome to the Queue, {{ usuario.nombre
+      }}!</h2>
 
     <button type="button" class="boton-ingresar mb-[80px] w-[422px] h-[40px] rounded-[100px] text-white transition-colors duration-200
          disabled:cursor-not-allowed
@@ -13,10 +14,12 @@
 
 
     <ul class="lista-fila flex justify-center items-center mb-[20px]">
-      <li *ngFor="let cliente of fila" class="item-fila flex gap-[20px] flex-col">
+      <li *ngFor="let cliente of fila" class="item-fila items-center flex gap-[20px] flex-col">
         <p class="text-[24px] text-[#FAFAFA]">People ahead of you:</p>
-        <span class="flex turno bg-[#21C183] p-2 text-[#FAFAFA] rounded-[8px] font-bold text-center w-[100px] h-[50px]">{{
-          cliente.turno }}</span>
+        <span
+          class="flex justify-center items-center turno bg-[#21C183] p-2 text-[#FAFAFA] rounded-[8px] font-bold text-center w-[100px] h-[50px]">
+          {{ cliente.turno }}
+        </span>
       </li>
     </ul>
 

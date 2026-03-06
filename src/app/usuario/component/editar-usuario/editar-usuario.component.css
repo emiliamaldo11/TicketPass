@@ -23,18 +23,18 @@ h2{
 h4{
 
   margin-bottom:20px;
-  color:#36173d;
+  color:#631BE9;
 }
 
 .input-field{
   position: relative;
-  border-bottom:2px solid #36173d;
+  border-bottom:2px solid #631BE9;
   margin: 15px 0;
 }
 
 .input-field label{
   position: absolute;
-  color:#36173d;
+  color:#631BE9;
   top:50%;
   left:0;
   transform: translateY(-50%);
@@ -46,7 +46,7 @@ h4{
 .input-field input{
   width:100%;
   height:40px;
-  color: #36173d;
+  color: #631BE9;
   background: transparent;
   border: none;
   outline: none;
@@ -78,7 +78,7 @@ button {
   font-size: 14px;
   font-weight: lighter;
   color: #fff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -88,7 +88,7 @@ button {
 
 button:hover {
   background-color: #ff48459f;
-  color: #36173d;
+  color: #631BE9;
   transform: translateY(-5px);
 }
 
@@ -109,12 +109,12 @@ margin: 15px 0;
 
 .input-field select option {
 background: #efefef90;
-color: #36173d;
+color: #631BE9;
 }
 
 .input-field select~label {
 position: absolute;
-color: #36173d;
+color: #631BE9;
 top: 50%;
 left: 0;
 transform: translateY(-50%);
@@ -147,7 +147,7 @@ cursor: pointer;
 }
 
 .color{
-  color: #36173d;
+  color: #631BE9;
 }
 
 .color:hover{

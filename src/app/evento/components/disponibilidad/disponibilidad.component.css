@@ -27,13 +27,13 @@
 .ventana-header h2 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
   margin: 0;
 }
 
 .cerrar-cruz {
   font-size: 1.5rem;
-  color: #36173d;
+  color: #631BE9;
   cursor: pointer;
   transition: color 0.3s;
 }

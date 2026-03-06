@@ -155,7 +155,7 @@ export class AddRecintoComponent implements OnInit {
       Swal.fire({
         title: "¿Deseas guardar el recinto?",
         showCancelButton: true,
-        confirmButtonColor: "#36173d",
+        confirmButtonColor: "#631BE9",
         cancelButtonColor: "#ff4845",
         confirmButtonText: "Guardar",
         cancelButtonText: "Cancelar"
@@ -175,7 +175,7 @@ export class AddRecintoComponent implements OnInit {
           Swal.fire({
             title: "¡Recinto guardado!",
             text: "Tu recinto ha sido guardado y puede ser utilizado para los eventos.",
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "success"
           }).then((result) => {
             if (result.isConfirmed) {
@@ -186,7 +186,7 @@ export class AddRecintoComponent implements OnInit {
         error: (err) => {
           Swal.fire({
             title: "Error al guardar el recinto",
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "error"
           });
           console.error('Error:', err);
@@ -203,7 +203,7 @@ export class AddRecintoComponent implements OnInit {
             console.log('recinto editado');
             Swal.fire({
               title: "Recinto editado correctamente",
-              confirmButtonColor: "#36173d",
+              confirmButtonColor: "#631BE9",
               icon: "success"
             }).then((result) => {
               if (result.isConfirmed) {
@@ -214,7 +214,7 @@ export class AddRecintoComponent implements OnInit {
           error: (err) => {
             Swal.fire({
               title: "Error al editar el recinto",
-              confirmButtonColor: "#36173d",
+              confirmButtonColor: "#631BE9",
               icon: "error"
             });
             console.error('Error:', err);

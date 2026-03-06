@@ -18,7 +18,7 @@ justify-self: center;
   display: flex;
   justify-content: center;
   min-height:110vh;
-  position: relative;  
+  position: relative;
   background-position:center;
   background-size: cover;
   background: url('/img/audiencia-background.jpg') ;
@@ -40,7 +40,7 @@ justify-self: center;
 
 .compra-item:hover {
   transform: translateY(-5px);
-  background-color: #36173d89;
+  background-color: #631BE989;
 
 }
 
@@ -53,13 +53,13 @@ justify-self: center;
 .evento-nombre {
   font-size: 18px;
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
   margin: 0;
 }
 
 .evento-fecha {
   font-size: 16px;
-  color: #36173d;
+  color: #631BE9;
   margin: 0;
 }
 
@@ -69,7 +69,7 @@ justify-self: center;
   font-size: 14px;
   font-weight: bold;
   color: #fff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -77,13 +77,13 @@ justify-self: center;
 }
 
 .detalle-boton:hover {
-  color: #36173d;
+  color: #631BE9;
   background-color: #ff48459f ;
   transform: translateY(-5px);
 }
 
 .detalle-boton:disabled {
-  background-color: #36173d5d;;
+  background-color: #631BE95d;;
 }
 
 .detalle-boton:active {
@@ -96,14 +96,14 @@ justify-self: center;
   font-size: 14px;
   font-weight: bold;
   color: #fff;
-  background-color: #36173da3;
+  background-color: #631BE9a3;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .boton-filtro:hover{
-  color: #36173d;
+  color: #631BE9;
   background-color: #ff48459f ;
   transform: translateY(-5px);
 }
@@ -113,16 +113,16 @@ justify-self: center;
   gap: 20px;
   width: 100%;
   max-width: 1200px;
-  margin-left: 15%; 
+  margin-left: 15%;
   padding: 20px;
 }
 
 .sidebar {
-  position: fixed; 
-  left: 0; 
-  width: 15%; 
-  height: 100vh; 
-  overflow-y: auto; 
+  position: fixed;
+  left: 0;
+  width: 15%;
+  height: 100vh;
+  overflow-y: auto;
   background-color: #efefef90;
   border-radius: 8px;
   padding: 20px;
@@ -133,7 +133,7 @@ justify-self: center;
 }
 
 .compras-container {
-  flex: 1; 
+  flex: 1;
 }
 
 .filtros {

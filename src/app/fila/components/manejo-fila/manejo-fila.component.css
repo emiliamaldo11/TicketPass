@@ -15,7 +15,7 @@
 /* .titulo-fila {
   font-size: 24px;
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
   margin-bottom: 20px;
 } */
 
@@ -24,7 +24,7 @@
   font-size: 16px;
   font-weight: bold;
   color: #fff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -34,18 +34,18 @@
 
 .boton-ingresar:hover {
   background-color: #ff48459f;
-  color: #36173d;
+  color: #631BE9;
   transform: translateY(-5px)
 }
 
 button:disabled{
   color: #fff;
-  background-color: #36173d72;
+  background-color: #631BE972;
 }
 
 button:disabled:hover{
   color: #fff;
-  background-color: #36173d72;
+  background-color: #631BE972;
 } */
 
 
@@ -111,13 +111,13 @@ button:disabled:hover{
 
 .text-info h3 {
   font-size: 20px;
-  color: #36173d;
+  color: #631BE9;
   margin: 0;
 }
 
 .text-info .artist {
   font-size: 16px;
-  color: #36173d;
+  color: #631BE9;
 }
 
 audio {

@@ -144,18 +144,18 @@
             },
             {
               "nombreSector": "Campo",
-              "disponibles": 22000,
+              "disponibles": 21999,
               "precio": "82000",
               "asientos": []
             },
             {
               "nombreSector": "Platea Alta Norte",
-              "disponibles": 10,
+              "disponibles": 9,
               "precio": "75000",
               "asientos": [
                 {
                   "butaca": 1,
-                  "disponibilidad": true
+                  "disponibilidad": false
                 },
                 {
                   "butaca": 2,
@@ -196,7 +196,7 @@
               ]
             }
           ],
-          "disponibilidadTotal": 37010,
+          "disponibilidadTotal": 37008,
           "habilitado": 1
         },
         {
@@ -295,7 +295,7 @@
             },
             {
               "nombreSector": "102",
-              "disponibles": 3,
+              "disponibles": 2,
               "precio": "53000",
               "asientos": [
                 {
@@ -308,7 +308,7 @@
                 },
                 {
                   "butaca": 3,
-                  "disponibilidad": true
+                  "disponibilidad": false
                 },
                 {
                   "butaca": 4,
@@ -348,7 +348,7 @@
               ]
             }
           ],
-          "disponibilidadTotal": 30008,
+          "disponibilidadTotal": 30007,
           "habilitado": 1
         }
       ],
@@ -499,20 +499,20 @@
             },
             {
               "nombreSector": "platea",
-              "disponibles": 4,
+              "disponibles": 1,
               "precio": "10000",
               "asientos": [
                 {
                   "butaca": 1,
-                  "disponibilidad": true
+                  "disponibilidad": false
                 },
                 {
                   "butaca": 2,
-                  "disponibilidad": true
+                  "disponibilidad": false
                 },
                 {
                   "butaca": 3,
-                  "disponibilidad": true
+                  "disponibilidad": false
                 },
                 {
                   "butaca": 4,
@@ -521,7 +521,7 @@
               ]
             }
           ],
-          "disponibilidadTotal": 9004,
+          "disponibilidadTotal": 9001,
           "habilitado": 1
         }
       ],

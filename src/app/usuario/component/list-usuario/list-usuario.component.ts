@@ -53,7 +53,7 @@ export class ListUsuarioComponent {
       next: () => {
         Swal.fire({
           title: `Usuario ${accion} correctamente`,
-          confirmButtonColor: "#36173d",
+          confirmButtonColor: "#631BE9",
           icon: "success"
         });
       },
@@ -61,7 +61,7 @@ export class ListUsuarioComponent {
         console.log(e.message);
         Swal.fire({
           title: `Error al ${accion === 'habilitado' ? 'habilitar' : 'deshabilitar'} el usuario`,
-          confirmButtonColor: "#36173d",
+          confirmButtonColor: "#631BE9",
           icon: "error"
         });
       }
@@ -77,7 +77,7 @@ export class ListUsuarioComponent {
       text: `Esta acción hará que el usuario ${accion === 'deshabilitar' ? 'no pueda' : 'este habilitado'} a ingresar a su cuenta.`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#36173d',
+      confirmButtonColor: '#631BE9',
       cancelButtonColor: '#ff4845',
       confirmButtonText: `Sí, ${accion}`,
       cancelButtonText: 'Cancelar'

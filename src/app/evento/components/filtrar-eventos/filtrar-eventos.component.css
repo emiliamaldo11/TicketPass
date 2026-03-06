@@ -24,14 +24,14 @@ input {
     height:40px;
     color: #000000;
     background: #efefef92;
-    border-bottom:3px solid #36173d;
-    border-top: 3px solid  #36173d;
-    border-left: 3px solid #36173d;
-    border-right: 3px solid #36173d;
+    border-bottom:3px solid #631BE9;
+    border-top: 3px solid  #631BE9;
+    border-left: 3px solid #631BE9;
+    border-right: 3px solid #631BE9;
 }
 
 input:focus {
-  border-color: #36173d;
+  border-color: #631BE9;
 }
 
 input::placeholder{
@@ -59,7 +59,7 @@ input:valid~label{
   background: #efefef92;
   padding: 10px;
   border-radius: 5px;
-  border: 2px solid #36173d;
+  border: 2px solid #631BE9;
   box-sizing: border-box;
 }
 
@@ -76,7 +76,7 @@ input:valid~label{
 }
 
 .busqueda li:hover {
-  background-color: #36173d79;
+  background-color: #631BE979;
   color: #ffffff;
 }
 

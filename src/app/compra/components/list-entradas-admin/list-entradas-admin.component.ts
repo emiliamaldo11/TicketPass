@@ -84,7 +84,7 @@ export class ListEntradasAdminComponent implements OnInit {
         next: () => {
           Swal.fire({
             title: `Recinto ${accion} correctamente`,
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "success"
           });
         },
@@ -92,7 +92,7 @@ export class ListEntradasAdminComponent implements OnInit {
           console.log(e.message);
           Swal.fire({
             title: `Error al ${accion === 'habilitado' ? 'habilitar' : 'deshabilitar'} el recinto`,
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "error"
           });
         }
@@ -108,7 +108,7 @@ export class ListEntradasAdminComponent implements OnInit {
       text: `Esta acción hará que la compra ${accion === 'dar de baja' ? 'se deshabilite' : 'se habilite'} `,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#36173d',
+      confirmButtonColor: '#631BE9',
       cancelButtonColor: '#ff4845',
       confirmButtonText: `Sí, ${accion}`,
       cancelButtonText: 'Cancelar'
@@ -147,38 +147,38 @@ export class ListEntradasAdminComponent implements OnInit {
     }
 
     console.log(this.comprasFiltradas);
-    
+
     for (const compra of this.comprasFiltradas) {
-      await this.reponerStockIndividual(compra); 
+      await this.reponerStockIndividual(compra);
     }
   }
-  
+
   async reponerStockIndividual(compra: Compra): Promise<void> {
 
     if (this.yaRespusoStock(compra.id)) {
       console.log(`Stock repuesto con exito: ${compra.id}`);
       return;
     }
-  
+
     //la compra tiene q estar deshabilitada para reponer el stock
     if (compra.alta === false) {
       //busca el evento que pertenece la compra
       const eventoEncontrado = this.eventos.find(evento => evento.id === compra.evento.idEvento);
-  
+
       if (eventoEncontrado) {
         //busca la fecha especifica
         const fechaEvento = eventoEncontrado.fechas.find(fechaBuscada => fechaBuscada.fecha === compra.evento.fechaEvento);
-  
+
         if (fechaEvento) {
           //repone en la disponiblidad total de esa fecha la cantidad de entradas que compro
           fechaEvento.disponibilidadTotal = fechaEvento.disponibilidadTotal + Number(compra.cantidad);
 
           const entradaEncontrada = fechaEvento.entradas.find(entrada => entrada.nombreSector === compra.entrada.sector);
-  
+
           if (entradaEncontrada) {
             //repone en ese sector especifico la cantidad
              entradaEncontrada.disponibles += Number(compra.cantidad);
-  
+
              //si el sector tiene butacas repone la disponiblidad a true
             if (entradaEncontrada.asientos.length > 0) {
                 compra.entrada.butaca?.forEach(butacaComprada => {
@@ -189,7 +189,7 @@ export class ListEntradasAdminComponent implements OnInit {
               });
             }
           }
-  
+
           //edita el evento con los cambios de stock
           this.eventoService.putEvento(eventoEncontrado.id, eventoEncontrado).subscribe({
             next: () => {
@@ -199,14 +199,14 @@ export class ListEntradasAdminComponent implements OnInit {
               console.error('Error al editar evento:', error);
             }
           });
- 
-          await this.registrarCompraDevuelta(compra); 
+
+          await this.registrarCompraDevuelta(compra);
         }
       }
     }
   }
 
-  
+
   //guarda el id de las compras devueltas en un json (las compras devueltas no se pueden volver a habilitar)
   registrarCompraDevuelta(compra: Compra): Promise<void> {
     return new Promise((resolve, reject) => {
@@ -216,16 +216,16 @@ export class ListEntradasAdminComponent implements OnInit {
           if (compra.id) {
             this.comprasDevueltas.push(compra.id);
           }
-          resolve(); 
+          resolve();
         },
         error: (error) => {
           console.error('Error al registrar compra devuelta:', error);
-          reject(error); 
+          reject(error);
         }
       });
     });
   }
-  
+
   //verficia si ya se devolvio
   yaRespusoStock(id?: string): boolean {
     return id ? this.comprasDevueltas.includes(id) : false;
@@ -235,13 +235,13 @@ export class ListEntradasAdminComponent implements OnInit {
   //verifica si en las entradas que filtro hay alguna para reponer (es para el btn de devolver todas)
 encontroCompraParaReponer(): boolean {
   if (!this.comprasFiltradas || this.comprasFiltradas.length === 0) {
-    return false; 
+    return false;
   }
 
   const hayParaReponer = this.comprasFiltradas.some(compra =>
-    compra.id !== undefined && 
-    !this.comprasDevueltas.includes(compra.id) && 
-    compra.alta === false 
+    compra.id !== undefined &&
+    !this.comprasDevueltas.includes(compra.id) &&
+    compra.alta === false
   );
 
   return hayParaReponer;
@@ -255,7 +255,7 @@ confirmarReponerIndividual(compra: Compra){
     text: 'Esta acción no permitira habilitar la entrada',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#36173d',
+    confirmButtonColor: '#631BE9',
     cancelButtonColor: '#ff4845',
     confirmButtonText: 'Sí, reponer stock',
     cancelButtonText: 'Cancelar'
@@ -272,7 +272,7 @@ confirmarReponerTodas (){
     text: 'Esta acción no permitira habilitar las entradas',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#36173d',
+    confirmButtonColor: '#631BE9',
     cancelButtonColor: '#ff4845',
     confirmButtonText: 'Sí, reponer stock',
     cancelButtonText: 'Cancelar'

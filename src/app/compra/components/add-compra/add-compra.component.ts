@@ -30,10 +30,11 @@ export class AddCompraComponent implements OnInit {
 
   yaCompro = false;
   realizarCompra: boolean = false;
-  compraCompletaJson ?: Compra
+  compraCompletaJson?: Compra
 
-  userId : string | null = null
-  mapaImg : string | undefined = ''
+  userId: string | null = null
+  mapaImg: string | undefined = ''
+
 
   compra: Compra = {
     fechaDeCompra: new Date(),
@@ -61,12 +62,12 @@ export class AddCompraComponent implements OnInit {
   evento?: Evento //levantamos el evento COMPLETO
 
   fechaSeleccionada: Fecha = {
-    fecha : new Date(),
-    hora : '',
+    fecha: new Date(),
+    hora: '',
     entradas: [],
-    disponibilidadTotal : 0 ,
+    disponibilidadTotal: 0,
     habilitado: 1  /* 1 fila habilitada 0 no se puede entrar a la fila */
-}
+  }
 
   //el checkbox que selecciona el usuario
   sectorSeleccionado: string = '';
@@ -81,9 +82,10 @@ export class AddCompraComponent implements OnInit {
   private pagoService = inject(PagoService);
   private authService = inject(Autenticacion);
   private recintoService = inject(RecintoService);
+  private router = inject(Router)
 
   preferencia: any = {};
-  cantidad : number = 1
+  cantidad: number = 1
 
   ngOnInit(): void {
 
@@ -94,7 +96,7 @@ export class AddCompraComponent implements OnInit {
       console.log('ID Usuario obtenido en compra:', this.userId);
     });
 
-    if (this.userId){
+    if (this.userId) {
 
       this.userService.getUsuariosById(this.userId).subscribe({
         next: (usuarioEncontrado: Usuario) => {
@@ -170,30 +172,30 @@ export class AddCompraComponent implements OnInit {
   iniciarPago() {
     this.cantidad = Number(this.compra.cantidad)
     //ponemos de precio 1 para que sea una pruena (para hacerlo real deberia ir tihs.compra.precioTotal)
-    this.pagoService.crearPreferencia(this.compra.evento.nombreEvento, this.cantidad, 1)
-      .subscribe({
-        next: (response: any) => {
-          if (response && response.id) {
-            const mp = new MercadoPago('APP_USR-a9929fea-ac74-4d7e-b31e-055201ba23a2', {
-              locale: 'es-AR'
-            });
+    // this.pagoService.crearPreferencia(this.compra.evento.nombreEvento, this.cantidad, 1)
+    //   .subscribe({
+    //     next: (response: any) => {
+    //       if (response && response.id) {
+    //         const mp = new MercadoPago('APP_USR-a9929fea-ac74-4d7e-b31e-055201ba23a2', {
+    //           locale: 'es-AR'
+    //         });
 
-            mp.checkout({
-              preference: { id: response.id },
-              autoOpen: true,
+    //         mp.checkout({
+    //           preference: { id: response.id },
+    //           autoOpen: true,
 
-            });
-          } else {
-            console.error('ID de preferencia inválido en la respuesta');
-          }
-        },
-        error: (err: Error) => {
-          console.error('Error en la creación de preferencia:', err.message);
-        }
-      });
+    //         });
+    //       } else {
+    //         console.error('ID de preferencia inválido en la respuesta');
+    //       }
+    //     },
+    //     error: (err: Error) => {
+    //       console.error('Error en la creación de preferencia:', err.message);
+    //     }
+    //   });
 
-      //simula q se realizo el pago
-      this.comprarEntrada()
+    //simula q se realizo el pago
+    this.comprarEntrada()
 
   }
 
@@ -202,6 +204,7 @@ export class AddCompraComponent implements OnInit {
     this.actualizarStockEntradas()
     this.editarEvento()
     this.postCompra()
+
   }
 
 
@@ -225,6 +228,8 @@ export class AddCompraComponent implements OnInit {
           this.fechaSeleccionada.disponibilidadTotal = this.fechaSeleccionada.disponibilidadTotal - this.compra.cantidad;
           console.log(this.evento);
 
+
+
         }
       });
     }
@@ -246,11 +251,25 @@ export class AddCompraComponent implements OnInit {
 
   postCompra() {
     this.compraService.postCompras(this.compra).subscribe({
-      next: (compraCargada : Compra) => {
-        this.yaCompro= true
+      next: (compraCargada: Compra) => {
+        this.yaCompro = true
         console.log("compra cargada");
         this.compraCompletaJson = compraCargada
         this.generarQR(this.compraCompletaJson)
+
+         Swal.fire({
+            title: "Ticket purchased successfully!",
+            text: "Enjoy your event!",
+            confirmButtonColor: "#631BE9",
+            icon: 'success'
+          });
+
+          this.router.navigate(['/ver-mis-entradas'])
+
+
+
+
+
       },
       error: (e: Error) => {
         console.log(e.message);
@@ -258,21 +277,21 @@ export class AddCompraComponent implements OnInit {
     })
   }
 
-  generarQR (compra: Compra){
+  generarQR(compra: Compra) {
     //url ficticio funcionaria cuando se escanea la entrada en el recinto
     const qrUrl = `http://localhost:4200/validar-entrada/${compra.id}`;
     QRCode.toDataURL(qrUrl)
-      .then(url=> {
+      .then(url => {
         console.log('url generado con exito');
         //guardo el url en el json de compras
-        compra.qrEntrada = url ;
+        compra.qrEntrada = url;
 
-        if (compra.id){
-          this.compraService.putCompra(compra.id , compra).subscribe({
-            next: ()=> {
+        if (compra.id) {
+          this.compraService.putCompra(compra.id, compra).subscribe({
+            next: () => {
               console.log('compra editada con qr');
             },
-            error : (e:Error)=> {
+            error: (e: Error) => {
               console.log(e.message);
             }
           })
@@ -303,6 +322,32 @@ export class AddCompraComponent implements OnInit {
       })
     }
   }
+
+  msg(compra: Compra) {
+    compra.alta = false;
+
+    if (compra.id)
+      this.compraService.putCompra(compra.id, compra).subscribe({
+        next: () => {
+          Swal.fire({
+            title: "Ticket purchased successfully!",
+            text: "Enjoy your event!",
+            confirmButtonColor: "#631BE9",
+            icon: 'success'
+          });
+        },
+        error: (e: Error) => {
+          Swal.fire({
+            title: "Error purchasing the ticket",
+            text: "Please try again later",
+            confirmButtonColor: "#631BE9",
+            icon: 'error'
+          });
+        }
+      });
+
+  }
+
 
 
 }

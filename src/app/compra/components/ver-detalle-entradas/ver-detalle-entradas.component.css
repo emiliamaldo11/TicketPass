@@ -52,7 +52,7 @@
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #36173d;
+  color: #631BE9;
   margin: 0;
 }
 
@@ -68,7 +68,7 @@
 
 .entrada-label {
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
 }
 
 .butacas {
@@ -107,7 +107,7 @@
   font-size: 14px;
   font-weight: bold;
   color: #fff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -116,7 +116,7 @@
 
 /* button:hover {
   background-color: #ff48459f;
-  color: #36173d;
+  color: #631BE9;
   transform: translateY(-5px);
 }
 

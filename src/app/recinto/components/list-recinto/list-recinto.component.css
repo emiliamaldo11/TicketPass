@@ -5,7 +5,7 @@
 .recintos-section {
   display: flex;
   justify-content: center;
- 
+
 }
 
 .wrapper {
@@ -16,11 +16,11 @@
   width: 50%;
   border-radius: 8px;
   margin: auto auto;
-} 
+}
 
 .wrapper h2 {
   font-size: 2rem;
-  color: #36173d;
+  color: #631BE9;
   font-weight: 600;
   margin-bottom: 25px;
   text-align: center;
@@ -41,13 +41,13 @@
 
 .recinto-item h4 {
   font-size: 1.4rem;
-  color: #36173d;
+  color: #631BE9;
   font-weight: 500;
   margin: 0 0 15px;
 }
 
 .recinto-item:hover {
-  background-color: #36173d50 ;
+  background-color: #631BE950 ;
   transform: translateY(-5px);
 }
 
@@ -61,7 +61,7 @@
   font-size: 1rem;
   font-weight: 500;
   color: #ffffff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -71,11 +71,11 @@
 .btn:hover {
   background-color: #ff48459f ;
    transform: translateY(-5px);
-   color: #36173d;
+   color: #631BE9;
 }
 
 .ver-mas {
-  background-color: #36173d;
+  background-color: #631BE9;
 }
 
 .toggle {
@@ -84,7 +84,7 @@
 
 .toggle:hover {
   background-color: #ff4845b2;
-  color: #36173d;
+  color: #631BE9;
 }
 
 .vacio{

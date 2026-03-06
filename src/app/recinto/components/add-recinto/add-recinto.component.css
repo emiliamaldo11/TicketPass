@@ -19,7 +19,7 @@ section{
 .divreg {
   position: absolute;
   padding: 10px 10px;
-  background-color: #36173d77;
+  background-color: #631BE977;
   border-radius:8px;
   width:100%;
   border-top: none;
@@ -56,7 +56,7 @@ form{
 
 .input-field{
   position: relative;
-  border-bottom:2px solid #36173d;
+  border-bottom:2px solid #631BE9;
   margin: 15px 0;
 }
 
@@ -64,7 +64,7 @@ form{
 .input-field input{
   width: 100%;
   height: 40px;
-  color: #36173d;
+  color: #631BE9;
   background: transparent;
   border: none;
   outline: none;
@@ -73,7 +73,7 @@ form{
 
 .input-field label{
   position: absolute;
-  color:#36173d;
+  color:#631BE9;
   top:50%;
   left:0;
   transform: translateY(-50%);
@@ -98,7 +98,7 @@ form{
   cursor: pointer;
   user-select: none;
   font-size: 16px;
-  color: #36173d;
+  color: #631BE9;
   transition: color 0.3s;
 }
 
@@ -109,7 +109,7 @@ form{
 .custom-checkbox .checkmark {
   width: 24px;
   height: 24px;
-  border: 2px solid #36173d;
+  border: 2px solid #631BE9;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -128,8 +128,8 @@ form{
 }
 
 .custom-checkbox input[type="checkbox"]:checked + .checkmark {
-  background-color:#36173d;
-  border-color:#36173d;
+  background-color:#631BE9;
+  border-color:#631BE9;
   transform: scale(1.1) rotateZ(360deg) rotateY(360deg);
 }
 
@@ -138,7 +138,7 @@ form{
 }
 
 button{
-  background:#36173d;
+  background:#631BE9;
   color: #efefef;
   font-weight:600;
   font-family: Arial, Helvetica, sans-serif;
@@ -152,19 +152,19 @@ button{
 }
 
 button:hover{
-color: #36173d;
+color: #631BE9;
 background-color: #ff48459f ;
 transform: translateY(-5px);
 }
 
 button:disabled{
   color: #fff;
-  background-color: #36173d72;
+  background-color: #631BE972;
 }
 
 button:disabled:hover{
   color: #fff;
-  background-color: #36173d72;
+  background-color: #631BE972;
 }
 
 .divAvisos{

@@ -11,20 +11,20 @@
   width: 60%;
   padding: 2%;
   box-sizing: content-box;
-  border-color: #36173d;
+  border-color: #631BE9;
   border-radius: 35px;
   background-color: #eeeeee;
 }
 
 .input-field {
   position: relative;
-  border-bottom: 2px solid #36173d;
+  border-bottom: 2px solid #631BE9;
   margin-bottom: 10px;
 }
 
 .input-field label {
   position: absolute;
-  color: #36173d;
+  color: #631BE9;
   top: 50%;
   left: 0;
   transform: translateY(-50%);
@@ -36,7 +36,7 @@
 .input-field input {
   width: 100%;
   height: 40px;
-  color: #36173d;
+  color: #631BE9;
   background: transparent;
   border: none;
   outline: none;
@@ -46,7 +46,7 @@
 .input-field input[type="time"] {
   width: 100%;
   height: 40px;
-  color: #36173d;
+  color: #631BE9;
   background: transparent;
   border: none;
   outline: none;
@@ -59,7 +59,7 @@
 .input-field input[type="date"] {
   width: 100%;
   height: 40px;
-  color: #36173d;
+  color: #631BE9;
   background: transparent;
   border: none;
   outline: none;
@@ -80,7 +80,7 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  
+
 }
 
 .container button{
@@ -101,7 +101,7 @@
 }
 
 .container button:hover {
-  background-color:  #36173d; 
+  background-color:  #631BE9;
    transform: translateY(-5px);
    color: #eeeeee;
  }
@@ -111,7 +111,7 @@
   display: flex;
   justify-content: space-between;
   padding: 10px 10px;
-  background-color: #36173d77;
+  background-color: #631BE977;
   border-radius: 8px;
   width: 100%;
   border-top: none;
@@ -132,7 +132,7 @@ button {
   padding: 1%;
   font-size: 18px;
   color: #fff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -146,9 +146,9 @@ button {
 }
 
 button:hover {
- background-color:  #ff48459f; 
+ background-color:  #ff48459f;
   transform: translateY(-5px);
-  color: #36173d;
+  color: #631BE9;
 }
 
 button:disabled {
@@ -173,14 +173,14 @@ label {
   padding: 5px;
   border-radius: 40px;
   background-color: #efefef19;
-  border: 1px solid #36173d;
+  border: 1px solid #631BE9;
 }
 
 h4 {
 
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 600;
-  color: #36173d;
+  color: #631BE9;
 
 }
 
@@ -244,9 +244,9 @@ select {
   display: flex;
   justify-content: center;
   margin: 1px;
-  color: #36173d;
+  color: #631BE9;
   border-radius: 8px;
-  border-color: #36173d;
+  border-color: #631BE9;
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -257,11 +257,11 @@ select {
 h5 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 600;
-  color: #36173d;
+  color: #631BE9;
 }
 
 .divAvisos {
-  color: #36173d;
+  color: #631BE9;
   font-weight: 100;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;

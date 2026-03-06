@@ -106,14 +106,14 @@ export class EditarUsuarioComponent implements OnInit{
         next : ()=> {
           Swal.fire({
             title: "Perfil editado con exito",
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "success"
           })
         },
         error: (err) => {
           Swal.fire({
             title: "Error al editar el perfil",
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "error"
           });
           console.error('Error:', err);

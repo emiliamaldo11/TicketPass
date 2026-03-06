@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 section{
- background-color: #efefef; 
+ background-color: #efefef;
  position: relative;
 }
 
@@ -15,7 +15,7 @@ section{
   align-items: center;
   justify-content: space-between;
   padding: 10px 10px;
-  background-color: #36173db8;
+  background-color: #631BE9b8;
   border-radius:8px;
   width:100%;
   border-top: none;
@@ -68,7 +68,7 @@ h5{
 .titulo-seccion {
   font-size: 20px;
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
   margin-bottom: 10px;
 }
 
@@ -90,7 +90,7 @@ width:10%;
   font-size: 14px;
   font-weight: bold;
   color: #fff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -101,6 +101,6 @@ width:10%;
 .botonContainer button:hover {
   background-color: #ff48459f ;
    transform: translateY(-5px);
-   color: #36173d;
+   color: #631BE9;
 }
 

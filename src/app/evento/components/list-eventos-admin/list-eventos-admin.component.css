@@ -24,14 +24,14 @@
 }
 
 .item-evento:hover {
-  background-color: #36173d50 ;
+  background-color: #631BE950 ;
   transform: translateY(-5px);
 }
 
 .nombre-evento {
   font-size: 18px;
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
   margin: 0;
 }
 
@@ -47,7 +47,7 @@
   font-size: 14px;
   font-weight: bold;
   color: #fff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -56,7 +56,7 @@
 
 .boton-accion:hover,
 .boton-detalle:hover {
-color: #36173d;
+color: #631BE9;
   background-color: #ff48459f ;
   transform: translateY(-5px);
 }

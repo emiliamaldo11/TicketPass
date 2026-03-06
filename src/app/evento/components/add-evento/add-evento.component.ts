@@ -252,7 +252,7 @@ export class AddEventoComponent implements OnInit {
       Swal.fire({
         title: "¿Deseas guardar el evento?",
         showCancelButton: true,
-        confirmButtonColor: "#36173d",
+        confirmButtonColor: "#631BE9",
         cancelButtonColor: "#ff4845",
         confirmButtonText: "Guardar",
         cancelButtonText: "Cancelar"
@@ -276,7 +276,7 @@ export class AddEventoComponent implements OnInit {
           Swal.fire({
             title: "¡Evento guardado!",
             text: "Tu evento ha sido guardado y puede ser habilitado.",
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "success"
           }).then((result) => {
             if (result.isConfirmed) {
@@ -287,7 +287,7 @@ export class AddEventoComponent implements OnInit {
         error: (err) => {
           Swal.fire({
             title: "Error al guardar el evento",
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "error"
           });
           console.error('Error:', err);

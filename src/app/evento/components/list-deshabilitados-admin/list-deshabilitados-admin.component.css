@@ -15,7 +15,7 @@
 .titulo-eventos-deshabilitados {
   font-size: 24px;
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -39,7 +39,7 @@
 .nombre-evento {
   font-size: 18px;
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
   margin-bottom: 10px;
 }
 
@@ -70,12 +70,12 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-  background-color: #36173d89;
+  background-color: #631BE989;
   color: #fff;
 }
 
 .boton-detalle:hover {
-  color: #36173d;
+  color: #631BE9;
   background-color: #ff48459f ;
   transform: translateY(-5px);
 }

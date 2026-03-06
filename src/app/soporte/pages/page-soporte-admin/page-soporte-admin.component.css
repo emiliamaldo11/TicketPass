@@ -54,7 +54,7 @@
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #36173d;
+  color: #631BE9;
   margin: 0;
 }
 
@@ -89,14 +89,14 @@
 .item-fila .pregunta {
   cursor: pointer;
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
 }
 
 .item-fila .respuesta {
   margin-top: 8px;
   padding: 5px 10px;
   background-color: #efefef;
-  border-left: 3px solid #36173d;
+  border-left: 3px solid #631BE9;
 }
 
 /* =====================
@@ -111,7 +111,7 @@ button {
   font-size: 14px;
   font-weight: bold;
   color: #fff;
-  background-color: #36173d;
+  background-color: #631BE9;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -120,7 +120,7 @@ button {
 
 button:hover {
   background-color: #ff48459f;
-  color: #36173d;
+  color: #631BE9;
   transform: translateY(-5px);
 }
 
@@ -133,7 +133,7 @@ button:hover {
   left: 0;
   width: 100%;
   background-color: #efefef; /* Fondo claro para que no se vea "todo negro" */
-  color: #36173d;
+  color: #631BE9;
   text-align: center;
   padding: 10px 0;
   border-top: 1px solid #ddd;
@@ -161,7 +161,7 @@ button:hover {
 
 .entrada-label {
   font-weight: bold;
-  color: #36173d;
+  color: #631BE9;
 }
 
 .butacas {

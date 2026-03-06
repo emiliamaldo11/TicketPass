@@ -11,7 +11,7 @@
         "nombreEvento": "Love on Tour",
         "artista": "Harry Styles",
         "fechaEvento": "2024-12-03",
-        "banner": "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/Harry-Styles-Together-Together-Tour-Tickets-MAIN.jpg?w=1296" ,
+        "banner": "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/Harry-Styles-Together-Together-Tour-Tickets-MAIN.jpg?w=1296",
         "idEvento": 1
       },
       "entrada": {
@@ -35,7 +35,7 @@
       },
       "evento": {
         "nombreEvento": "Love on Tour",
-         "artista": "Harry Styles",
+        "artista": "Harry Styles",
         "fechaEvento": "2024-12-03",
         "banner": "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/Harry-Styles-Together-Together-Tour-Tickets-MAIN.jpg?w=1296",
         "idEvento": 1
@@ -63,9 +63,9 @@
       },
       "evento": {
         "nombreEvento": "The Clancy World Tour",
-         "artista": "Twenty One Pilots",
+        "artista": "Twenty One Pilots",
         "fechaEvento": "2024-01-30",
-        "banner" : "https://arepavolatil.com/wp-content/uploads/2024/03/Twenty-One-Pilots-tour-mundial.jpg",
+        "banner": "https://arepavolatil.com/wp-content/uploads/2024/03/Twenty-One-Pilots-tour-mundial.jpg",
         "idEvento": 3
       },
       "entrada": {
@@ -92,9 +92,9 @@
       },
       "evento": {
         "nombreEvento": "Duki",
-         "artista": "Duki",
+        "artista": "Duki",
         "fechaEvento": "2024-12-22",
-        "banner" : "https://cdn.getcrowder.com/images/0a1ca76f-429f-4187-b934-7fae8263db27-1920x720-1.jpg",
+        "banner": "https://cdn.getcrowder.com/images/0a1ca76f-429f-4187-b934-7fae8263db27-1920x720-1.jpg",
         "idEvento": 4
       },
       "entrada": {
@@ -120,7 +120,7 @@
       },
       "evento": {
         "nombreEvento": "Lady Gaga Show",
-         "artista": "Lady Gaga",
+        "artista": "Lady Gaga",
         "fechaEvento": "2025-09-22",
         "banner": "https://i.redd.it/0i4jzuz4xnu31.png",
         "idEvento": 5
@@ -149,9 +149,9 @@
       },
       "evento": {
         "nombreEvento": "Together Together",
-         "artista": "Harry Styles",
+        "artista": "Harry Styles",
         "fechaEvento": "2024-12-03",
-        "banner" : "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/Harry-Styles-Together-Together-Tour-Tickets-MAIN.jpg?w=1296",
+        "banner": "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/Harry-Styles-Together-Together-Tour-Tickets-MAIN.jpg?w=1296",
         "idEvento": 1
       },
       "entrada": {
@@ -167,6 +167,92 @@
       "alta": true,
       "id": 6,
       "qrEntrada": "data:image/png;base64,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"
+    },
+    {
+      "fechaDeCompra": "2026-03-06T04:11:25.772Z",
+      "cliente": {
+        "nombre": "Emilia",
+        "email": "emilia@ejemplo",
+        "idCliente": 1
+      },
+      "evento": {
+        "nombreEvento": "Faith in the Future",
+        "artista": "Faith in the Future",
+        "fechaEvento": "2025-05-24",
+        "banner": "https://disfrutasantiago.cl/wp-content/uploads/2024/05/e688a32e-7f97-4ebd-86b3-d12aaec92291-landing-1920x720-web-louistomlinson-dgmedios1.png",
+        "idEvento": 2
+      },
+      "entrada": {
+        "sector": "Platea Alta Norte",
+        "precioUnitario": "75000",
+        "butaca": [
+          1
+        ]
+      },
+      "cantidad": 1,
+      "precioTotal": 75000,
+      "estado": true,
+      "alta": true,
+      "id": 7,
+      "qrEntrada": "data:image/png;base64,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"
+    },
+    {
+      "fechaDeCompra": "2026-03-06T04:17:10.765Z",
+      "cliente": {
+        "nombre": "Emilia",
+        "email": "emilia@ejemplo",
+        "idCliente": 1
+      },
+      "evento": {
+        "nombreEvento": "The Clancy World Tour",
+        "artista": "The Clancy World Tour",
+        "fechaEvento": "2024-01-30",
+        "banner": "https://arepavolatil.com/wp-content/uploads/2024/03/Twenty-One-Pilots-tour-mundial.jpg",
+        "idEvento": 3
+      },
+      "entrada": {
+        "sector": "102",
+        "precioUnitario": "53000",
+        "butaca": [
+          3
+        ]
+      },
+      "cantidad": 1,
+      "precioTotal": 53000,
+      "estado": true,
+      "alta": true,
+      "id": 8,
+      "qrEntrada": "data:image/png;base64,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"
+    },
+    {
+      "fechaDeCompra": "2026-03-06T04:26:58.928Z",
+      "cliente": {
+        "nombre": "Emilia",
+        "email": "emilia@ejemplo",
+        "idCliente": 1
+      },
+      "evento": {
+        "nombreEvento": "Lady Gaga Show",
+        "artista": "Lady Gaga Show",
+        "fechaEvento": "2025-09-22",
+        "banner": "https://i.redd.it/0i4jzuz4xnu31.png",
+        "idEvento": 5
+      },
+      "entrada": {
+        "sector": "platea",
+        "precioUnitario": "10000",
+        "butaca": [
+          1,
+          2,
+          3
+        ]
+      },
+      "cantidad": "3",
+      "precioTotal": 30000,
+      "estado": true,
+      "alta": true,
+      "id": 9,
+      "qrEntrada": "data:image/png;base64,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"
     }
   ]
 }

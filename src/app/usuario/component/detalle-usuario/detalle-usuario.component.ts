@@ -111,14 +111,14 @@ mensaje(usuario: Usuario) {
         next: () => {
           Swal.fire({
             title: "Profile updated successfully",
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "success"
           });
         },
         error: (err) => {
           Swal.fire({
             title: "Error updating profile",
-            confirmButtonColor: "#36173d",
+            confirmButtonColor: "#631BE9",
             icon: "error"
           });
           console.error('Error:', err);
