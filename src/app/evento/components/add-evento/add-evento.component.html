@@ -1,163 +1,278 @@
-<section>
+<section class="bg-[#FAFAFA] pl-[60px] pt-[45px] pr-[60px] w-full min-h-screen">
+
   <form #formulario="ngForm" (ngSubmit)="eventoIn ? emitUpdate(formulario) : addEvento(formulario)">
-    <!-- BANNER E INPUT DEL BANNER -->
-    <div class="divreg">
-      <h2>{{ eventoIn ? 'Editar Evento' : 'Agregar Evento' }}</h2>
-      <div class="container">
-        <button type="submit" >
-          {{ eventoIn ? 'Editar Evento' : 'Agregar Evento' }}
-        </button>
-        </div>
 
+    <!-- HEADER -->
+    <div class="flex justify-between items-center w-full mb-[60px]">
+      <h2 class="font-bold text-[44px]">
+        {{ eventoIn ? 'Edit Event' : 'Add Event' }}
+      </h2>
 
+      <button
+        type="submit"
+        class="bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 text-white px-[30px] h-[45px] rounded-[100px] disabled:bg-gray-400">
+        {{ eventoIn ? 'Save Changes' : 'Save Event' }}
+      </button>
     </div>
 
-    <div class="fielset-container">
-      <div class="flex-container">
-        <!-- FIELDSET EVENTO -->
-        <fieldset class="fieldEvento">
-          <h4>Datos del evento</h4>
 
-          <div class="input-field">
+    <div class="flex flex-col gap-[24px]">
 
-            <input
-              type="text"
-              id="nombreEvento"
-              name="nombreEvento"
-              [(ngModel)]="evento.nombreEvento"
-              #nombreEvento="ngModel"
-              required
-            />
-            <div class="divAvisos" *ngIf="nombreEvento.invalid && nombreEvento.touched">
-              Debe completar el campo
+      <!-- EVENT DETAILS -->
+      <fieldset class="bg-[#F6F6F6] px-[30px] py-[30px]">
+
+        <h4 class="font-bold text-[30px] pb-[30px]">Event Details</h4>
+
+        <div class="grid grid-cols-2 gap-[40px]">
+
+          <!-- columna izquierda -->
+          <div class="flex flex-col gap-[16px]">
+
+            <div class="flex flex-col">
+              <label for="nombreEvento">Event name</label>
+              <input
+                type="text"
+                id="nombreEvento"
+                class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+                name="nombreEvento"
+                [(ngModel)]="evento.nombreEvento"
+                #nombreEvento="ngModel"
+                required
+              />
+
+              <div class="divAvisos" *ngIf="nombreEvento.invalid && nombreEvento.touched">
+                Please complete this field
+              </div>
             </div>
-            <label for="nombreEvento">Nombre del evento</label>
+
+            <div class="flex flex-col">
+              <label for="nombreArtistaBanda">Singer or band</label>
+
+              <input
+                type="text"
+                id="nombreArtistaBanda"
+                class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+                name="nombreArtistaBanda"
+                [(ngModel)]="evento.artista_banda"
+                #nombreArtistaBanda="ngModel"
+                required
+              />
+
+              <div class="divAvisos" *ngIf="nombreArtistaBanda.invalid && nombreArtistaBanda.touched">
+                Please complete this field
+              </div>
+            </div>
+
           </div>
 
-          <div class="input-field">
 
-            <input
-              type="text"
-              id="nombreArtistaBanda"
-              name="nombreArtistaBanda"
-              [(ngModel)]="evento.artista_banda"
-              #nombreArtistaBanda="ngModel"
-              required
-            />
-            <div class="divAvisos" *ngIf="nombreArtistaBanda.invalid && nombreArtistaBanda.touched">
-              Debe completar el campo
+          <!-- columna derecha -->
+          <div class="flex flex-col gap-[16px]">
+
+            <div class="flex flex-col">
+              <label for="duracion">Duration</label>
+
+              <input
+                type="time"
+                id="duracion"
+                class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+                name="duracion"
+                [(ngModel)]="evento.duracion"
+                #duracion="ngModel"
+                required
+              />
+
+              <div class="divAvisos" *ngIf="duracion.invalid && duracion.touched">
+                Please complete this field
+              </div>
             </div>
-            <label for="nombreArtistaBanda">Artista/Banda</label>
+
+            <div class="flex flex-col">
+              <label for="bannerEvento">Banner URL</label>
+
+              <input
+                type="text"
+                id="bannerEvento"
+                class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+                name="bannerEvento"
+                [(ngModel)]="evento.UrlBanner"
+                #bannerEvento="ngModel"
+                placeholder="url/banner.com"
+                required
+              />
+
+              <div class="divAvisos" *ngIf="bannerEvento.invalid && bannerEvento.touched">
+                Please complete this field
+              </div>
+            </div>
+
           </div>
 
-          <div class="input-field">
+        </div>
 
-            <input
-              type="time"
-              id="duracion"
-              name="duracion"
-              [(ngModel)]="evento.duracion"
-              #duracion="ngModel"
-              required
-            />
-            <div class="divAvisos" *ngIf="duracion.invalid && duracion.touched">
-              Debe completar el campo
-            </div>
-            <label for="duracion">Duración</label>
-          </div>
-          <div class="inputBanner">
-            <label for="bannerEvento">URL del Banner</label>
-            <input
-              class="input-url"
-              type="text"
-              id="bannerEvento"
-              name="bannerEvento"
-              [(ngModel)]="evento.UrlBanner"
-              #bannerEvento="ngModel"
-              placeholder="url/banner.com"
-              required
-            />
-            <div class="divAvisos" *ngIf="bannerEvento.invalid && bannerEvento.touched">
-              Debe completar el campo
-            </div>
-          </div>
-        </fieldset>
+      </fieldset>
 
-        <fieldset class="fieldRecinto"> <!-- SELECCIONE RECINTO -->
-          <!--muestra todos los recintos cargados en el json-->
-          <div>
-            <h4>Seleccione recinto</h4>
-            <br>
-            <label for="seleccionRecinto"></label>
-            <br>
-            <select name="seleccionRecinto" id="seleccionRecinto" (change)="seleccionRecinto($event)" [disabled]="!fechaAgregada && !eventoIn" required>
 
-              <div class="divAvisos" *ngIf="formulario.controls['seleccionRecinto']?.invalid && formulario.controls['seleccionRecinto']?.touched ">
-                Debe seleccionar un recinto
+
+      <!-- FECHAS + VENUE -->
+      <div class="grid grid-cols-2 gap-[24px]">
+
+
+        <!-- ADD NEW DATE -->
+        <fieldset class="bg-[#F6F6F6] px-[30px] py-[30px]">
+
+          <h4 class="font-bold text-[30px] pb-[30px]">Add new date</h4>
+
+          <!-- fechas existentes -->
+          <div class="flex flex-col gap-[16px]">
+
+            <div *ngFor="let fecha of evento.fechas; let i = index">
+
+              <h4 class="font-bold">Date {{ i + 1 }}</h4>
+
+              <div class="flex flex-col">
+                <label for="fecha-{{i}}">Date</label>
+
+                <input
+                  type="date"
+                  id="fecha-{{i}}"
+                  class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+                  [(ngModel)]="fecha.fecha"
+                  [ngModelOptions]="{standalone: true}"
+                  required
+                />
               </div>
 
-              <option value="" disabled selected>Recintos</option>
-              <option *ngFor="let recinto of listadoRecintos" [value]="recinto.id">
-                <br>
-                {{ recinto.nombreRecinto }}
-              </option>
-            </select>
+              <div class="flex flex-col">
+                <label for="horario-{{i}}">Event time</label>
+
+                <input
+                  type="time"
+                  id="horario-{{i}}"
+                  class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+                  [(ngModel)]="fecha.hora"
+                  [ngModelOptions]="{standalone: true}"
+                  required
+                />
+              </div>
+
+            </div>
+
           </div>
 
-          <!--muestra los sectores de ese recinto para ingresar el precio (todas las fechas tienen
-          el mismo precio entonces se le asigna a la primera y despues se copia en todas)-->
-          <div *ngIf="evento.fechas && evento.fechas[0] && evento.fechas[0].entradas && evento.fechas[0].entradas.length > 0">
-            <ul>
+
+          <!-- agregar fecha -->
+          <div *ngIf="mostrarFormularioFecha" class="flex flex-col gap-[16px] mt-[20px]">
+
+            <div class="flex flex-col">
+              <label for="nuevaFecha">Date</label>
+
+              <input
+                type="date"
+                id="nuevaFecha"
+                class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+                [(ngModel)]="nuevaFecha.fecha"
+                [ngModelOptions]="{standalone: true}"
+                required
+              />
+            </div>
+
+
+            <div class="flex items-end gap-[10px]">
+
+              <div class="flex flex-col">
+                <label for="nuevoHorario">Event time</label>
+
+                <input
+                  type="time"
+                  id="nuevoHorario"
+                  class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+                  [(ngModel)]="nuevaFecha.hora"
+                  [ngModelOptions]="{standalone: true}"
+                  required
+                />
+              </div>
+
+              <button
+                type="button"
+                class="bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 text-white rounded-[100px] w-[185px] h-[40px] disabled:bg-gray-400"
+                (click)="aceptarFecha()">
+                Save date
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="mt-[20px] bg-[#631BE9] text-white rounded-[100px] w-[60px] h-[30px] hover:bg-[#551BC1] transition-colors duration-200"
+            *ngIf="!mostrarFormularioFecha"
+            (click)="mostrarFormularioFecha = true">
+            +
+          </button>
+
+        </fieldset>
+
+
+
+        <!-- SELECT VENUE -->
+        <fieldset class="bg-[#F6F6F6] px-[30px] py-[30px]">
+
+          <h4 class="font-bold text-[30px] pb-[20px]">Select Venue</h4>
+
+          <select
+            name="seleccionRecinto"
+            id="seleccionRecinto"
+            class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+            (change)="seleccionRecinto($event)"
+            [disabled]="!fechaAgregada && !eventoIn"
+            required
+          >
+
+            <option value="" disabled selected>Recintos</option>
+
+            <option *ngFor="let recinto of listadoRecintos" [value]="recinto.id">
+              {{ recinto.nombreRecinto }}
+            </option>
+
+          </select>
+
+
+          <div
+            class="mt-[20px]"
+            *ngIf="evento.fechas && evento.fechas[0] && evento.fechas[0].entradas && evento.fechas[0].entradas.length > 0">
+
+            <ul class="flex flex-col gap-[10px]">
+
               <li *ngFor="let entrada of evento.fechas[0].entradas">
+
                 <h5>{{entrada.nombreSector}}</h5>
+
                 <label for="precioSector-{{ entrada.nombreSector }}">$</label>
-                <input type="text" id="precioSector-{{ entrada.nombreSector }}" [(ngModel)]="entrada.precio"
-                       [ngModelOptions]="{standalone: true}" required>
+
+                <input
+                  type="text"
+                  id="precioSector-{{ entrada.nombreSector }}"
+                  class="w-[120px] h-[35px] border border-[#6B7280] rounded-[8px]"
+                  [(ngModel)]="entrada.precio"
+                  [ngModelOptions]="{standalone: true}"
+                  required
+                />
+
               </li>
+
             </ul>
+
           </div>
 
-        </fieldset> <!-- ACA TERMINA SELECCIONE RECINTO -->
+        </fieldset>
 
 
       </div>
 
-      <fieldset class="fieldFecha">
-        <!-- Datos de las fechas -->
-        <div *ngFor="let fecha of evento.fechas; let i = index">
-          <h4>Fecha {{ i + 1 }}</h4>
-          <div class= "input-field">
-            <input type="date" id="fecha-{{i}}" [(ngModel)]="fecha.fecha" [ngModelOptions]="{standalone: true}" required>
-            <label for="fecha-{{i}}">Fecha</label>
-          </div>
-          <div class="input-field">
-            <input type="time" id="horario-{{i}}" [(ngModel)]="fecha.hora" [ngModelOptions]="{standalone: true}" required>
-            <label for="horario-{{i}}">Horario</label>
-          </div>
-        </div>
-
-        <!-- Formulario para agregar una nueva fecha -->
-        <div *ngIf="mostrarFormularioFecha">
-          <h4>Agregar Nueva Fecha</h4>
-          <div class="input-field">
-            <input type="date" id="nuevaFecha" [(ngModel)]="nuevaFecha.fecha" [ngModelOptions]="{standalone: true}" required>
-            <label for="nuevaFecha">Fecha</label>
-
-          </div>
-          <div class="input-field">
-            <input type="time" id="nuevoHorario" [(ngModel)]="nuevaFecha.hora" [ngModelOptions]="{standalone: true}" required>
-            <label for="nuevoHorario">Horario</label>
-
-          </div>
-          <button type="button" (click)="aceptarFecha()">Aceptar</button>
-        </div>
-
-        <!-- Botón para mostrar el formulario de agregar fecha -->
-        <button type="button" *ngIf="!mostrarFormularioFecha" (click)="mostrarFormularioFecha = true">Nueva Fecha</button>
-      </fieldset>
-
-
-    </div> <!--FIN DEL FIELDSER-CONTAINER-->
+    </div>
 
   </form>
 

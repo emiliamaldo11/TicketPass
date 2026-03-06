@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,7 +6,6 @@
 }
 
 .input-url {
-  /* input del url del banner*/
   margin-top: 1%;
   width: 60%;
   padding: 2%;
@@ -281,4 +280,8 @@ section {
   background-size:cover;
 }
 
+ */
 
+ input{
+  padding-left: 8px;
+ }

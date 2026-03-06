@@ -1,4 +1,4 @@
-<div class="w-full h-[370px] overflow-hidden relative mx-auto">
+<div class="w-full h-[500px] overflow-hidden relative mx-auto">
 
   <!-- CONTENEDOR QUE SE MUEVE -->
   <div class="flex w-full transition-transform duration-500"
@@ -6,7 +6,7 @@
 
     <div *ngFor="let evento of listaEventos" class="min-w-full flex justify-center">
 
-      <div *ngIf="evento.alta === 1" class="w-[1060px] h-[354px] bg-[#ECE6E4] flex cursor-pointer
+      <div *ngIf="evento.alta === 1" class="w-[1060px] h-[450px] bg-[#ECE6E4] flex cursor-pointer
          transition-all duration-300 ease-out
          hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.25)]"
         [routerLink]="userId ? ['/detalle-evento', evento.id] : ['/iniciar-sesion']">

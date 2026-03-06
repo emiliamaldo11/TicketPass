@@ -70,9 +70,14 @@ export class DetalleEventoComponent implements OnInit{
   }
 
   changeEdit() {
-    this.isEditing = !this.isEditing;
-    console.log(this.eventoSeleccionado?.alta);
-  }
+  this.isEditing = true;
+
+  setTimeout(() => {
+    document.getElementById('editar')?.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }, 100);
+}
 
   //edita el evento
   updateEventos(evento: Evento){

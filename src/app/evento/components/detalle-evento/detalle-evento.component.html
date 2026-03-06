@@ -29,14 +29,14 @@
       </div>
 
 
-      <button class="boton-accion border-b-2 border-transparent hover:border-[#FCACFD]" (click)="changeEdit()">Edit
+      <button class="boton-accion border-b-2 border-transparent hover:border-[#21C183]" (click)="changeEdit()">Edit
         Event</button>
 
-      <button class="boton-accion border-b-2 border-transparent hover:border-[#FCACFD]" (click)="confirmarDH()">
+      <button class="boton-accion border-b-2 border-transparent hover:border-[#21C183]" (click)="confirmarDH()">
         {{ eventoSeleccionado?.alta === 1 ? 'Disable Event' : 'Enable Event' }}
       </button>
 
-      <button class="boton-accion border-b-2 border-transparent hover:border-[#FCACFD]"
+      <button class="boton-accion border-b-2 border-transparent hover:border-[#21C183]"
         (click)="verDisponibilidad()">Check Availability </button>
 
     </div>
@@ -96,6 +96,6 @@
 
 </section>
 
-<div *ngIf="isEditing" class="formulario-editar">
+<div *ngIf="isEditing" id="editar" class="formulario-editar">
   <app-add-evento [eventoIn]="eventoSeleccionado" (updateEvento)="updateEventos($event)"></app-add-evento>
 </div>
