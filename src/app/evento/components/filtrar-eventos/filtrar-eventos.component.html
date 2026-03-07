@@ -2,11 +2,10 @@
 
   <div class="wrapper flex flex-col justify-center relative">
 
-  <div
-  class="flex gap-[10px] bg-[#FAFAFA]
-         w-[630px] h-[40px] items-center
-         rounded-[100px] pl-[18px]
-         ">
+    <div class="flex gap-[10px] bg-white backdrop-blur-md
+w-[630px] h-[45px] items-center
+rounded-full pl-[18px]
+border border-[#1E1D1B]/20">
 
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="size-6 text-[#1E1D1B]">
@@ -14,7 +13,8 @@
           d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
       </svg>
       <input type="text" name="input-busqueda" [(ngModel)]="busqueda" (input)="filtrarEventos()"
-        placeholder="Search events" class="w-[500px] bg-[#FAFAFA] outline-none focus:outline-none focus:ring-0 text-[#1E1D1B] placeholder:text-[#1E1D1B] " />
+        placeholder="Search events"
+        class="w-[500px] bg-[#FAFAFA] outline-none focus:outline-none focus:ring-0 text-[#1E1D1B] placeholder:text-[#1E1D1B] " />
     </div>
 
 

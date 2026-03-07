@@ -26,6 +26,9 @@ export class ListEventoComponent implements OnInit {
   listaEventos: Evento[] = [];
   recintosNombres: { [key: number]: string } = {};
 
+  eventosHero: Evento[] = [];
+  currentIndexHero = 0;
+  intervaloHero: any;
 
 
   ngOnInit(): void {
@@ -35,6 +38,8 @@ export class ListEventoComponent implements OnInit {
     });
 
     this.listarEventos();
+
+
   }
 
   listarEventos() {
@@ -50,6 +55,12 @@ export class ListEventoComponent implements OnInit {
               })
           })
 
+          this.eventosHero = eventos
+            .filter(e => e.alta === 1)
+            .slice(-3)
+            .reverse();
+
+          this.startAutoSlide();
 
         },
         error: (err) => {
@@ -60,19 +71,29 @@ export class ListEventoComponent implements OnInit {
   }
 
 
-  currentIndex: number = 0;
+  startAutoSlide() {
 
+    if (this.intervaloHero) {
+      clearInterval(this.intervaloHero);
+    }
 
-  //carrousel de banners de eventos
-  nextSlide() {
-    this.currentIndex = (this.currentIndex + 1) % this.listaEventos.filter(evento => evento.alta === 1).length;
+    this.intervaloHero = setInterval(() => {
+
+      if (this.eventosHero.length === 0) return;
+
+      this.currentIndexHero =
+        (this.currentIndexHero + 1) % this.eventosHero.length;
+
+    }, 5000);
+
   }
 
-  prevSlide() {
-    this.currentIndex =
-      (this.currentIndex - 1 + this.listaEventos.filter(evento => evento.alta === 1).length) %
-      this.listaEventos.filter(evento => evento.alta === 1).length;
+  goToSlide(index: number) {
+    this.currentIndexHero = index;
   }
+
+
+
 
 
 }

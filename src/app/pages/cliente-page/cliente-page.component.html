@@ -1,21 +1,40 @@
 <section class="pt-[20px] bg-[#1E1D1B]">
 
-  <app-filtrar-eventos></app-filtrar-eventos>
+      <app-filtrar-eventos></app-filtrar-eventos>
 
-  <div class="pt-[30px]">
-    <app-list-evento></app-list-evento>
-  </div>
+    <div class="pt-[30px] mb-[30px] max-w-7xl mx-auto px-6">
+      <app-list-evento></app-list-evento>
+    </div>
 
-  <div class="pl-[60px] pt-[40px] flex align-items items-center">
-    <h2 class="inter text-[32px] text-[#FAFAFA] pr-2">Next shows </h2>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-      class="size-6 text-[#FAFAFA]">
-      <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-    </svg>
-  </div>
 
-  <div class="">
-    <app-list-banners></app-list-banners>
-  </div>
+    <div class="pl-[100px] mb-[20px] mt-[60px]">
+
+      <div class="flex items-center gap-2">
+        <h2 class="text-[34px] font-bold text-[#FAFAFA]">
+          Next Shows
+        </h2>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          class="w-6 h-6 text-white mt-2">
+
+          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+
+        </svg>
+      </div>
+
+
+
+      <p class="text-[#FAFAFA]/60 text-[14px]">
+        Discover the upcoming events and concerts
+      </p>
+
+    </div>
+
+    <div class="">
+      <app-list-banners></app-list-banners>
+    </div>
+
+
+
 
 </section>

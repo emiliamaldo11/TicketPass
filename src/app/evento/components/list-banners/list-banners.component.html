@@ -1,34 +1,28 @@
-<section class="pt-[4px] px-[4px]"
-  style="
-    background-image: url(/img/bg-2.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
-  ">
 
-<div class="items-center justify-center bg-[#EEE9D6] mt-[10px] pt-[20px] pl-[100px] rounded-t-[100px]"  >
 
-    <div class="py-[20px]  grid justify-center gap-x-[73px] gap-y-[36px] grid-cols-[repeat(3,305px)]">
-      <ng-container *ngFor="let event of listEventos">
-        <div *ngIf="event.alta === 1" class="group relative w-[305px] h-[114px] overflow-hidden cursor-pointer transition-all duration-300 ease-out
-         hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.25)]"
-          [routerLink]="userId ? ['/detalle-evento', event.id] : ['/iniciar-sesion']">
+<div class="items-center justify-center bg-[#EEE9D6] mt-[10px] pt-[20px]">
 
-          <img *ngIf="event.UrlBanner" [src]="event.UrlBanner" class="w-full h-full object-cover">
 
-          <div class="absolute inset-0 bg-[#E5D2FF]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300
-           flex flex-col justify-center items-center px-4 text-[#1E1D1B]">
-            <h3>{{event.nombreEvento}}</h3>
-            <h2>{{event.artista_banda}}</h2>
-          </div>
+  <div class="py-[20px] grid justify-center gap-x-[73px] gap-y-[36px] grid-cols-[repeat(3,360px)]">
 
+    <ng-container *ngFor="let event of listEventos">
+
+      <div *ngIf="event.alta === 1" class="group relative w-[360px] h-[140px] overflow-hidden cursor-pointer transition-all duration-300 ease-out
+        hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.25)]"
+        [routerLink]="userId ? ['/detalle-evento', event.id] : ['/iniciar-sesion']">
+
+        <img [src]="event.UrlBanner"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-[#E5D2FF]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300
+        flex flex-col justify-center items-center px-4 text-[#1E1D1B]">
+          <h3>{{event.nombreEvento}}</h3>
+          <h2>{{event.artista_banda}}</h2>
         </div>
 
-        <!-- hover -->
+      </div>
 
-      </ng-container>
-    </div>
-
+    </ng-container>
 
   </div>
 
-</section>
+</div>
