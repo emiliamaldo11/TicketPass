@@ -4,8 +4,11 @@
 
     <ng-container *ngFor="let evento of eventosHero; let i = index">
 
-      <div class="absolute inset-0 transition-opacity duration-700" [class.opacity-100]="i === currentIndexHero"
-        [class.opacity-0]="i !== currentIndexHero">
+     <div
+ class="absolute inset-0 transition-opacity duration-700"
+ [class.opacity-100]="i === currentIndexHero"
+ [class.opacity-0]="i !== currentIndexHero"
+ [class.pointer-events-none]="i !== currentIndexHero">
 
         <a class="block w-full h-full" [routerLink]="userId ? ['/detalle-evento', evento.id] : ['/iniciar-sesion']">
 

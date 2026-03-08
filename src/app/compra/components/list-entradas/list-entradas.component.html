@@ -1,8 +1,18 @@
 <section class="flex flex-col bg-[#1E1D1B] min-h-screen">
 
-  <h2 class="inter text-[32px] mt-[40px] mb-[40px] ml-[70px] text-white">My tickets</h2>
+  <div class="flex items-center gap-2">
+    <h2 class="font-bold text-[32px] mt-[40px] mb-[40px] ml-[70px] text-white">My tickets</h2>
 
-  <div class="bg-[#E5D2FF] px-[15px] py-[30px] rounded-[8px] mx-[30px] flex flex-col items-center">
+     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          class="w-6 h-6 text-white mt-2">
+
+          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+
+        </svg>
+  </div>
+
+
+  <div class=" px-[15px] py-[30px] rounded-[8px] mx-[30px] flex flex-col items-center">
     @if(listaCompras.length ==0){
     <div class="vacio"><strong>You don't have tickets.</strong></div>
     }

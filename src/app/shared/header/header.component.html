@@ -1,25 +1,33 @@
-<header class="w-full h-[64px] bg-[#631BE9]
-  flex justify-between items-center
-  pl-[70px] relative
-  shadow-[0_1px_6px_rgba(0,0,0,0.05)]">
+<header class="w-full h-[64px] bg-[#1E1D1B]
+flex justify-between items-center
+pl-[70px] relative
+border-b border-white/10">
 
 
   <div class="logo flex justify-center items-center gap-[5px] cursor-pointer">
 
-
-    <span *ngIf="idUsuario !== null" [routerLink]="['usuarios', idUsuario]" class="inter font-bold text-[32px] ">
+    <span *ngIf="idUsuario !== null" [routerLink]="['usuarios', idUsuario]"
+      class="flex items-center inter font-bold text-[32px] gap-2 ">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="size-[32px] text-white">
         <path stroke-linecap="round" stroke-linejoin="round"
           d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
       </svg>
 
+      <h1 class="text-[18px] font-light tracking-wide text-white/80">
+        TicketPass
+      </h1>
     </span>
-    <span *ngIf="idUsuario === null" class="inter font-bold text-[32px] "> <svg xmlns="http://www.w3.org/2000/svg"
-        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-[32px] text-white">
+    <span *ngIf="idUsuario === null" class="inter font-bold text-[32px] flex items-center gap-2"> <svg
+        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="size-[32px] text-white">
         <path stroke-linecap="round" stroke-linejoin="round"
           d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
       </svg>
+
+      <h1 class="text-[18px] font-light tracking-wide text-white/80">
+        TicketPass
+      </h1>
     </span>
   </div>
 
@@ -60,7 +68,8 @@
         </ul>
       </div>
 
-      <a href="#" (click)="cerrarSesion()" class="text-white border-b-2 border-transparent hover:border-[#E1F44B] ">Log out</a>
+      <a href="#" (click)="cerrarSesion()" class="text-white border-b-2 border-transparent hover:border-[#E1F44B] ">Log
+        out</a>
 
     </nav>
   </div>
