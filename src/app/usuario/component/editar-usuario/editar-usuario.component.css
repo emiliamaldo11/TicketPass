@@ -87,7 +87,6 @@ button {
 }
 
 button:hover {
-  background-color: #ff48459f;
   color: #631BE9;
   transform: translateY(-5px);
 }
@@ -150,7 +149,4 @@ cursor: pointer;
   color: #631BE9;
 }
 
-.color:hover{
-  color: #ff48459f
-}
 

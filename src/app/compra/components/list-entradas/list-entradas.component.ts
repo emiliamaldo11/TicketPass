@@ -75,7 +75,7 @@ export class ListEntradasComponent implements OnInit {
       confirmButtonText: "Refund ticket",
       cancelButtonText: "Cancel",
       confirmButtonColor: "#631BE9",
-      cancelButtonColor: "#ff4845b2",
+      cancelButtonColor: '#b91c1c',
       icon: "warning"
     }).then((result) => {
       if (result.isConfirmed) {

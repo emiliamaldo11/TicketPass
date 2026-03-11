@@ -19,20 +19,20 @@ import { RecintoService } from '../../../services/recintos.service';
   templateUrl: './detalle-evento.component.html',
   styleUrl: './detalle-evento.component.css'
 })
-export class DetalleEventoComponent implements OnInit{
+export class DetalleEventoComponent implements OnInit {
 
-  private eventosService= inject(EventoService);
+  private eventosService = inject(EventoService);
   private authService = inject(Autenticacion);
-    private recintosService = inject(RecintoService);
+  private recintosService = inject(RecintoService);
   isEditing = false;
-  ventana= false;
+  ventana = false;
 
   eventoSeleccionado: Evento | undefined;
   recintoNombre: string = ''
 
   id: string | null = ''  //evento
   userId: string | null = ''
-  tipo : number | null = null
+  tipo: number | null = null
 
   private active = inject(ActivatedRoute)
 
@@ -56,8 +56,8 @@ export class DetalleEventoComponent implements OnInit{
           next: (eventoSeleccionado: Evento) => {
             this.eventoSeleccionado = eventoSeleccionado;
             this.recintosService.getRecintoById(eventoSeleccionado.recinto_id).subscribe(recinto => {
-                this.recintoNombre = recinto.nombreRecinto;
-              })
+              this.recintoNombre = recinto.nombreRecinto;
+            })
           },
           error: (e: Error) => {
             console.log("Error obteniendo el evento:", e.message);
@@ -70,29 +70,30 @@ export class DetalleEventoComponent implements OnInit{
   }
 
   changeEdit() {
-  this.isEditing = true;
+    this.isEditing = true;
 
-  setTimeout(() => {
-    document.getElementById('editar')?.scrollIntoView({
-      behavior: 'smooth'
-    });
-  }, 100);
-}
+    setTimeout(() => {
+      document.getElementById('editar')?.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }, 100);
+  }
 
   //edita el evento
-  updateEventos(evento: Evento){
+  updateEventos(evento: Evento) {
     this.eventosService.putEvento(evento?.id, evento).subscribe({
-      next:()=>{
+      next: () => {
         Swal.fire({
-          title: "Evento editado correctamente",
+          title: "Event updated successfully",
           confirmButtonColor: "#631BE9",
           icon: "success"
+
         });
       },
-      error:(e: Error)=>{
+      error: (e: Error) => {
         console.log(e.message);
         Swal.fire({
-          title: "Error al editar el evento",
+          title: "Error updating the event",
           confirmButtonColor: "#631BE9",
           icon: "error"
         });
@@ -101,54 +102,51 @@ export class DetalleEventoComponent implements OnInit{
   }
 
   //si el evento esta deshabilitado NO aparece en el menu principal
-   deshabilitarOHabilitar(){
-    if(this.eventoSeleccionado){
-      if(this.eventoSeleccionado.alta === 1)
-        {
-          this.eventosService.deshabilitarEvento(this.eventoSeleccionado.id, 0).subscribe({
-            next:()=>{
-              Swal.fire({
-                title: "Evento deshabilitado correctamente",
-                text: "El evento estara oculto para los clientes",
-                confirmButtonColor: "#631BE9",
-                icon: "success"
-              }).then(() => {
-                window.location.reload();
-              });
-            },
-            error:(e: Error)=>{
-              console.log(e.message);
-              Swal.fire({
-                title: "Error al deshabilitar el evento",
-                confirmButtonColor: "#631BE9",
-                icon: "error"
-              })
-            }
-          })
-        }
-        else
-          {
-            this.eventosService.deshabilitarEvento(this.eventoSeleccionado.id, 1).subscribe({
-              next:()=>{
-                Swal.fire({
-                  title: "Evento habilitado correctamente",
-                  text: "El evento esta visible para los clientes.",
-                  confirmButtonColor: "#631BE9",
-                  icon: "success"
-                }).then(() => {
-                  window.location.reload();
-                });
-              },
-              error:(e: Error)=>{
-                console.log(e.message);
-                Swal.fire({
-                  title: "Error al deshabilitar el evento",
-                  confirmButtonColor: "#631BE9",
-                  icon: "error"
-                })
-              }
+  deshabilitarOHabilitar() {
+    if (this.eventoSeleccionado) {
+      if (this.eventoSeleccionado.alta === 1) {
+        this.eventosService.deshabilitarEvento(this.eventoSeleccionado.id, 0).subscribe({
+          next: () => {
+            Swal.fire({
+              title: "Event disabled successfully",
+              text: "The event will be hidden from customers",
+              confirmButtonColor: "#631BE9",
+              icon: "success"
+            }).then(() => {
+              window.location.reload();
+            });
+          },
+          error: (e: Error) => {
+            console.log(e.message);
+            Swal.fire({
+              title: "Error disabling the event",
+              confirmButtonColor: "#631BE9",
+              icon: "error"
             })
           }
+        })
+      }
+      else {
+        this.eventosService.deshabilitarEvento(this.eventoSeleccionado.id, 1).subscribe({
+          next: () => {
+            Swal.fire({
+              title: "Event enabled successfully",
+              text: "The event is now visible to customers.",
+              confirmButtonColor: "#631BE9",
+              icon: "success"
+            }).then(() => {
+              window.location.reload();
+            });
+          },
+          error: (e: Error) => {
+            console.log(e.message);
+            Swal.fire({
+              title: "Error disabling the event", confirmButtonColor: "#631BE9",
+              icon: "error"
+            })
+          }
+        })
+      }
     }
 
   }
@@ -163,43 +161,43 @@ export class DetalleEventoComponent implements OnInit{
       const accion = fechaActualizar.habilitado === 0 ? 'deshabilitada' : 'habilitada';
 
       if (this.eventoSeleccionado)
-      this.eventosService.putEvento(this.eventoSeleccionado.id, this.eventoSeleccionado).subscribe({
-        next:()=>{
-          Swal.fire({
-            title: `Fila ${accion} correctamente`,
-            text: `La fila ahora está ${accion === 'habilitada' ? 'visible' : 'oculta'} para los clientes.`,
-            confirmButtonColor: "#631BE9",
-            icon: "success"
-          }).then(() => {
-            window.location.reload();
-          });
-        },
-        error:(e: Error)=>{
-          console.log(e.message);
-          Swal.fire({
-            title: `Error al ${accion === 'habilitada' ? 'habilitar' : 'deshabilitar'} la fila`,
-            confirmButtonColor: "#631BE9",
-            icon: "error"
-          })
-        }
-      });
+        this.eventosService.putEvento(this.eventoSeleccionado.id, this.eventoSeleccionado).subscribe({
+          next: () => {
+            Swal.fire({
+              title: `Queue ${accion} successfully`,
+              text: `The queue is now ${accion === 'habilitada' ? 'visible' : 'hidden'} for customers.`,
+              confirmButtonColor: "#631BE9",
+              icon: "success"
+            }).then(() => {
+              window.location.reload();
+            });
+          },
+          error: (e: Error) => {
+            console.log(e.message);
+            Swal.fire({
+              title: `Error trying to ${accion === 'habilitada' ? 'enable' : 'disable'} the queue`,
+              confirmButtonColor: "#631BE9",
+              icon: "error"
+            })
+          }
+        });
     } else {
       console.error('Fecha no encontrada en eventoSeleccionado');
     }
   }
 
-  confirmarDH(){
+  confirmarDH() {
     const accion = this.eventoSeleccionado?.alta === 1 ? 'deshabilitar' : 'habilitar';
 
     Swal.fire({
-      title: `¿Desea ${accion} el evento?`,
-      text: `Esta acción hará que el evento esté ${accion === 'deshabilitar' ? 'oculto' : 'visible'} para los clientes.`,
+      title: `Do you want to ${accion} the event?`,
+      text: `This action will make the event ${accion === 'deshabilitar' ? 'hidden' : 'visible'} to customers.`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#631BE9',
-      cancelButtonColor: "#ff4845",
-      confirmButtonText: `Si, ${accion}`,
-      cancelButtonText: 'Cancelar'
+      cancelButtonColor: '#b91c1c',
+      confirmButtonText: `Yes, ${accion}`,
+      cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
         this.deshabilitarOHabilitar();
@@ -207,20 +205,20 @@ export class DetalleEventoComponent implements OnInit{
     });
   }
 
-  confirmarFila(fecha: Fecha){
+  confirmarFila(fecha: Fecha) {
     const fechaActualizar = this.eventoSeleccionado?.fechas.find(f => f.fecha === fecha.fecha);
 
     if (fechaActualizar) {
       const accion = fechaActualizar.habilitado === 1 ? 'deshabilitar' : 'habilitar';
       Swal.fire({
-        title: `¿Desea ${accion} la fila?`,
-        text: `Esta acción hará que la fila esté ${accion === 'deshabilitar' ? 'oculto' : 'visible'} para los clientes.`,
+        title: `Do you want to ${accion} the queue?`,
+        text: `This action will make the queue ${accion === 'deshabilitar' ? 'hidden' : 'visible'} to customers.`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#631BE9',
-        cancelButtonColor: "#ff4845",
-        confirmButtonText: `Si, ${accion}`,
-        cancelButtonText: 'Cancelar'
+        cancelButtonColor: '#b91c1c',
+        confirmButtonText: `Yes, ${accion}`,
+        cancelButtonText: 'Cancel'
       }).then((result) => {
         if (result.isConfirmed) {
           this.cambiarEstadoFila(fecha);

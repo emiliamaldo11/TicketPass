@@ -78,7 +78,7 @@ export class ListUsuarioComponent {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#631BE9',
-      cancelButtonColor: '#ff4845',
+      cancelButtonColor:  '#b91c1c',
       confirmButtonText: `Sí, ${accion}`,
       cancelButtonText: 'Cancelar'
     }).then((result) => {

@@ -90,7 +90,7 @@
 }
 
 .boton-accion:hover {
-  background-color: #ff48459f;
+  background-color: #"b91c1c"9f;
   transform: translateY(-5px);
   color: #631BE9;
 }
@@ -112,7 +112,7 @@ button:disabled:hover{
 .sold-out {
   text-align: center;
   font-size: 16px;
-  color: #ff4845;
+  color: #"b91c1c";
   margin-top: 10px;
   font-weight: bold;
 }

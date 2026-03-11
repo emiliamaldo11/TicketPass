@@ -86,7 +86,7 @@
   padding: 1%;
   font-size: 18px;
   color: #fff;
-  background-color: #ff48459f;
+  background-color: #"b91c1c"9f;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -145,7 +145,7 @@ button {
 }
 
 button:hover {
- background-color:  #ff48459f;
+ background-color:  #"b91c1c"9f;
   transform: translateY(-5px);
   color: #631BE9;
 }

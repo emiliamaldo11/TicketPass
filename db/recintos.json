@@ -10,14 +10,8 @@
         "pais": "Argentina"
       },
       "urlImg": "https://turismo.buenosaires.gob.ar/sites/turismo/files/estadio_river_plate_1200_belgrano.jpg",
-      "capacidadTotal": 20020,
+      "capacidadTotal": 10020,
       "sectores": [
-        {
-          "nombreSector": "Campo delantero izquierdo",
-          "capacidad": 10000,
-          "numerado": false,
-          "asientos": []
-        },
         {
           "nombreSector": "Campo delantero derecho",
           "capacidad": 10000,

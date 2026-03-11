@@ -23,7 +23,7 @@
       <button (click)="mostrarForm()">Editar</button>
     </div>
 
-    <div *ngIf="mostrarEditar">
+    <div *ngIf="mostrarEditar" id="editar">
       <app-add-recinto [recintoRecibido]="recinto"></app-add-recinto>
     </div>
 

@@ -57,7 +57,7 @@
 .boton-accion:hover,
 .boton-detalle:hover {
 color: #631BE9;
-  background-color: #ff48459f ;
+  /* background-color: #"b91c1c"9f ; */
   transform: translateY(-5px);
 }
 

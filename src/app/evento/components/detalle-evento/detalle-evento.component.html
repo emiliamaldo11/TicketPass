@@ -66,19 +66,25 @@
 
 
         <!-- Botones según tipo de usuario -->
-        <div *ngIf="tipo == 2" class="acciones-evento flex w-full h-full flex justify-end items-center pr-[30px]">
+        <!-- user -->
+        <div *ngIf="tipo == 2" class="acciones-evento flex w-full h-full justify-end items-center pr-[30px] gap-[15px]">
 
-          <!-- user -->
+          <!-- badge sold out -->
+          <div *ngIf="fecha.disponibilidadTotal == 0" class="text-red-500 font-semibold text-[16px] tracking-wide">
+            Sold out
+          </div>
+
           <button type="button" class="w-[180px] h-[40px] rounded-[100px] text-white transition-colors duration-200
-         disabled:cursor-not-allowed
-         disabled:bg-gray-400
-         disabled:text-gray-700
-         bg-[#631BE9] hover:bg-[#551BC1]" [disabled]="fecha.disponibilidadTotal == 0 || fecha.habilitado == 0"
+    disabled:cursor-not-allowed
+    disabled:bg-gray-400
+    disabled:text-gray-700
+    bg-[#631BE9] hover:bg-[#551BC1]" [disabled]="fecha.disponibilidadTotal == 0 || fecha.habilitado == 0"
             [routerLink]="fecha.disponibilidadTotal > 0 ? ['/fila', eventoSeleccionado?.id, fecha.fecha] : null">
-            {{ fecha.disponibilidadTotal == 0 ? 'Sold out' : 'Buy tickets' }}
+
+            {{ fecha.disponibilidadTotal == 0 ? 'Buy tickets' : 'Buy tickets' }}
+
           </button>
 
-          <!-- <div *ngIf="fecha.disponibilidadTotal==0" class="sold-out">Sold out</div> -->
         </div>
 
         <!-- admin -->

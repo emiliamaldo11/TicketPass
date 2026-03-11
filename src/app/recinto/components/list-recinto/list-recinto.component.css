@@ -69,7 +69,7 @@
 }
 
 .btn:hover {
-  background-color: #ff48459f ;
+  background-color: #"b91c1c"9f ;
    transform: translateY(-5px);
    color: #631BE9;
 }
@@ -83,7 +83,7 @@
 }
 
 .toggle:hover {
-  background-color: #ff4845b2;
+  background-color: #"b91c1c"b2;
   color: #631BE9;
 }
 

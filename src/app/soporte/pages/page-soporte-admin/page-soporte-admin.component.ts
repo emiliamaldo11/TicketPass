@@ -31,7 +31,7 @@ export class AdminPreguntasComponent implements OnInit {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#631BE9',
-      cancelButtonColor: "#ff4845",
+      cancelButtonColor: '#b91c1c',
       confirmButtonText: `Si, eliminar`,
       cancelButtonText: 'Cancelar'
     }).then((result) => {

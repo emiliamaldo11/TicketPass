@@ -85,7 +85,7 @@ export class ListEventosAdminComponent {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#631BE9',
-      cancelButtonColor: "#ff4845",
+      cancelButtonColor: '#b91c1c',
       confirmButtonText: `Si, ${accion}`,
       cancelButtonText: 'Cancelar'
     }).then((result) => {

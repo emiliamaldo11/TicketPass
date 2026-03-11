@@ -80,7 +80,6 @@ button {
 }
 
 button:hover {
-  background-color: #ff48459f;
   color: #631BE9;
   transform: translateY(-3px);
 }

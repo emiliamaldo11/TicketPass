@@ -156,7 +156,7 @@ export class AddRecintoComponent implements OnInit {
         title: "¿Deseas guardar el recinto?",
         showCancelButton: true,
         confirmButtonColor: "#631BE9",
-        cancelButtonColor: "#ff4845",
+        cancelButtonColor: '#b91c1c',
         confirmButtonText: "Guardar",
         cancelButtonText: "Cancelar"
       }).then((result) => {

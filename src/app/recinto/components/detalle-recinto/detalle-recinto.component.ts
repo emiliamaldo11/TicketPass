@@ -13,32 +13,41 @@ import { AddRecintoComponent } from "../add-recinto/add-recinto.component";
   styleUrl: './detalle-recinto.component.css'
 })
 
-export class DetalleRecintoComponent implements OnInit{
+export class DetalleRecintoComponent implements OnInit {
 
-  idRecinto : number | null = null
+  idRecinto: number | null = null
   recinto?: Recinto
 
   mostrarEditar = false
 
-  private activated= inject (ActivatedRoute)
-  private recintoService = inject (RecintoService)
+  private activated = inject(ActivatedRoute)
+  private recintoService = inject(RecintoService)
 
   ngOnInit(): void {
     this.activated.paramMap.subscribe(param => {
       this.idRecinto = Number(param.get("id"));
 
       this.recintoService.getRecintoById(this.idRecinto).subscribe({
-        next: (encontrado : Recinto)=> {
+        next: (encontrado: Recinto) => {
           this.recinto = encontrado;
         },
-        error: (e: Error)=> {
+        error: (e: Error) => {
           console.log(e.message);
         }
       })
     })
   }
 
-  mostrarForm (){
+  mostrarForm() {
+
+
+
+    setTimeout(() => {
+      document.getElementById('editar')?.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }, 100);
+
     this.mostrarEditar = !this.mostrarEditar
   }
 

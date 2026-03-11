@@ -1,131 +1,245 @@
-<section>
-    <form #formulario="ngForm" (ngSubmit)="addRecinto(formulario)">
+<section class="bg-[#FAFAFA] pl-[60px] pt-[45px] pr-[60px] w-full min-h-screen">
 
-      <div class="divreg">
-        <h2 *ngIf="!recintoRecibido">Agregar recinto</h2>
-        <h2 *ngIf="recintoRecibido">Editar recinto</h2>
-      </div>
+  <form #formulario="ngForm" (ngSubmit)="addRecinto(formulario)">
 
-      <div class="wrapper">
-      <div class="input-field">
-        <input type="text" id="nombreRecinto" name="nombreRecinto" [(ngModel)]="recinto.nombreRecinto" required>
-        <div class="divAvisos"
-          *ngIf="formulario.controls['nombreRecinto']?.invalid && formulario.controls['nombreRecinto']?.touched">
-          Debe completar este campo
-        </div>
-        <label for="nombreRecinto">Nombre del Recinto</label>
-      </div>
-
-      <div class="input-field">
-        <input type="text" id="calle" name="calle" [(ngModel)]="recinto.direccion.calle" required>
-        <div class="divAvisos" *ngIf="formulario.controls['calle']?.invalid && formulario.controls['calle']?.touched">
-          Debe completar este campo
-        </div>
-        <label for="calle">Calle</label>
-      </div>
-
-      <div class="input-field">
-        <input type="number" id="numero" name="numero" [(ngModel)]="recinto.direccion.numero" required>
-        <div class="divAvisos"
-          *ngIf="formulario.controls['numero']?.invalid && formulario.controls['numero']?.touched ">
-          Debe completar este campo
-        </div>
-        <label for="numero">Numero</label>
-      </div>
-
-      <div class="input-field">
-        <input type="text" id="ciudad" name="ciudad" [(ngModel)]="recinto.direccion.ciudad" required>
-        <div class="divAvisos" *ngIf="formulario.controls['ciudad']?.invalid && formulario.controls['ciudad']?.touched">
-          Debe completar este campo
-        </div>
-        <label for="ciudad">Ciudad</label>
-      </div>
-
-      <div class="input-field">
-        <input type="text" id="codigoPostal" name="codigoPostal" [(ngModel)]="recinto.direccion.codigoPostal" required>
-        <div class="divAvisos"
-          *ngIf="formulario.controls['codigoPostal']?.invalid && formulario.controls['codigoPostal']?.touched">
-          Debe completar este campo
-        </div>
-        <label for="codigoPostal">Código Postal</label>
-      </div>
-
-      <div class="input-field">
-        <input type="text" id="pais" name="pais" [(ngModel)]="recinto.direccion.pais" required>
-        <div class="divAvisos" *ngIf="formulario.controls['pais']?.invalid && formulario.controls['pais']?.touched">
-          Debe completar este campo
-        </div>
-        <label for="pais">País</label>
-      </div>
-
-      <div class="input-field">
-        <input type="url" id="urlImg" name="urlImg" [(ngModel)]="recinto.urlImg" required>
-        <div class="divAvisos" *ngIf="formulario.controls['urlImg']?.invalid && formulario.controls['urlImg']?.touched">
-          Debe completar este campo
-        </div>
-        <label for="urlImg">URL de la Imagen del Recinto</label>
-      </div>
-
-      <div class="input-field">
-        <input type="url" id="urlMapaSectores" name="urlMapaSectores" [(ngModel)]="recinto.urlMapaSectores" required>
-        <div class="divAvisos"
-          *ngIf="formulario.controls['urlMapaSectores']?.invalid && formulario.controls['urlMapaSectores']?.touched">
-          Debe completar este campo
-        </div>
-        <label for="urlMapaSectores">URL del Mapa de Sectores</label>
-      </div>
-
-      <div class="input-field">
-        <input type="text" id="nombreSector" name="nombreSector" [(ngModel)]="sector.nombreSector">
-        <label for="nombreSector">Nombre del Sector</label>
-      </div>
-
-      <div class="input-field">
-        <input type="number" id="capacidad" name="capacidad" [(ngModel)]="sector.capacidad">
-        <label for="capacidad">Capacidad</label>
-      </div>
-
-      <div class="check-contaner">
-        <label class="custom-checkbox" for="butacasNumeradas">¿Butacas Numeradas?
-          <input type="checkbox" id="butacasNumeradas" name="butacasNumeradas" [(ngModel)]="sector.numerado">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-
-      <div *ngIf="!recintoRecibido">
-        <button type="button" (click)="agregarSector()">Agregar sector</button>
-      </div>
-      <div *ngIf="recintoRecibido">
-        <button type="button" (click)="agregarSectorEdit()">Agregar sector</button>
-      </div>
-
-      <!--arreglo temporal de sectores-->
-      @for (sector of sectoresTemp; track $index) {
-      <div class="nombreSector">
-        {{sector.nombreSector}}
-      </div>
-
-      <div class="eliminarBtn">
-        <button (click)="eliminarSector ($index)">Eliminar</button>
-      </div>
-      }
-
-      <!--si esta editando son los sectores que ya se cargaron-->
-      <div *ngIf="recintoRecibido">
-        @for (sector of recinto.sectores; track $index) {
-          <div class="nombreSector">
-            {{sector.nombreSector}}
-          </div>
-          <div class="eliminarBtn">
-            <button (click)="eliminarSectorEdit ($index)">Eliminar</button>
-          </div>
-        }
-      </div>
-      <br>
-      <br>
-      <button type="submit" [disabled]="formulario.invalid">Enviar</button>
+    <div class="flex justify-between items-center w-full mb-[60px] ">
+      <h2 class="font-bold text-[44px]">
+        {{recintoRecibido ? "Edit Venue" : "Add Venue"}}
+      </h2>
+      <button type="submit"
+        class="bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 text-white px-[30px] h-[45px] rounded-[100px] disabled:bg-gray-400">
+        {{recintoRecibido ? "Save Changes" : "Save Venue"}}
+      </button>
     </div>
-    </form>
 
- 
+    <!-- fieldsets -->
+    <div class="flex flex-col gap-[24px]">
+      <fieldset class="bg-[#F6F6F6] px-[30px] py-[30px]">
+        <h4 class="font-bold text-[30px] pb-[30px]">Venue Details</h4>
+
+        <div class="grid grid-cols-2 gap-[40px]">
+
+          <!-- izq -->
+          <div class="flex flex-col gap-[16px]">
+
+            <div class="input-field flex flex-col">
+              <label for="nombreRecinto">Venue</label>
+              <input type="text" id="nombreRecinto" class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+                name="nombreRecinto" [(ngModel)]="recinto.nombreRecinto" required>
+              <div class="divAvisos"
+                *ngIf="formulario.controls['nombreRecinto']?.invalid && formulario.controls['nombreRecinto']?.touched">
+                Please complete this field
+              </div>
+
+            </div>
+
+            <div class="input-field flex flex-col">
+              <label for="pais">Country</label>
+              <input type="text" id="pais" name="pais" class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+                [(ngModel)]="recinto.direccion.pais" required>
+              <div class="divAvisos"
+                *ngIf="formulario.controls['pais']?.invalid && formulario.controls['pais']?.touched">
+                Please complete this field
+              </div>
+
+            </div>
+
+
+          </div>
+
+          <!-- derecha -->
+          <div class="flex flex-col gap-[16px]">
+            <!-- ciudad -->
+
+            <div class="w-[385px] flex justify-between">
+              <div class="input-field flex flex-col">
+                <label for="ciudad">City</label>
+                <input type="text" id="ciudad" name="ciudad" class=" h-[35px] border border-[#6B7280] rounded-[8px]"
+                  [(ngModel)]="recinto.direccion.ciudad" required>
+                <div class="divAvisos"
+                  *ngIf="formulario.controls['ciudad']?.invalid && formulario.controls['ciudad']?.touched">
+                  Please complete this field
+                </div>
+              </div>
+
+              <div class="input-field flex flex-col">
+                <label for="codigoPostal">Postal Code</label>
+                <input type="text" id="codigoPostal" name="codigoPostal"
+                  class=" h-[35px] border border-[#6B7280] rounded-[8px]" [(ngModel)]="recinto.direccion.ciudad"
+                  required [(ngModel)]="recinto.direccion.codigoPostal" required>
+                <div class="divAvisos"
+                  *ngIf="formulario.controls['codigoPostal']?.invalid && formulario.controls['codigoPostal']?.touched">
+                  Please complete this field
+                </div>
+              </div>
+            </div>
+
+            <!-- calle -->
+            <div class="w-[385px] flex justify-between">
+              <div class="input-field flex flex-col">
+                <label for="calle">Street</label>
+                <input type="text" id="calle" name="calle" class=" h-[35px] border border-[#6B7280] rounded-[8px]"
+                  [(ngModel)]="recinto.direccion.calle" required>
+                <div class="divAvisos"
+                  *ngIf="formulario.controls['calle']?.invalid && formulario.controls['calle']?.touched">
+                  Please complete this field
+                </div>
+              </div>
+
+              <div class="input-field flex flex-col">
+                <label for="numero">Street Number</label>
+                <input type="number" id="numero" name="numero" class=" h-[35px] border border-[#6B7280] rounded-[8px]"
+                  [(ngModel)]="recinto.direccion.numero" required>
+                <div class="divAvisos"
+                  *ngIf="formulario.controls['numero']?.invalid && formulario.controls['numero']?.touched ">
+                  Please complete this field
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </fieldset>
+
+
+      <!-- imagenes -->
+      <fieldset class="bg-[#F6F6F6] px-[30px] py-[30px]">
+
+        <h4 class="font-bold text-[30px] pb-[30px]">Images</h4>
+
+        <div class="grid grid-cols-2 gap-[40px]">
+          <div class="input-field flex flex-col">
+            <label for="urlImg">Venue Image URL</label>
+
+            <input type="url" id="urlImg" name="urlImg" class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]"
+              [(ngModel)]="recinto.urlImg" required>
+            <div class="divAvisos"
+              *ngIf="formulario.controls['urlImg']?.invalid && formulario.controls['urlImg']?.touched">
+              Please complete this field
+            </div>
+          </div>
+
+          <div class="input-field flex flex-col">
+            <label for="urlMapaSectores">Section Map URL</label>
+
+            <input type="url" id="urlMapaSectores" name="urlMapaSectores"
+              class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]" [(ngModel)]="recinto.urlMapaSectores"
+              required>
+            <div class="divAvisos"
+              *ngIf="formulario.controls['urlMapaSectores']?.invalid && formulario.controls['urlMapaSectores']?.touched">
+              Please complete this field
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </fieldset>
+
+
+      <!-- sectores -->
+
+      <fieldset class="bg-[#F6F6F6] px-[30px] py-[30px]">
+        <h4 class="font-bold text-[30px] pb-[30px]">Sections</h4>
+
+        <div class="grid grid-cols-2 gap-[40px]">
+
+          <!-- izq -->
+          <div class="flex flex-col gap-[16px] ">
+            <div class="input-field flex flex-col">
+              <label for="nombreSector">Section Name</label>
+              <input type="text" id="nombreSector" name="nombreSector"
+                class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]" [(ngModel)]="sector.nombreSector">
+            </div>
+
+            <div class="input-field flex flex-col">
+              <label for="capacidad">Capacity</label>
+              <input type="number" id="capacidad" name="capacidad"
+                class="w-[385px] h-[35px] border border-[#6B7280] rounded-[8px]" [(ngModel)]="sector.capacidad">
+            </div>
+
+            <div class="check-contaner flex flex-col">
+              <label class="custom-checkbox" for="butacasNumeradas">Numbered Seats?
+                <input type="checkbox" id="butacasNumeradas" name="butacasNumeradas" [(ngModel)]="sector.numerado">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+
+            <div *ngIf="!recintoRecibido">
+              <button type="button"
+                class="bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 text-white px-[30px] h-[45px] rounded-[100px] disabled:bg-gray-400"
+                (click)="agregarSector()">Add Section</button>
+            </div>
+            <div *ngIf="recintoRecibido">
+              <button type="button"
+                class="bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 text-white px-[30px] h-[45px] rounded-[100px] disabled:bg-gray-400"
+                (click)="agregarSectorEdit()">Add Section</button>
+            </div>
+
+          </div>
+
+          <!-- derecha -->
+
+
+          <!-- array sectores -->
+          <div>
+
+            <div class="flex flex-col justify-center gap-2">
+              @for (sector of sectoresTemp; track $index) {
+              <div class="grid grid-cols-[1fr_auto] items-center bg-[#F6F6F6] px-[15px] py-[10px] rounded-[8px]">
+                <div class="nombreSector">
+                  {{sector.nombreSector}} - Capacity: {{sector.capacidad}}
+                </div>
+
+                <div class="eliminarBtn">
+                  <button class="text-red-500 font-semibold hover:text-red-700"
+                    (click)="eliminarSector ($index)">Delete</button>
+                </div>
+              </div>
+
+              }
+            </div>
+
+
+            <!--si esta editando son los sectores que ya se cargaron-->
+            <div *ngIf="recintoRecibido" class="flex flex-col justify-center gap-2">
+              @for (sector of recinto.sectores; track $index) {
+              <div
+                class="grid grid-cols-[1fr_auto] items-center bg-[#F6F6F6] px-[15px] py-[10px] rounded-[8px] mt-[10px]">
+                <div class="nombreSector">
+                  {{sector.nombreSector}} - Capacity: {{sector.capacidad}} </div>
+                <div class="eliminarBtn">
+                  <button class="text-red-500 font-semibold hover:text-red-700"
+                    (click)="eliminarSectorEdit ($index)">Delete</button>
+                </div>
+              </div>
+
+              }
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+      </fieldset>
+
+
+
+    </div>
+
+
+
+  </form>
+
+
 </section>

@@ -109,7 +109,7 @@ export class ListEntradasAdminComponent implements OnInit {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#631BE9',
-      cancelButtonColor: '#ff4845',
+      cancelButtonColor: '#b91c1c',
       confirmButtonText: `Sí, ${accion}`,
       cancelButtonText: 'Cancelar'
     }).then((result) => {
@@ -256,7 +256,7 @@ confirmarReponerIndividual(compra: Compra){
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#631BE9',
-    cancelButtonColor: '#ff4845',
+    cancelButtonColor:'#b91c1c',
     confirmButtonText: 'Sí, reponer stock',
     cancelButtonText: 'Cancelar'
   }).then((result) => {
@@ -273,7 +273,7 @@ confirmarReponerTodas (){
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#631BE9',
-    cancelButtonColor: '#ff4845',
+    cancelButtonColor: '#b91c1c',
     confirmButtonText: 'Sí, reponer stock',
     cancelButtonText: 'Cancelar'
   }).then((result) => {

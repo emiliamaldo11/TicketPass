@@ -64,7 +64,6 @@ margin-left:1150%;
 }
 
 button:hover {
-  background-color: #ff48459f ;
   transform: translateY(-5px);
   color: #631BE9;
 }
