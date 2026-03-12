@@ -12,7 +12,7 @@
   </div>
 
 
-  <div class=" px-[15px] py-[30px] rounded-[8px] mx-[30px] flex flex-col items-center">
+  <div class=" px-[15px] py-[30px] rounded-[8px] mx-[30px] flex flex-col items-cente bg-[#272624]">
     @if(listaCompras.length ==0){
     <div class="vacio"><strong>You don't have tickets.</strong></div>
     }
@@ -55,14 +55,14 @@
   </ul>
 
   <button (click)="anterior()" [disabled]="paginaActual === 0"
-    class="absolute left-0 top-1/2 -translate-y-1/2 bg-[#631BE9] text-white p-3 rounded-full shadow-lg hover:bg-[#551BC1] disabled:opacity-20 transition-all">
+    class="absolute left-0 top-1/2 -translate-y-1/2 bg-[#21C183] text-white p-3 rounded-full shadow-lg hover:bg-[#19A46E] disabled:opacity-20 transition-all">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
     </svg>
   </button>
 
   <button (click)="siguiente()" [disabled]="paginaActual >= maxPagina"
-    class="absolute right-0 top-1/2 -translate-y-1/2 bg-[#631BE9] text-white p-3 rounded-full shadow-lg hover:bg-[#551BC1] disabled:opacity-20 transition-all">
+    class="absolute right-0 top-1/2 -translate-y-1/2 bg-[#21C183] text-white p-3 rounded-full shadow-lg hover:bg-[#19A46E] disabled:opacity-20 transition-all">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
     </svg>
