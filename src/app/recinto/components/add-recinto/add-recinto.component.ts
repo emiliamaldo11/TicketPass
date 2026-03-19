@@ -22,7 +22,7 @@ export class AddRecintoComponent implements OnInit {
 
   userId: string | null = null;
 
-  constructor(private router: Router){}
+  constructor(private router: Router) { }
   private recintoService = inject(RecintoService);
 
   @Input()
@@ -83,15 +83,15 @@ export class AddRecintoComponent implements OnInit {
   }
 
   agregarSectorEdit() {
-      this.crearButacas(this.sector)
-      this.recintoRecibido?.sectores.push(this.sector);
+    this.crearButacas(this.sector)
+    this.recintoRecibido?.sectores.push(this.sector);
 
-      this.sector = {
-        nombreSector: '',
-        capacidad: 0,
-        numerado: false,
-        asientos: []
-      };
+    this.sector = {
+      nombreSector: '',
+      capacidad: 0,
+      numerado: false,
+      asientos: []
+    };
 
   }
 
@@ -131,14 +131,12 @@ export class AddRecintoComponent implements OnInit {
 
     if (formulario.invalid) return;
 
-    if (this.recintoRecibido)
-    {
+    if (this.recintoRecibido) {
       this.recinto.capacidadTotal = this.capacidadTotalCalculo()
       this.editRecinto()
     }
 
-    else
-    {
+    else {
       //rellena con los sectores y los que son numerados rellena las butacas
       this.recinto.sectores = this.sectoresTemp;
       for (let sector of this.recinto.sectores) {
@@ -153,12 +151,12 @@ export class AddRecintoComponent implements OnInit {
 
       this.recinto.capacidadTotal = this.capacidadTotalCalculo()
       Swal.fire({
-        title: "¿Deseas guardar el recinto?",
+        title: "Do you want to save this venue?",
         showCancelButton: true,
         confirmButtonColor: "#631BE9",
         cancelButtonColor: '#b91c1c',
-        confirmButtonText: "Guardar",
-        cancelButtonText: "Cancelar"
+        confirmButtonText: "Save",
+        cancelButtonText: "Cancel"
       }).then((result) => {
         if (result.isConfirmed) {
           this.postRecinto();
@@ -166,15 +164,15 @@ export class AddRecintoComponent implements OnInit {
       });
 
     }
-}
+  }
 
   postRecinto() {
     this.recintoService.postRecintos(this.recinto).subscribe(
       {
         next: () => {
           Swal.fire({
-            title: "¡Recinto guardado!",
-            text: "Tu recinto ha sido guardado y puede ser utilizado para los eventos.",
+            title: "Venue saved!",
+            text: "Your venue has been saved and can now be used for events.",
             confirmButtonColor: "#631BE9",
             icon: "success"
           }).then((result) => {
@@ -185,10 +183,10 @@ export class AddRecintoComponent implements OnInit {
         },
         error: (err) => {
           Swal.fire({
-            title: "Error al guardar el recinto",
+            title: "Error saving the venue",
             confirmButtonColor: "#631BE9",
             icon: "error"
-          });
+          })
           console.error('Error:', err);
         }
       }
@@ -202,7 +200,7 @@ export class AddRecintoComponent implements OnInit {
           next: () => {
             console.log('recinto editado');
             Swal.fire({
-              title: "Recinto editado correctamente",
+              title: "Venue updated successfully",
               confirmButtonColor: "#631BE9",
               icon: "success"
             }).then((result) => {
@@ -213,10 +211,10 @@ export class AddRecintoComponent implements OnInit {
           },
           error: (err) => {
             Swal.fire({
-              title: "Error al editar el recinto",
+              title: "Error updating the venue",
               confirmButtonColor: "#631BE9",
               icon: "error"
-            });
+            })
             console.error('Error:', err);
           }
         }

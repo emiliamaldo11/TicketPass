@@ -62,8 +62,8 @@ export class ListEventosAdminComponent {
     this.eventosService.putEvento(evento.id, evento).subscribe({
       next: () => {
         Swal.fire({
-          title: `Evento ${accion} correctamente`,
-          text: `El evento esta ${accion === 'deshabilitado' ? 'oculto' : 'visible'} para los clientes`,
+          title: `Event ${accion} successfully`,
+          text: `The event is now ${accion === 'deshabilitado' ? 'hidden' : 'visible'} to customers`,
           confirmButtonColor: "#631BE9",
           icon: "success"
         });
@@ -71,7 +71,7 @@ export class ListEventosAdminComponent {
       error: (e: Error) => {
         console.log(e.message);
         Swal.fire({
-          title: `Error al ${accion === 'habilitado' ? 'habilitar' : 'deshabilitar'} el evento`,
+          title: `Error while ${accion === 'habilitado' ? 'enabling' : 'disabling'} the event`,
           confirmButtonColor: "#631BE9",
           icon: "error"
         })
@@ -82,17 +82,16 @@ export class ListEventosAdminComponent {
 
   confirmarDH(evento: Evento) {
 
-    const accion = evento.alta === 1 ? 'deshabilitar' : 'habilitar';
-
+    const accion = evento.alta === 1 ? 'disable' : 'enable';
     Swal.fire({
-      title: `¿Desea ${accion} el evento?`,
-      text: `Esta acción hará que el evento esté ${accion === 'deshabilitar' ? 'oculto' : 'visible'} para los clientes.`,
+      title: `Do you want to ${accion} the event?`,
+      text: `This action will make the event ${accion === 'disable' ? 'hidden' : 'visible'} to customers.`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#631BE9',
       cancelButtonColor: '#b91c1c',
-      confirmButtonText: `Si, ${accion}`,
-      cancelButtonText: 'Cancelar'
+      confirmButtonText: `Yes, ${accion}`,
+      cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
         this.cambioAlta(evento);

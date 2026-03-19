@@ -6,11 +6,12 @@
 </header>
 
 <!-- sin padding si esta en iniciar sesion o registrarse -->
-<main [class.no-padding]="!mostrarHeader">
+  <main class="flex-1 flex flex-col "
+ [class.no-padding]="!mostrarHeader" >
   <router-outlet></router-outlet>
 </main>
 
- <footer>
+ <footer *ngIf="mostrarFooter">
   <app-footer></app-footer>
 </footer>
 

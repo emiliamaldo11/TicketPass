@@ -22,7 +22,7 @@ import { Autenticacion } from '../../../services/autenticacion.service';
 
 export class AddEventoComponent implements OnInit {
 
-  constructor(private router: Router, private authService: Autenticacion) {}
+  constructor(private router: Router, private authService: Autenticacion) { }
   private recintosService = inject(RecintoService);
   private eventosService = inject(EventoService);
 
@@ -186,26 +186,26 @@ export class AddEventoComponent implements OnInit {
   }
 
   //rellena la primera fecha con el precio que se asigno a cada sector
-  rellenarPrecio (fecha:Fecha){
+  rellenarPrecio(fecha: Fecha) {
     const entradasPrimeraFecha = this.evento.fechas[0].entradas;
 
     fecha.entradas.forEach(entrada => {
       entradasPrimeraFecha.forEach(entradaCargada => {
-        if (entradaCargada.nombreSector == entrada.nombreSector){
+        if (entradaCargada.nombreSector == entrada.nombreSector) {
           entrada.precio = entradaCargada.precio;
         }
       })
     })
   }
 
-  rellenarEntradaNuevaEdit (fecha: Fecha){
+  rellenarEntradaNuevaEdit(fecha: Fecha) {
     const idRecinto = this.evento.recinto_id
     const recinto = this.listadoRecintos.find(recinto => recinto.id === idRecinto);
 
-    if (recinto){
+    if (recinto) {
       this.rellenarEntradas(recinto?.sectores, fecha); //rellena todo menos el precio
       this.rellenarPrecio(fecha);
-      fecha.disponibilidadTotal =  recinto.capacidadTotal
+      fecha.disponibilidadTotal = recinto.capacidadTotal
     }
 
   }
@@ -243,24 +243,24 @@ export class AddEventoComponent implements OnInit {
 
     //cuando se carga por primera vez
 
-      //rellena todas las fechas iguales
-      for (const fecha of this.evento.fechas) {
-        fecha.entradas = entradasCargadas;
-        fecha.disponibilidadTotal = disponibilidad;
-      }
+    //rellena todas las fechas iguales
+    for (const fecha of this.evento.fechas) {
+      fecha.entradas = entradasCargadas;
+      fecha.disponibilidadTotal = disponibilidad;
+    }
 
-      Swal.fire({
-        title: "¿Deseas guardar el evento?",
-        showCancelButton: true,
-        confirmButtonColor: "#631BE9",
-        cancelButtonColor: '#b91c1c',
-        confirmButtonText: "Guardar",
-        cancelButtonText: "Cancelar"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.guardarEventosJSON();
-        }
-      });
+    Swal.fire({
+      title: "Do you want to save this event?",
+      showCancelButton: true,
+      confirmButtonColor: "#631BE9",
+      cancelButtonColor: '#b91c1c',
+      confirmButtonText: "Save",
+      cancelButtonText: "Cancel"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.guardarEventosJSON();
+      }
+    });
 
     console.log(this.evento);
 
@@ -274,8 +274,8 @@ export class AddEventoComponent implements OnInit {
         next: () => {
           console.log('evento agregado');
           Swal.fire({
-            title: "¡Evento guardado!",
-            text: "Tu evento ha sido guardado y puede ser habilitado.",
+            title: "Event saved!",
+            text: "Your event has been saved and can now be enabled.",
             confirmButtonColor: "#631BE9",
             icon: "success"
           }).then((result) => {
@@ -286,7 +286,7 @@ export class AddEventoComponent implements OnInit {
         },
         error: (err) => {
           Swal.fire({
-            title: "Error al guardar el evento",
+            title: "Error saving the event",
             confirmButtonColor: "#631BE9",
             icon: "error"
           });
@@ -304,8 +304,8 @@ export class AddEventoComponent implements OnInit {
       this.evento.fechas.forEach(fecha => {
         this.rellenarPrecio(fecha);
 
-        if (fecha.entradas.length == 0){
-          this.rellenarEntradaNuevaEdit (fecha) //rellena las nuevas entradas
+        if (fecha.entradas.length == 0) {
+          this.rellenarEntradaNuevaEdit(fecha) //rellena las nuevas entradas
         }
 
       })

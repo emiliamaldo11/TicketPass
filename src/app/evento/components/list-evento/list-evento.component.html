@@ -4,17 +4,13 @@
 
     <ng-container *ngFor="let evento of eventosHero; let i = index">
 
-     <div
- class="absolute inset-0 transition-opacity duration-700"
- [class.opacity-100]="i === currentIndexHero"
- [class.opacity-0]="i !== currentIndexHero"
- [class.pointer-events-none]="i !== currentIndexHero">
+      <div class="absolute inset-0 transition-opacity duration-700" [class.opacity-100]="i === currentIndexHero"
+        [class.opacity-0]="i !== currentIndexHero" [class.pointer-events-none]="i !== currentIndexHero">
 
         <a class="block w-full h-full" [routerLink]="userId ? ['/detalle-evento', evento.id] : ['/iniciar-sesion']">
 
-          <img *ngIf="evento.UrlBanner" [src]="evento.UrlBanner" class="w-full h-full object-cover">
-
-          <div class="absolute inset-0 bg-black/40 flex items-end">
+          <img *ngIf="evento.UrlBanner" [src]="evento.UrlBanner"
+class="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110" >          <div class="absolute inset-0 bg-black/40 flex items-end">
 
             <div class="text-white pb-[60px] pl-[80px]">
 
@@ -49,14 +45,13 @@
   <!-- indicadores -->
   <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 z-50">
 
-  <ng-container *ngFor="let ev of eventosHero; let i = index">
-    <div
-      (click)="goToSlide(i)"
-      [ngClass]="i === currentIndexHero ? 'bg-[#631BE9] w-[40px]' : 'bg-[#631BE9]/40 w-[40px]'"
-      class="h-[4px] rounded-full cursor-pointer transition-all duration-300">
-    </div>
-  </ng-container>
+    <ng-container *ngFor="let ev of eventosHero; let i = index">
+      <div (click)="goToSlide(i)"
+        [ngClass]="i === currentIndexHero ? 'bg-[#631BE9] w-[40px]' : 'bg-[#631BE9]/40 w-[40px]'"
+        class="h-[4px] rounded-full cursor-pointer transition-all duration-300">
+      </div>
+    </ng-container>
 
-</div>
+  </div>
 
 </section>

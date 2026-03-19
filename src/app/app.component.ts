@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   mostrarHeader: boolean = true;
+  mostrarFooter: boolean = true;
 
 
   ngOnInit(): void {
@@ -53,6 +54,20 @@ export class AppComponent implements OnInit {
           event.url === '/registrarse' ||
           event.url === '/cambiar-contrasenia' ||
           event.url.startsWith('/cambiar-contrasenia/')
+        );
+      }
+    });
+
+    const rutasSinFooter = [
+      '/detalle-evento',
+      '/elegir-entrada',
+      '/fila'
+    ];
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.mostrarFooter = !rutasSinFooter.some(ruta =>
+          event.urlAfterRedirects.includes(ruta)
         );
       }
     });

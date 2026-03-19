@@ -1,75 +1,111 @@
-<section class="fondo">
-  <div class="layout">
+<!-- VER DISABLED BTN -->
 
-    <aside class="sidebar">
-      <div class="filtros">
-        <button class="boton-filtro" (click)="filtrarComprasPorEstado('habilitado')">Mostrar Habilitadas</button>
-        <button class="boton-filtro" (click)="filtrarComprasPorEstado('deshabilitado')">Mostrar Deshabilitadas</button>
-        <button class="boton-filtro" (click)="filtrarComprasPorEstado('todos')">Mostrar Todas</button>
-      </div>
-      <div class="eventos">
-        <ul *ngFor="let evento of listadoEventosFiltros">
-          <li *ngIf="evento.alta == 1" (click)="filtrarComprasPorShow(evento?.id)">
-            {{ evento.nombreEvento }}
-          </li>
-        </ul>
-      </div>
-    </aside>
+<section class="bg-[#FAFAFA] flex min-h-screen w-full gap-[30px] px-[30px] py-[20px]">
 
-      <section class="compras-section">
+  <div class="w-[420px] flex flex-col gap-[20px]">
+
+    <div class="bg-white rounded-[20px] px-[25px] py-[20px] shadow-sm border border-black/5">
+      <h2 class="font-semibold text-[22px] text-[#1E1D1B]">
+        Purchases
+      </h2>
+
+      <div class="mt-[12px]">
         <!--barra de busqueda-->
-        <app-filtrar-compras></app-filtrar-compras> 
+        <app-filtrar-compras></app-filtrar-compras>
+      </div>
 
-        <!--devuelve el stock de todas las entradas deshabilitadas en ese filtro-->
-        <button
-          class="detalle-boton"
-          *ngIf="filtro == 'show'"
-          [disabled]="!encontroCompraParaReponer()"
-          (click)="confirmarReponerTodas()"
-        >
-          Reponer stock de todas las entradas deshabilitadas
-        </button>
 
-        @if(comprasFiltradas?.length ==0){
-          <div class="vacio"> <strong>No se encontraron compras</strong></div>
-        }
+      <!-- filtros -->
+      <div class="flex gap-6 mt-[16px] border-b border-black/10 pb-[8px]">
+        <button class="text-[13px] text-black/60 hover:text-black transition pb-[6px]"
+          (click)="filtrarComprasPorEstado('habilitado')">Enabled</button>
+        <button class="text-[13px] text-black/60 hover:text-black transition pb-[6px]"
+          (click)="filtrarComprasPorEstado('deshabilitado')">Disabled</button>
+        <button class="text-[13px] text-black/60 hover:text-black transition pb-[6px]"
+          (click)="filtrarComprasPorEstado('todos')">All</button>
+      </div>
 
-        <ul class="compras-list">
-          <li *ngFor="let compra of comprasFiltradas">
-            <div class="compra-item">
-              <div class="compra-content">
-                <h3 class="evento-nombre">Entrada para: {{ compra.evento.nombreEvento }}</h3>
-                <p class="evento-fecha">Fecha del evento: {{ compra.evento.fechaEvento }}</p>
-                <button
-                  class="detalle-boton"
-                  type="button"
-                  [routerLink]="['/ver-detalle-entradas', compra.id]"
-                >
-                  Ver Detalle
-                </button>
-                <button
-                  class="detalle-boton"
-                  [disabled]="yaRespusoStock(compra?.id)"
-                  (click)="confirmarDHR(compra)"
-                >
-                  {{ compra.alta ? 'Dar de baja' : 'Habilitar' }} compra
-                </button>
-                <div *ngIf="compra.alta == false">
-                  <!--repone el stock de la entrada deshabilitada que desee-->
-                  <button
-                    class="detalle-boton"
-                    type="button"
-                    [disabled]="yaRespusoStock(compra?.id)"
-                    (click)="confirmarReponerIndividual(compra)"
-                  >
-                    Reponer stock
-                  </button>
-                </div>
-              </div>
-            </div>
+      <!-- filtro shows -->
+      <div class="eventos mt-[12px]">
+        <ul class="flex flex-col gap-[6px] max-h-[250px] overflow-y-auto pr-[4px]"
+          *ngFor="let evento of listadoEventosFiltros">
+          <li *ngIf="evento.alta == 1" (click)="filtrarComprasPorShow(evento?.id)" class="px-[12px] py-[10px] rounded-[10px] text-[13px] text-black/70
+             hover:bg-black/5 hover:text-black
+             transition-all duration-150 cursor-pointer flex items-center justify-between">
+
+            <span class="truncate">
+              {{ evento.nombreEvento }}
+            </span>
+
           </li>
         </ul>
-      </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- derecha -->
+  <div class="flex-1">
+    <section class=" bg-white rounded-[20px] px-[30px] py-[25px] shadow-sm border border-black/5">
+
+
+      <!--devuelve el stock de todas las entradas deshabilitadas en ese filtro-->
+      <button class="px-4 py-2 rounded-[100px] text-white text-[13px] font-medium transition-all duration-200
+         bg-black hover:bg-black/80 mb-[12px]
+         disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed" *ngIf="filtro == 'show'"
+        [disabled]="!encontroCompraParaReponer()" (click)="confirmarReponerTodas()">
+        Restock disabled tickets
+      </button>
+
+      @if(comprasFiltradas?.length ==0){
+      <div class="vacio"> <strong>Tickets not found.</strong></div>
+      }
+
+      <ul class="usuarios-list flex flex-col gap-[12px]">
+        <li *ngFor="let compra of comprasFiltradas"
+          class="bg-[#F6F6F6] rounded-[12px] px-[16px] py-[12px] flex flex-col gap-[4px]">
+
+          <div class="usuario-content flex justify-between items-center">
+
+            <div class="info">
+              <h3 class="evento-nombre font-bold">{{ compra.evento.nombreEvento }} Ticket</h3>
+              <p class="evento-fecha">Date: {{ compra.evento.fechaEvento }}</p>
+            </div>
+
+            <!-- botones -->
+            <div class="botones flex gap-4 items-center justify-center">
+
+              <button class="text-[12px] text-black/40 hover:text-black transition cursor-pointer "
+                [disabled]="yaRespusoStock(compra?.id)" (click)="confirmarDHR(compra)">
+                {{ compra.alta ? 'Disable' : 'Enable' }} purchase
+              </button>
+
+              <div *ngIf="compra.alta == false">
+                <!--repone el stock de la entrada deshabilitada que desee-->
+                <button class="px-4 py-2 rounded-[100px] text-white text-[13px] font-medium transition-all duration-200
+         bg-black hover:bg-black/80
+         disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed" type="button"
+                  [disabled]="yaRespusoStock(compra?.id)" (click)="confirmarReponerIndividual(compra)">
+                  Restock
+                </button>
+              </div>
+
+              <button
+                class="bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 text-white px-4 py-2 rounded-[100px] disabled:bg-gray-400"
+                type="button" [routerLink]="['/ver-detalle-entradas', compra.id]">
+                Ticket Details
+              </button>
+
+            </div>
+
+          </div>
+        </li>
+      </ul>
+    </section>
+
+
+
 
   </div>
+
+
 </section>

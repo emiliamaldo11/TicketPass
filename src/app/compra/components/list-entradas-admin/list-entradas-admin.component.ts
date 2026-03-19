@@ -83,7 +83,7 @@ export class ListEntradasAdminComponent implements OnInit {
       this.compraService.putCompra(compra.id, compra).subscribe({
         next: () => {
           Swal.fire({
-            title: `Recinto ${accion} correctamente`,
+            title: `Purchase ${accion} successfully`,
             confirmButtonColor: "#631BE9",
             icon: "success"
           });
@@ -91,7 +91,7 @@ export class ListEntradasAdminComponent implements OnInit {
         error: (e: Error) => {
           console.log(e.message);
           Swal.fire({
-            title: `Error al ${accion === 'habilitado' ? 'habilitar' : 'deshabilitar'} el recinto`,
+            title: `Error while ${accion === 'habilitado' ? 'enabling' : 'disabling'} the purchase`,
             confirmButtonColor: "#631BE9",
             icon: "error"
           });
@@ -104,14 +104,14 @@ export class ListEntradasAdminComponent implements OnInit {
     const accion = compra.alta ? 'dar de baja' : 'habilitar';
 
     Swal.fire({
-      title: `¿Desea ${accion} la compra?`,
-      text: `Esta acción hará que la compra ${accion === 'dar de baja' ? 'se deshabilite' : 'se habilite'} `,
+      title: `Do you want to ${accion} this purchase?`,
+      text: `This action will ${accion === 'dar de baja' ? 'disable' : 'enable'} the purchase`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#631BE9',
       cancelButtonColor: '#b91c1c',
-      confirmButtonText: `Sí, ${accion}`,
-      cancelButtonText: 'Cancelar'
+      confirmButtonText: `Yes, ${accion}`,
+      cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
         this.habilitarDeshabilitar(compra);
@@ -135,7 +135,7 @@ export class ListEntradasAdminComponent implements OnInit {
     this.filtro = "show"
     this.comprasFiltradas = this.compras?.filter(compra => compra.evento.idEvento === idEvento);
   }
-   /////////////////
+  /////////////////
 
 
   //las puse asincronicas porque sino se pisaban las actualizaciones
@@ -177,11 +177,11 @@ export class ListEntradasAdminComponent implements OnInit {
 
           if (entradaEncontrada) {
             //repone en ese sector especifico la cantidad
-             entradaEncontrada.disponibles += Number(compra.cantidad);
+            entradaEncontrada.disponibles += Number(compra.cantidad);
 
-             //si el sector tiene butacas repone la disponiblidad a true
+            //si el sector tiene butacas repone la disponiblidad a true
             if (entradaEncontrada.asientos.length > 0) {
-                compra.entrada.butaca?.forEach(butacaComprada => {
+              compra.entrada.butaca?.forEach(butacaComprada => {
                 const asiento = entradaEncontrada.asientos.find(asiento => asiento.butaca === butacaComprada);
                 if (asiento) {
                   asiento.disponibilidad = true;
@@ -233,54 +233,54 @@ export class ListEntradasAdminComponent implements OnInit {
 
 
   //verifica si en las entradas que filtro hay alguna para reponer (es para el btn de devolver todas)
-encontroCompraParaReponer(): boolean {
-  if (!this.comprasFiltradas || this.comprasFiltradas.length === 0) {
-    return false;
+  encontroCompraParaReponer(): boolean {
+    if (!this.comprasFiltradas || this.comprasFiltradas.length === 0) {
+      return false;
+    }
+
+    const hayParaReponer = this.comprasFiltradas.some(compra =>
+      compra.id !== undefined &&
+      !this.comprasDevueltas.includes(compra.id) &&
+      compra.alta === false
+    );
+
+    return hayParaReponer;
+
   }
 
-  const hayParaReponer = this.comprasFiltradas.some(compra =>
-    compra.id !== undefined &&
-    !this.comprasDevueltas.includes(compra.id) &&
-    compra.alta === false
-  );
+  confirmarReponerIndividual(compra: Compra) {
 
-  return hayParaReponer;
+    Swal.fire({
+      title: 'Do you want to restock this ticket?',
+      text: 'This action will prevent the ticket from being enabled again',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#631BE9',
+      cancelButtonColor: '#b91c1c',
+      confirmButtonText: 'Yes, restock',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.reponerStockIndividual(compra);
+      }
+    });
+  }
 
-}
-
-confirmarReponerIndividual(compra: Compra){
-
-  Swal.fire({
-    title: '¿Desea reponer el stock de esta entrada?',
-    text: 'Esta acción no permitira habilitar la entrada',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#631BE9',
-    cancelButtonColor:'#b91c1c',
-    confirmButtonText: 'Sí, reponer stock',
-    cancelButtonText: 'Cancelar'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      this.reponerStockIndividual(compra);
-    }
-  });
-}
-
-confirmarReponerTodas (){
-  Swal.fire({
-    title: '¿Desea reponer el stock de todas las entradas deshabilitadas?',
-    text: 'Esta acción no permitira habilitar las entradas',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#631BE9',
-    cancelButtonColor: '#b91c1c',
-    confirmButtonText: 'Sí, reponer stock',
-    cancelButtonText: 'Cancelar'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      this.reponerStockTodas();
-    }
-  });
-}
+  confirmarReponerTodas() {
+    Swal.fire({
+      title: 'Do you want to restock all disabled tickets?',
+      text: 'This action will prevent the tickets from being enabled again',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#631BE9',
+      cancelButtonColor: '#b91c1c',
+      confirmButtonText: 'Yes, restock all',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.reponerStockTodas();
+      }
+    });
+  }
 
 }

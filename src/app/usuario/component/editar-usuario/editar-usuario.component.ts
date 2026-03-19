@@ -16,7 +16,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './editar-usuario.component.html',
   styleUrl: './editar-usuario.component.css'
 })
-export class EditarUsuarioComponent implements OnInit{
+export class EditarUsuarioComponent implements OnInit {
 
   @Input()
   usuarioRecibido?: Usuario
@@ -31,45 +31,43 @@ export class EditarUsuarioComponent implements OnInit{
   usuariosService = inject(UsuarioService);
 
   ngOnInit(): void {
-      this.listarNombreUsuario();
-      console.log(this.nombresUsuario);
+    this.listarNombreUsuario();
+    console.log(this.nombresUsuario);
 
-      if(this.usuarioRecibido)
-      {
-        this.formularioUsuario.setValue({
-          nombre: this.usuarioRecibido.nombre,
-          apellido: this.usuarioRecibido.apellido,
-          telefono: this.usuarioRecibido.telefono,
-          email: this.usuarioRecibido.email,
-          direccion: {
-            calle: this.usuarioRecibido.direccion.calle,
-            numero: this.usuarioRecibido.direccion.numero,
-            ciudad: this.usuarioRecibido.direccion.ciudad,
-            codigoPostal: this.usuarioRecibido.direccion.codigoPostal,
-            pais: this.usuarioRecibido.direccion.pais
-          },
-          nombreUsuario: this.usuarioRecibido.nombreUsuario,
-          contrasenia: this.usuarioRecibido.contrasenia,
-          pregunta: this.usuarioRecibido.pregunta,
-          verificacion: this.usuarioRecibido.verificacion,
-          tipo: this.usuarioRecibido.tipo,
-          alta: this.usuarioRecibido.alta
-        });
+    if (this.usuarioRecibido) {
+      this.formularioUsuario.setValue({
+        nombre: this.usuarioRecibido.nombre,
+        apellido: this.usuarioRecibido.apellido,
+        telefono: this.usuarioRecibido.telefono,
+        email: this.usuarioRecibido.email,
+        direccion: {
+          calle: this.usuarioRecibido.direccion.calle,
+          numero: this.usuarioRecibido.direccion.numero,
+          ciudad: this.usuarioRecibido.direccion.ciudad,
+          codigoPostal: this.usuarioRecibido.direccion.codigoPostal,
+          pais: this.usuarioRecibido.direccion.pais
+        },
+        nombreUsuario: this.usuarioRecibido.nombreUsuario,
+        contrasenia: this.usuarioRecibido.contrasenia,
+        pregunta: this.usuarioRecibido.pregunta,
+        verificacion: this.usuarioRecibido.verificacion,
+        tipo: this.usuarioRecibido.tipo,
+        alta: this.usuarioRecibido.alta
+      });
 
-      }
+    }
   }
 
-  listarNombreUsuario ()
-  {
+  listarNombreUsuario() {
     this.usuariosService.getUsuarios().subscribe(
       {
-        next: (usuarios: Usuario[])=>{
+        next: (usuarios: Usuario[]) => {
 
           usuarios.forEach(usuario => {
             this.nombresUsuario.push(usuario.nombreUsuario)
           });
         },
-        error: (err)=> {
+        error: (err) => {
           console.error('Error al levantar nombres de usuario:', err);
         }
       }
@@ -77,48 +75,48 @@ export class EditarUsuarioComponent implements OnInit{
   }
 
   formularioUsuario = this.fb.nonNullable.group({
-    nombre:['',[Validators.required]],
-    apellido:['',[Validators.required]],
-    telefono:[0,[Validators.required]],
-    email:['',[Validators.email, Validators.required]],
+    nombre: ['', [Validators.required]],
+    apellido: ['', [Validators.required]],
+    telefono: [0, [Validators.required]],
+    email: ['', [Validators.email, Validators.required]],
     direccion: this.fb.nonNullable.group({
-      calle:['',[Validators.required]],
-      numero:[0,[Validators.required]],
-      ciudad:['',[Validators.required]],
-      codigoPostal: ['',[Validators.required]],
-      pais:['',[Validators.required]]
+      calle: ['', [Validators.required]],
+      numero: [0, [Validators.required]],
+      ciudad: ['', [Validators.required]],
+      codigoPostal: ['', [Validators.required]],
+      pais: ['', [Validators.required]]
     }),
-    nombreUsuario:['',[Validators.required, Validators.minLength(3)]],
-    contrasenia:['', [Validators.required, Validators.minLength(8)]],
+    nombreUsuario: ['', [Validators.required, Validators.minLength(3)]],
+    contrasenia: ['', [Validators.required, Validators.minLength(8)]],
     pregunta: ['', [Validators.required]],
     verificacion: ['', [Validators.required]],
-    tipo:[2, [Validators.required]],
-    alta:[true, [Validators.required]]
+    tipo: [2, [Validators.required]],
+    alta: [true, [Validators.required]]
   })
 
 
 
-  editarUsuario (usuario: Usuario){
-    if (this.usuarioRecibido){
+  editarUsuario(usuario: Usuario) {
+    if (this.usuarioRecibido) {
 
-      if(this.usuarioRecibido.id)
-      this.usuariosService.putUsuario(this.usuarioRecibido.id, usuario).subscribe({
-        next : ()=> {
-          Swal.fire({
-            title: "Perfil editado con exito",
-            confirmButtonColor: "#631BE9",
-            icon: "success"
-          })
-        },
-        error: (err) => {
-          Swal.fire({
-            title: "Error al editar el perfil",
-            confirmButtonColor: "#631BE9",
-            icon: "error"
-          });
-          console.error('Error:', err);
-        }
-      })
+      if (this.usuarioRecibido.id)
+        this.usuariosService.putUsuario(this.usuarioRecibido.id, usuario).subscribe({
+          next: () => {
+            Swal.fire({
+              title: "Profile updated successfully",
+              confirmButtonColor: "#631BE9",
+              icon: "success"
+            })
+          },
+          error: (err) => {
+            Swal.fire({
+              title: "Error updating profile",
+              confirmButtonColor: "#631BE9",
+              icon: "error"
+            });
+            console.error('Error:', err);
+          }
+        })
     }
 
 
@@ -133,13 +131,16 @@ export class EditarUsuarioComponent implements OnInit{
     const usuario: Usuario = this.formularioUsuario.getRawValue();
     const usuarioEncontrado = this.nombresUsuario.find(nombre => nombre == usuario.nombreUsuario);
     console.log(usuarioEncontrado);
-    if (usuarioEncontrado && usuarioEncontrado!=this.usuarioRecibido?.nombreUsuario)
-    {
-      alert("El nombre de usuario ya esta en uso!");
+    if (usuarioEncontrado && usuarioEncontrado != this.usuarioRecibido?.nombreUsuario) {
+      Swal.fire({
+        title: "Username already in use",
+        text: "Please choose a different username",
+        confirmButtonColor: "#631BE9",
+        icon: "warning"
+      });
     }
-    else
-    {
-        this.editarUsuario(usuario)
+    else {
+      this.editarUsuario(usuario)
     }
 
   }

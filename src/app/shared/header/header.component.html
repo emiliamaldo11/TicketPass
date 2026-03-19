@@ -18,6 +18,7 @@ border-b border-white/10">
         TicketPass
       </h1>
     </span>
+
     <span *ngIf="idUsuario === null" class="inter font-bold text-[32px] flex items-center gap-2"> <svg
         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="size-[32px] text-white">
@@ -64,9 +65,9 @@ border-b border-white/10">
               purchases</a></li>
           <li class="border-b-2 border-transparent hover:border-gray-500"><a [routerLink]="['/ver-usuarios', idUsuario]"
               (click)="cerrarMenu()">View registered users </a></li>
-          <li class="border-b-2 border-transparent hover:border-gray-500 justify-center"><a
+          <!-- <li class="border-b-2 border-transparent hover:border-gray-500 justify-center"><a
               [routerLink]="['/preguntas-frecuentes-administrador']" (click)="cerrarMenu()">FAQs</a>
-          </li>
+          </li> -->
         </ul>
       </div>
 
