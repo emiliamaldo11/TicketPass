@@ -11,4 +11,6 @@ import { FiltrarUsuariosComponent } from '../../component/filtrar-usuarios/filtr
 })
 export class PageListUsuariosComponent {
 
+  filter : 'all' | 'disabled' = 'all';
+
 }

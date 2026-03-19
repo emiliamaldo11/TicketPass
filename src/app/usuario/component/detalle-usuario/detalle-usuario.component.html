@@ -3,8 +3,11 @@
   <div class="relative">
     <img src="/img/banner-tp-2.jpg" alt="imagen fondo" class=" w-[374px] h-full object-cover">
     <div class="absolute z-20 top-8 ml-[44px]">
-      <h2 class="inter text-[30px]">Hi, </h2>
+      @if(!adminId){
+         <h2 class="inter text-[30px]">Hi, </h2>
       <h3 class="inter text-[30px]">Welcome <b> {{usuario?.nombre}} </b> </h3>
+      }
+
     </div>
   </div>
 
@@ -33,7 +36,7 @@
 
         <div class="flex justify-between gap-[150px]">
           <div>
-            <div class="flex flex-col bg-[#F6F6F6] px-[30px] py-[30px]">
+            <div class="flex flex-col bg-white rounded-[20px] px-[30px] py-[25px] shadow-sm border border-black/5">
               <h3 class="font-bold text-[20px]">Account information</h3>
 
               <label>Username</label>
@@ -54,7 +57,7 @@
 
             <div class="flex justify-between gap-[100px] mt-[40px] items-center">
 
-              <div class="flex flex-col bg-[#F6F6F6] px-[30px] py-[30px]">
+              <div class="flex flex-col bg-white rounded-[20px] px-[30px] py-[25px] shadow-sm border border-black/5">
                 <h3 class="font-bold text-[20px] mb-[20px]">User information</h3>
 
                 <label for="nombreUsuario">First name </label>
@@ -103,7 +106,7 @@
           </div>
 
 
-          <div formGroupName="direccion" class="flex flex-col relative bg-[#F6F6F6] px-[30px] py-[30px]">
+          <div formGroupName="direccion" class="flex flex-col relative bg-white rounded-[20px] px-[30px] py-[25px] shadow-sm border border-black/5">
             <h3 class="font-bold text-[20px] mb-[20px]">Address</h3>
 
             <div class="flex flex-col">
@@ -134,7 +137,7 @@
 
             <!-- cambiar contraseña -->
 
-            <div *ngIf="isEditing" class="absolute bottom-0 right-0">
+            <div *ngIf="isEditing" class="absolute bottom-4 right-4">
               <a class="text-[16px] text-[#631BE9] underline"
                 [routerLink]="['/cambiar-contrasenia' , usuario?.id]">Change password</a>
             </div>

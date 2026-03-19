@@ -1,32 +1,78 @@
-<section>
+<section class="bg-[#FAFAFA]">
   @if (recinto) {
-    <div class="divreg">
-      <h2>{{recinto.nombreRecinto}}</h2>
+  <div class="relative w-full h-[586px] ">
+    <img [src]="recinto.urlImg" alt="banner" class="w-full h-full object-cover">
+    <div class="absolute inset-0
+      bg-gradient-to-t from-black/70 via-black/30 to-transparent
+      flex flex-col justify-end pb-[20px] pl-[30px]">
+
+      <h2 class="inter text-[64px] leading-none font-bold text-[#EDFF4A]">
+        {{recinto.nombreRecinto}}
+      </h2>
+
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-[24px] pl-[60px] pt-[45px] pr-[60px]">
+    <fieldset class="bg-white rounded-[20px] px-[30px] py-[25px] shadow-sm border border-black/5">
+      <h4 class="font-bold text-[30px] pb-[30px]">Adress</h4>
+       <div class="flex flex-col gap-[6px] mt-[10px] text-[15px] text-black/70">
+      <span>
+        <span class="font-medium text-black">Street:</span>
+        {{recinto.direccion.calle}} {{recinto.direccion.numero}}
+      </span>
+
+      <span>
+        <span class="font-medium text-black">Country:</span>
+        {{recinto.direccion.pais}}
+      </span>
     </div>
 
-    <img class="containerImgRecinto" *ngIf="recinto.urlImg" [src]="recinto.urlImg" alt="Imagen del recinto">
+    </fieldset>
 
-    <div class="wrapper datos-recinto">
-      <h4 class="titulo-seccion">Dirección</h4>
-      <div class="detalles">
-        {{recinto.direccion.calle}}- {{recinto.direccion.numero}}, {{recinto.direccion.pais}}
+    <fieldset class="bg-white rounded-[20px] px-[30px] py-[25px] shadow-sm border border-black/5">
+      <h4 class="font-bold text-[30px] pb-[30px]">Sections</h4>
+      <div class="flex flex-col gap-[16px] mt-[10px]">
+
+        <div *ngFor="let sector of recinto.sectores"
+          class="bg-[#F6F6F6] rounded-[12px] px-[16px] py-[12px] flex flex-col gap-[4px]">
+
+          <h5 class="font-semibold text-[16px] text-black">
+            {{sector.nombreSector}}
+          </h5>
+
+          <span class="text-[14px] text-black/70">
+            Capacity: {{sector.capacidad}}
+          </span>
+
+          <span class="text-[14px] text-black/70">
+            Numbered Seats:
+            <span class="font-medium text-black">
+              {{sector.numerado ? 'Yes' : 'No'}}
+            </span>
+          </span>
+
+        </div>
+
       </div>
+    </fieldset>
 
-      <h4 class="titulo-seccion">Sectores</h4>
-      <div *ngFor="let sector of recinto.sectores" class="detalles">
-        <h5>{{sector.nombreSector}}</h5>
-        Capacidad {{sector.capacidad}} - Numerado: {{sector.numerado ? 'Si' : 'No'}}
-      </div>
-    </div>
 
-    <div class="botonContainer">
-      <button (click)="mostrarForm()">Editar</button>
-    </div>
+  </div>
 
-    <div *ngIf="mostrarEditar" id="editar">
-      <app-add-recinto [recintoRecibido]="recinto"></app-add-recinto>
-    </div>
+
+
+
+
+  <div class="botonContainer flex  items-center justify-center py-12">
+    <button
+      class="bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 text-white px-[30px] h-[45px] rounded-[100px] disabled:bg-gray-400"
+      (click)="mostrarForm()">Edit Venue</button>
+  </div>
+
+  <div *ngIf="mostrarEditar" id="editar">
+    <app-add-recinto [recintoRecibido]="recinto"></app-add-recinto>
+  </div>
 
   }
 </section>
-

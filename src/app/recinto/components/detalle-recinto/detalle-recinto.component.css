@@ -1,4 +1,4 @@
-
+/*
 * {
   margin: 0;
   padding: 0;
@@ -28,15 +28,15 @@ h2{
   font-weight: 100;
   font-size: 45px;
   color: white;
-}
+} */
 
 .containerImgRecinto {
-  margin-top: 5%;
   width: 100%;
   max-height: 300px;
   object-fit: cover;
-  border-radius: 10px;
 }
+
+/*
 h4{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
@@ -101,5 +101,5 @@ width:10%;
 .botonContainer button:hover {
    transform: translateY(-5px);
    color: #631BE9;
-}
+} */
 

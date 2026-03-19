@@ -1,4 +1,45 @@
-<section>
-    <app-filtrar-usuarios></app-filtrar-usuarios>
-    <app-list-usuario></app-list-usuario>
+<section class="bg-[#FAFAFA] flex h-screen w-full gap-[30px] px-[30px] py-[20px]">
+
+  <!-- izq -->
+  <div class="w-[420px] flex flex-col gap-[20px]">
+
+    <!-- panel -->
+    <div class="bg-white rounded-[20px] px-[25px] py-[20px] shadow-sm border border-black/5">
+
+      <h2 class="font-semibold text-[22px] text-[#1E1D1B]">
+        Registered Users
+      </h2>
+
+      <div class="mt-[12px]">
+        <app-filtrar-usuarios></app-filtrar-usuarios>
+      </div>
+
+      <!-- filtros -->
+      <div class="flex gap-6 mt-[16px] border-b border-black/10 pb-[8px]">
+
+        <button
+          (click)="filter = 'all'"
+          class="text-[13px] text-black/60 hover:text-black transition pb-[6px]"
+        >
+          All Users
+        </button>
+
+        <button
+          (click)="filter = 'disabled'"
+          class="text-[13px] text-black/60 hover:text-black transition pb-[6px]"
+        >
+          Disabled
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- DERECHA -->
+  <div class="flex-1">
+    <app-list-usuario [filter]="filter"></app-list-usuario>
+  </div>
+
 </section>

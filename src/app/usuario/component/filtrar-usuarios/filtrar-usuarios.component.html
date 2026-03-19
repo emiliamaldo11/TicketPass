@@ -1,25 +1,48 @@
-<div class="wrapper">
-    <input
-      type="text"
-      name="input-busqueda"
-      [(ngModel)]="busqueda"
-      (input)="filtrarUsuarios()"
-      placeholder="Buscar usuarios..."
-    />
-  
-    <div *ngIf="mostrarResultados && resultados.length > 0" class="busqueda">
-      <ul>
-        <li *ngFor="let usuario of resultados" [routerLink]="['/ver-detalle-usuario' , adminId , usuario.id]">
-          <div class="divInfo">
-            {{ usuario.nombre }} {{ usuario.apellido}} - {{ usuario.nombreUsuario }}
-          </div>
-        </li>
-      </ul>
-    </div>
-  
-    <div  *ngIf="mostrarResultados && resultados.length === 0" class="busqueda">
-      <div class="divInfo">No se encontraron usuarios</div>
-    </div>
-    
+<section class="flex w-full m-0 justify-center">
+
+  <div class="wrapper flex flex-col justify-center relative w-[350px]">
+
+  <div class="flex gap-[10px] bg-white backdrop-blur-md
+    w-full h-[45px] items-center
+      rounded-full pl-[18px]
+      border border-[#1E1D1B]/20">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+      class="size-6 text-[#1E1D1B]">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+    </svg>
+
+    <input type="text" name="input-busqueda" [(ngModel)]="busqueda" (input)="filtrarUsuarios()"
+      placeholder="Search users"
+      class="outline-none focus:outline-none focus:ring-0 text-[#1E1D1B] placeholder:text-[#1E1D1B] " />
+
   </div>
 
+
+
+  <div *ngIf="mostrarResultados && resultados.length > 0" class="absolute top-[45px] w-full bg-[#FAFAFA] border border-[#6B7280]
+             rounded-[10px] shadow-lg z-50 overflow-y-auto ">
+    <ul class="flex flex-col">
+      <li *ngFor="let usuario of resultados" [routerLink]="['/ver-detalle-usuario' , adminId , usuario.id]"
+      class="flex justify-between items-center px-[18px] py-[10px] hover:bg-[#EDFF4A] hover:text-[#1E1D1B] transition-colors duration-200">
+        <div class="divInfo text-black cursor-pointer">
+          {{ usuario.nombre }} {{ usuario.apellido}} - {{ usuario.nombreUsuario }}
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="size-4 text-black cursor-pointer">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
+
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="mostrarResultados && resultados.length === 0" class="busqueda">
+    <div class="divInfo">User not found.</div>
+  </div>
+
+    </div>
+
+
+</section>

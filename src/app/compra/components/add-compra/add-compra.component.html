@@ -1,7 +1,7 @@
 <div class=" flex justify-between mt-[74px] px-[108px]">
 
   <!-- compra -->
-  <div class="flex flex-col bg-[#F6F6F6] px-[30px] py-[30px]">
+  <div class="flex flex-col bg-white rounded-[20px] px-[30px] py-[25px] shadow-sm border border-black/5">
 
     <h2 class="inter font-bold text-[40px] mb-[40px]">Select your section</h2>
 
@@ -20,15 +20,27 @@
       </li>
     </ul>
 
-    <h3 class="titulo-cantidad mt-[60px]">Number of tickets</h3>
-    <!--la cantidad max para comprar es 4, pero valida si hay menos-->
-    <select [(ngModel)]="compra.cantidad" (change)="actualizarTotalPrecio()" class="select-cantidad w-[62px] h-[30px] bg-[#E5D2FF] ">
-      <option value="" disabled selected>Seleccionar cantidad</option>
-      <option value="1" *ngIf="asientosDisponibles >= 1">1</option>
-      <option value="2" *ngIf="asientosDisponibles >= 2">2</option>
-      <option value="3" *ngIf="asientosDisponibles >= 3">3</option>
-      <option value="4" *ngIf="asientosDisponibles >= 4">4</option>
+   <div class="flex flex-col gap-[10px] mt-[40px]">
+
+  <h3 class="text-[18px] font-semibold">Number of tickets</h3>
+
+  <div class="relative w-[140px]">
+
+    <select
+      [(ngModel)]="compra.cantidad"
+      (change)="actualizarTotalPrecio()"
+      class="w-full h-[42px] px-[12px] pr-[35px] rounded-[12px] border border-black/10 bg-white text-[14px] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#631BE9]/20 focus:border-[#631BE9] transition">
+
+      <option value="" disabled selected>Select</option>
+      <option value="1" *ngIf="asientosDisponibles >= 1">1 ticket</option>
+      <option value="2" *ngIf="asientosDisponibles >= 2">2 tickets</option>
+      <option value="3" *ngIf="asientosDisponibles >= 3">3 tickets</option>
+      <option value="4" *ngIf="asientosDisponibles >= 4">4 tickets</option>
     </select>
+
+  </div>
+
+</div>
 
 
     <div class="flex flex-col items-end mt-[60px]">

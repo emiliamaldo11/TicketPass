@@ -1,75 +1,120 @@
-<section class="flex flex-col bg-[#1E1D1B] min-h-screen">
+<section class="relative flex flex-col bg-[#1E1D1B] min-h-screen">
 
-  <div class="flex items-center gap-2">
-    <h2 class="font-bold text-[32px] mt-[40px] mb-[40px] ml-[70px] text-white">My tickets</h2>
+  <!-- HEADER -->
+  <div class="flex items-center gap-2 ml-[70px] mt-[40px] mb-[30px]">
+    <h2 class="font-bold text-[32px] text-white">My tickets</h2>
 
-     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-          class="w-6 h-6 text-white mt-2">
-
-          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-
-        </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+      viewBox="0 0 24 24" stroke-width="2"
+      stroke="currentColor"
+      class="w-5 h-5 text-white/60 mt-[4px]">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
   </div>
 
+  <!-- CONTENEDOR -->
+  <div class="mx-[30px] px-[25px] py-[30px] rounded-[20px] bg-[#272624] border border-white/5 shadow-sm">
 
-  <div class=" px-[15px] py-[30px] rounded-[8px] mx-[30px] flex flex-col items-cente bg-[#272624]">
-    @if(listaCompras.length ==0){
-    <div class="vacio"><strong>You don't have tickets.</strong></div>
+    @if(listaCompras.length == 0){
+      <div class="text-white/60 text-center py-[40px]">
+        <strong>You don't have tickets.</strong>
+      </div>
     }
 
-    <div class="relative w-full max-w-[840px] overflow-hidden mx-auto">
+    <div class="relative w-full max-w-[900px] overflow-hidden mx-auto">
 
-  <ul
-    class="flex transition-transform duration-500 ease-in-out"
-    [style.transform]="'translateX(-' + (paginaActual * 100) + '%)'">
+      <ul
+        class="flex transition-transform duration-500 ease-in-out"
+        [style.transform]="'translateX(-' + (paginaActual * 100) + '%)'">
 
-    @for (compra of listaCompras; track compra.id) {
-      <li class="w-1/2 flex-shrink-0 flex justify-center p-2">
+        @for (compra of listaCompras; track compra.id) {
+          <li class="w-1/2 flex-shrink-0 flex justify-center p-3">
 
-        <div class="compra-content flex flex-col w-full max-w-[400px] bg-[#FAFAFA] rounded-[32px] border border-[#1E1D1B] p-4">
-          <img [src]='compra.evento.banner' class="w-full h-[150px] object-cover rounded-lg" alt="Banner">
+            <!-- CARD -->
+            <div class="flex flex-col w-full max-w-[400px]
+              bg-white rounded-[24px] border border-black/5 p-[18px]
+              hover:shadow-md hover:-translate-y-[4px]
+              transition-all duration-200">
 
-          <div class="flex flex-col items-center mt-4">
-            <h3 class="font-bold text-[24px] text-center">{{compra.evento.artista}}</h3>
-            <p class="font-light text-[18px] text-center">{{compra.evento.nombreEvento}}</p>
-          </div>
+              <!-- IMG -->
+              <img [src]='compra.evento.banner'
+                class="w-full h-[160px] object-cover rounded-[14px]"
+                alt="Banner">
 
-          <div class="flex flex-col mt-6 items-center">
-            <button class="w-[180px] h-[40px] text-white bg-[#631BE9] rounded-[100px] hover:bg-[#551BC1] transition-colors duration-200" [routerLink]="['/ver-detalle-entradas', compra.id]">
-              Ticket info
-            </button>
-            <a class="underline cursor-pointer text-[#AAAAAA] text-[12px] mt-4 self-end" (click)="confirmarBajaEntrada(compra)">
-              Refund ticket
-            </a>
-          </div>
+              <!-- INFO -->
+              <div class="flex flex-col items-center mt-[16px] gap-[4px]">
+                <h3 class="font-semibold text-[20px] text-center">
+                  {{compra.evento.artista}}
+                </h3>
 
-          <hr class="border-t border-dashed border-gray-400 my-4 w-full">
+                <p class="text-[14px] text-black/60 text-center">
+                  {{compra.evento.nombreEvento}}
+                </p>
+              </div>
 
-          <div class="flex justify-center">
-            <img [src]="compra.qrEntrada" alt="Qr" class="w-32 h-32">
-          </div>
-        </div>
+              <!-- BOTONES -->
+              <div class="flex flex-col mt-[20px] items-center w-full">
 
-      </li>
-    }
-  </ul>
+                <button
+                  class="w-full h-[42px]
+                  bg-[#631BE9] hover:bg-[#551BC1]
+                  text-white rounded-[100px] text-[14px] transition"
+                  [routerLink]="['/ver-detalle-entradas', compra.id]">
+                  Ticket info
+                </button>
 
-  <button (click)="anterior()" [disabled]="paginaActual === 0"
-    class="absolute left-0 top-1/2 -translate-y-1/2 bg-[#21C183] text-white p-3 rounded-full shadow-lg hover:bg-[#19A46E] disabled:opacity-20 transition-all">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-    </svg>
-  </button>
+                <a
+                  class="text-[12px] text-black/40 hover:text-red-500 transition cursor-pointer mt-[8px] self-end"
+                  (click)="confirmarBajaEntrada(compra)">
+                  Refund ticket
+                </a>
+              </div>
 
-  <button (click)="siguiente()" [disabled]="paginaActual >= maxPagina"
-    class="absolute right-0 top-1/2 -translate-y-1/2 bg-[#21C183] text-white p-3 rounded-full shadow-lg hover:bg-[#19A46E] disabled:opacity-20 transition-all">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-    </svg>
-  </button>
-</div>
+              <!-- SEPARADOR -->
+              <hr class="border-t border-dashed border-black/10 my-[16px]">
 
+              <!-- QR -->
+              <div class="flex justify-center">
+                <img [src]="compra.qrEntrada"
+                  alt="Qr"
+                  class="w-[110px] h-[110px]">
+              </div>
 
+            </div>
 
+          </li>
+        }
+      </ul>
+
+      <!-- BOTON IZQ -->
+      <button (click)="anterior()" [disabled]="paginaActual === 0"
+        class="absolute left-0 top-1/2 -translate-y-1/2
+        bg-[#21C183] text-white p-3 rounded-full shadow-lg
+        hover:bg-[#19A46E] disabled:opacity-20 transition-all">
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+          viewBox="0 0 24 24" stroke-width="2.5"
+          stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+
+      <!-- BOTON DER -->
+      <button (click)="siguiente()" [disabled]="paginaActual >= maxPagina"
+        class="absolute right-0 top-1/2 -translate-y-1/2
+        bg-[#21C183] text-white p-3 rounded-full shadow-lg
+        hover:bg-[#19A46E] disabled:opacity-20 transition-all">
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+          viewBox="0 0 24 24" stroke-width="2.5"
+          stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+
+    </div>
   </div>
 </section>

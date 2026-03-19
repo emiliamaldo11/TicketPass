@@ -1,8 +1,38 @@
+<section class="bg-[#FAFAFA] flex h-screen w-full gap-[30px] px-[30px] py-[20px]">
+  <div class="w-[420px] flex flex-col gap-[20px]">
+    <div class="bg-white rounded-[20px] px-[25px] py-[20px] shadow-sm border border-black/5">
+
+      <h2 class="font-semibold text-[22px] text-[#1E1D1B]">
+        Registered Events
+      </h2>
 
 
-<section>
-    <button class="boton-deshabilitados" [routerLink]="['/eventos-deshabilitados', id]">Ver eventos deshabilitados</button>
-    <app-filtrar-eventos></app-filtrar-eventos> 
-    <app-list-eventos-admin></app-list-eventos-admin>
+<div class="flex flex-col gap-6 mt-[16px] border-b border-black/10 pb-[8px]">
+        <button
+          class="bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 text-white px-4 py-2 rounded-[100px] disabled:bg-gray-400 w-[120px]">
+          Add event
+        </button>
+
+        <div class="flex gap-4">
+          <button class="text-[13px] text-black/60 hover:text-black transition pb-[6px]" (click)="filter = 'all'">All
+            events</button>
+
+          <button class="text-[13px] text-black/60 hover:text-black transition pb-[6px]"
+            (click)="filter = 'disabled'">Disabled</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="flex-1">
+    <div class="mt-[12px] mb-[12px] w-full overflow-hidden">
+      <app-filtrar-eventos></app-filtrar-eventos>
+    </div>
+    <app-list-eventos-admin [filter]="filter"></app-list-eventos-admin>
+  </div>
+
+
 </section>
-

@@ -1,22 +1,38 @@
-
-<section class="recintos-section">
+<section class=" bg-white rounded-[20px] px-[30px] py-[25px] shadow-sm border border-black/5">
   <div class="wrapper">
-    <h2>Recintos Cargados</h2>
     @if(listaRecintos.length==0){
-      <div class="vacio"><strong>No hay recintos cargados</strong></div>
+    <div class="vacio"><strong>Venues not found.</strong></div>
     }
-    <ul class="recintos-list">
-        @for (item of listaRecintos; track $index) {
-          <li class="recinto-item">
-            <h4>{{ item.nombreRecinto }}</h4>
-            <div class="botones">
-              <button class="btn ver-mas" [routerLink]="['/recintos', item.id]">Ver más</button>
-              <button class="btn toggle" (click)="confirmarDHR(item)">
-                {{ item.alta ? 'Deshabilitar' : 'Habilitar' }} recinto
-              </button>
-            </div>
-          </li>
-        }
+    <ul class="usuarios-list flex flex-col gap-[12px]">
+      @for (item of listaRecintos; track $index) {
+      <li class="bg-[#F6F6F6] rounded-[12px] px-[16px] py-[12px] flex flex-col gap-[4px]">
+
+        <div class="usuario-content flex justify-between items-center">
+
+          <!-- info -->
+          <div>
+            <div class="font-bold text-black">{{ item.nombreRecinto }}</div>
+            <div class="text-black">{{item.direccion.calle}}, {{item.direccion.ciudad}} </div>
+          </div>
+
+          <div class="botones flex gap-4 items-center justify-center">
+            <button class="text-[12px] text-black/40 hover:text-black transition cursor-pointer mt-[8px] "
+              (click)="confirmarDHR(item)">
+              {{ item.alta ? 'Enable' : 'Disable' }} venue
+            </button>
+            <button
+              class="bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 text-white px-4 py-2 rounded-[100px] disabled:bg-gray-400"
+              [routerLink]="['/recintos', item.id]">Venue Details</button>
+
+          </div>
+
+
+
+        </div>
+
+
+      </li>
+      }
     </ul>
   </div>
 </section>

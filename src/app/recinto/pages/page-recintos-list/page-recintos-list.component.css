@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -39,7 +39,6 @@ h2{
   font-weight: 100;
   font-size: 40px;
   color: white;
-  /* width: 150px; */
 }
 
 .botonContainer {
@@ -72,4 +71,4 @@ app-filtrar-recintos {
   display: block;
   margin-bottom: 20px;
 }
-
+ */

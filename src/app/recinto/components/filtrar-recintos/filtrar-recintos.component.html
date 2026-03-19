@@ -1,25 +1,35 @@
+<section class="flex w-full m-0 justify-center">
 
-  <div class="wrapper">
-    <input
-      type="text"
-      name="input-busqueda"
-      [(ngModel)]="busqueda"
-      (input)="filtrarRecintos()"
-      placeholder="Buscar recintos..."
-    />
-  
-    <div *ngIf="mostrarResultados && resultados.length > 0" class="busqueda">
-      <ul>
-        <li *ngFor="let recinto of resultados" [routerLink]="['/recintos', recinto.id]">
-          <div class="divInfo">
-            {{ recinto.nombreRecinto }} - {{ recinto.direccion.ciudad }}, {{ recinto.direccion.calle }}
-          </div>
-        </li>
-      </ul>
-    </div>
-  
-    <div  *ngIf="mostrarResultados && resultados.length === 0" class="busqueda">
-      <div class="divInfo">No se encontraron recintos</div>
-    </div>
+  <div class="flex gap-[10px] bg-white backdrop-blur-md
+    w-full h-[45px] items-center
+      rounded-full pl-[18px]
+      border border-[#1E1D1B]/20">
+
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+      class="size-6 text-[#1E1D1B]">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+    </svg>
+
+    <input type="text" name="input-busqueda" [(ngModel)]="busqueda" (input)='filtrarRecintos()'
+      placeholder="Search venues"
+      class="outline-none focus:outline-none focus:ring-0 text-[#1E1D1B] placeholder:text-[#1E1D1B] " />
+
   </div>
 
+   <div *ngIf="mostrarResultados && resultados.length > 0" class="absolute top-[45px] w-full bg-[#FAFAFA] border border-[#6B7280]
+             rounded-[10px] shadow-lg z-50 overflow-y-auto ">
+    <ul class="flex flex-col">
+      <li *ngFor="let recinto of resultados" [routerLink]="['/recintos', recinto.id]"
+        class="flex justify-between items-center px-[18px] py-[10px] hover:bg-[#EDFF4A] hover:text-[#1E1D1B] transition-colors duration-200">
+        <div class="divInfo text-black cursor-pointer">
+          {{ recinto.nombreRecinto }} - {{ recinto.direccion.ciudad }}, {{ recinto.direccion.calle }}
+        </div>
+      </li>
+    </ul>
+    </div>
+
+    <div *ngIf="mostrarResultados && resultados.length === 0" class="busqueda">
+      <div class="divInfo">Venue not found.</div>
+    </div>
+</section>

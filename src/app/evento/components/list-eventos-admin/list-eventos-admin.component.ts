@@ -4,7 +4,6 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Evento } from '../../interfaces/evento.interface';
 import { UsuarioService } from '../../../services/usuario.service';
-import { Usuario } from '../../../usuario/interfaces/usuario.interface';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,10 +17,17 @@ import Swal from 'sweetalert2';
 //muestra TODOS los eventos esten o no habilitados
 export class ListEventosAdminComponent {
 
+  @Input() filter: string = 'all';
+
   userId: string | null = ''
 
   private userService = inject(UsuarioService)
   private active = inject(ActivatedRoute)
+
+  eventosService = inject(EventoService);
+  listaEventos: Evento[] = [];
+  listaFiltrados: Evento[] = []
+
 
   ngOnInit(): void {
 
@@ -32,30 +38,29 @@ export class ListEventosAdminComponent {
     this.listarEventos();
   }
 
-  eventosService= inject(EventoService);
-  listaEventos: Evento [] = [];
 
-  listarEventos()
-  {
+
+  listarEventos() {
     this.eventosService.getEventos().subscribe(
       {
-        next: (eventos: Evento[])=>{
-          this.listaEventos= eventos;
+        next: (eventos: Evento[]) => {
+          this.listaEventos = eventos;
+          this.listaFiltrados = eventos.filter(e => !e.alta)
         },
-        error: (err)=> {
+        error: (err) => {
           console.error('Error al levantar eventos:', err);
         }
       }
     )
   }
 
-  cambioAlta (evento: Evento){
+  cambioAlta(evento: Evento) {
 
     const accion = evento.alta === 1 ? 'deshabilitado' : 'habilitado';
     evento.alta = evento.alta === 1 ? 0 : 1;
 
     this.eventosService.putEvento(evento.id, evento).subscribe({
-      next:()=>{
+      next: () => {
         Swal.fire({
           title: `Evento ${accion} correctamente`,
           text: `El evento esta ${accion === 'deshabilitado' ? 'oculto' : 'visible'} para los clientes`,
@@ -63,7 +68,7 @@ export class ListEventosAdminComponent {
           icon: "success"
         });
       },
-      error:(e: Error)=>{
+      error: (e: Error) => {
         console.log(e.message);
         Swal.fire({
           title: `Error al ${accion === 'habilitado' ? 'habilitar' : 'deshabilitar'} el evento`,
@@ -75,7 +80,7 @@ export class ListEventosAdminComponent {
 
   }
 
-  confirmarDH(evento: Evento){
+  confirmarDH(evento: Evento) {
 
     const accion = evento.alta === 1 ? 'deshabilitar' : 'habilitar';
 

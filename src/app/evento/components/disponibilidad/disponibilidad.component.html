@@ -1,16 +1,16 @@
 <div class="contenedor-ventana">
   <div class="ventana-header">
     <!--muestra la disponiblilidad en todas las fechas y todos los sectores del evento seleccionado-->
-    <h2>Disponibilidad del Evento</h2>
+    <h2>Event Availability</h2>
     <span class="cerrar-cruz" (click)="cerrarVentana()">×</span>
   </div>
   <div class="ventana-body">
     <ul>
       <li *ngFor="let fecha of evento?.fechas">
-        <p><strong>Fecha:</strong> {{fecha.fecha}} - <strong>Disponibilidad:</strong> {{fecha.disponibilidadTotal}}</p>
+        <p><strong>Date:</strong> {{fecha.fecha}} - <strong>Availability:</strong> {{fecha.disponibilidadTotal}}</p>
         <ul>
           <li *ngFor="let entrada of fecha.entradas">
-            <strong>Sector:</strong> {{entrada.nombreSector}} - <strong>Disponibles:</strong> {{entrada.disponibles}}
+            <strong><Section></Section>:</strong> {{entrada.nombreSector}} - <strong>Availability:</strong> {{entrada.disponibles}}
           </li>
         </ul>
       </li>

@@ -1,4 +1,4 @@
-.seccion-eventos {
+/* .seccion-eventos {
   padding: 20px;
   background-color: #efefef90;
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -57,7 +57,7 @@
 .boton-accion:hover,
 .boton-detalle:hover {
 color: #631BE9;
-  /* background-color: #"b91c1c"9f ; */
+
   transform: translateY(-5px);
 }
 
@@ -65,3 +65,4 @@ color: #631BE9;
 .boton-detalle:active {
   transform: translateY(2px);
 }
+ */

@@ -1,13 +1,35 @@
-<section>
-  <div class="divreg">
-    <h2>Recintos</h2>
-    <div class="botonContainer">
-      <button routerLink="/add-recinto">Agregar recinto</button>
+<section class="bg-[#FAFAFA] flex h-screen w-full gap-[30px] px-[30px] py-[20px]">
+
+  <div class="w-[420px] flex flex-col gap-[20px]">
+    <div class="bg-white rounded-[20px] px-[25px] py-[20px] shadow-sm border border-black/5">
+
+      <h2 class="font-semibold text-[22px] text-[#1E1D1B]">
+        Registered Venues
+      </h2>
+
+      <div class="mt-[12px]">
+        <app-filtrar-recintos></app-filtrar-recintos>
+      </div>
+
+      <div class="flex gap-6 mt-[16px] border-b border-black/10 pb-[8px] justify-end">
+        <button routerLink="/add-recinto"
+        class="bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 text-white px-4 py-2 rounded-[100px] disabled:bg-gray-400"
+         >Add venue</button>
+      </div>
+
     </div>
+
   </div>
-   
-      <app-filtrar-recintos></app-filtrar-recintos>
- 
+
+  <div class="flex-1">
       <app-list-recinto></app-list-recinto>
+
+  </div>
+
+
+
+
+
+
 
 </section>

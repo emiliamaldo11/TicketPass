@@ -13,6 +13,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 export class PageListAdminComponent {
 
   id: string | null = '';
+  filter : 'all' | 'disabled' = 'all'
 
   constructor(private route: ActivatedRoute) {}
 

@@ -1,23 +1,46 @@
+<section class=" bg-white rounded-[20px] px-[30px] py-[25px] shadow-sm border border-black/5">
+  <ul class="usuarios-list flex flex-col gap-[12px]">
+    @for (evento of (filter=='all' ? listaEventos : listaFiltrados)
+    ; track $index) {
 
-  <section class="seccion-eventos">
-    <ul class="lista-eventos">
-      @for (evento of listaEventos; track $index) {
-        <li class="item-evento">
-          <span class="nombre-evento">{{ evento.nombreEvento }}</span>
-  
-          <div class="contenedor-botones">
-            <button type="button" class="boton-accion" (click)="confirmarDH(evento)">
-              {{ evento.alta === 1 ? 'Deshabilitar Evento' : 'Habilitar Evento' }}
-            </button>
-  
-            <button type="button" class="boton-detalle" [routerLink]="['/detalle-evento', evento.id]">
-              Ver Detalle
-            </button>
-          </div>
-        </li>
-      }
-    </ul>
-  </section>
-  
+    @if ((filter == 'all' ? listaEventos.length : listaFiltrados.length) === 0) {
+    <div class="vacio">
+      <strong>
+        {{ filter == 'all' ? 'Events not found.' : 'No disabled events found.' }}
+      </strong>
+    </div>
+    }
 
- 
+
+    <li class="bg-[#F6F6F6] rounded-[12px] px-[16px] py-[12px] flex flex-col gap-[4px]">
+
+      <div class="usuario-content flex justify-between items-center">
+
+        <!-- info -->
+        <div>
+          <div class="font-bold">{{evento.artista_banda}}</div>
+          <div class="nombre-evento">{{ evento.nombreEvento }}</div>
+        </div>
+
+        <!-- btn -->
+        <div class="botones flex gap-4 items-center justify-center">
+          <button class="text-[12px] text-black/40 hover:text-black transition cursor-pointer mt-[8px] "
+            (click)="confirmarDH(evento)">
+            {{ evento.alta === 1 ? 'Disable Event' : 'Enable Event' }}
+          </button>
+
+          <button type="button" class="boton-detalle"
+            class="bg-[#631BE9] hover:bg-[#551BC1] transition-colors duration-200 text-white px-4 py-2 rounded-[100px] disabled:bg-gray-400"
+            [routerLink]="['/detalle-evento', evento.id]">
+            Event Details
+          </button>
+        </div>
+
+      </div>
+
+
+
+    </li>
+    }
+  </ul>
+</section>
