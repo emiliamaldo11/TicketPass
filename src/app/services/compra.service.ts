@@ -8,7 +8,7 @@ import { Compra } from '../compra/interfaces/compra.interface';
   })
 
   export class CompraService {
-    
+
     urlBase: string = 'http://localhost:3003/compras'
     constructor (private http: HttpClient ){};
 

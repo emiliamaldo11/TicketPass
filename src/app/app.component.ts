@@ -6,6 +6,7 @@ import { Autenticacion } from './services/autenticacion.service';
 import { FooterComponent } from './shared/footer/footer.component';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

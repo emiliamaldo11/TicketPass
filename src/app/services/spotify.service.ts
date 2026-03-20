@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of, throwError } from "rxjs";
 import { map, switchMap, catchError } from "rxjs/operators";
 import { Injectable } from '@angular/core';
-import { environmentSpotify } from "../../enviroments/environment.developments";
+import { environmentSpotify } from "../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root',

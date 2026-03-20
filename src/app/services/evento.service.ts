@@ -4,7 +4,7 @@ import { Evento } from '../evento/interfaces/evento.interface';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root', 
+    providedIn: 'root',
   })
 
   export class EventoService {

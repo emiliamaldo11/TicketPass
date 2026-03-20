@@ -6,7 +6,6 @@ Incluye un panel administrativo para la gestión de recintos, butacas y eventos,
 # Tecnologías
 Angular
 JSON Server (APIs simuladas)
-MercadoPago
 Spotify API
 
 # Instalación y ejecución
@@ -17,11 +16,7 @@ Iniciar la aplicación Angular:
 ng serve
 
 En otra terminal, iniciar los servicios de datos (JSON Server):
-npm run recintosdb
-npm run eventosdb
-npm run usuariosdb
-npm run comprasdb
-npm run comprasdevueltasdb
+npm run start:db
 
 La aplicación se ejecuta en:
 http://localhost:4200
